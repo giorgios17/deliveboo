@@ -9,7 +9,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 class RegisterController extends Controller
 {
     /*
@@ -64,6 +63,7 @@ class RegisterController extends Controller
             'closing_day' => ['required', 'string'],
             'free_shipping' => ['required', 'boolean'],
             'shipping_price' => ['required','numeric', 'between:0.00,99.99'],
+            'typologies[]'=>['exists:typologies,id']
         ]);
     }
 

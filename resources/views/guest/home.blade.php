@@ -35,7 +35,13 @@
 </head>
 
 <body>
+    {{-- <div>
+        @foreach ($typologies as $typology)
+            <img src="{{ asset($typology->image) }}" alt="{{ $typology->name }}">
+        @endforeach
+    </div> --}}
     <div id="app">
+
     </div>
 </body>
 
