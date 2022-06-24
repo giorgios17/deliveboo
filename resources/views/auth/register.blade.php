@@ -219,7 +219,7 @@
                                 </div>
                             </div>
 
-                            {{-- checkbox tipologie
+                            {{-- checkbox tipologie --}}
                             <p>Tipologia ristorante</p>
                             @foreach ($typologies as $typology)
                                 <div>
@@ -230,7 +230,7 @@
                             @endforeach
                             @error('typologies')
                                 <div class="text-danger">{{ $message }}</div>
-                            @enderror --}}
+                            @enderror
 
                             <div class="form-group mt-5">
                                 <label for="image">Immagine ristorante</label>
