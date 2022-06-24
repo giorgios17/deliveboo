@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -50,9 +51,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'business_name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string'],
+            'vat_number' => ['required', 'digits:11'],
+            'description' => ['required', 'string'],
+            'image' => ['required', 'mimes:jpg,bmp,png,jpeg', 'max:2048'],
+            'phone' => ['required', 'string'],
+            'opening_time' => ['required'],
+            'closing_time' => ['required'],
+            'closing_day' => ['required', 'string'],
+            'free_shipping' => ['required', 'boolean'],
+            'shipping_price' => ['required','numeric', 'between:0.00,99.99'],
         ]);
     }
 
@@ -64,10 +75,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $img_path = Storage::put('uploads', $data['image']);
         return User::create([
-            'name' => $data['name'],
+            'business_name' => $data['business_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'address' => $data['address'],
+            'vat_number' => $data['vat_number'],
+            'description' => $data['description'],
+            'image'=> $img_path,
+            'phone' => $data['phone'],
+            'opening_time' => $data['opening_time'],
+            'closing_time' => $data['closing_time'],
+            'closing_day' => $data['closing_day'],
+            'free_shipping' => $data['free_shipping'],
+            'shipping_price' => $data['shipping_price'],
+            'slug' => User::generateSlug($data['business_name']),
         ]);
     }
 }
