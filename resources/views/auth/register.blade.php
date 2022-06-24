@@ -218,6 +218,20 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            {{-- checkbox tipologie
+                            <p>Tipologia ristorante</p>
+                            @foreach ($typologies as $typology)
+                                <div>
+                                    <input type="checkbox" name="typologies[]" value="{{ $typology->id }}"
+                                        {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
+                                    <label> {{ $typology->name }}</label>
+                                </div>
+                            @endforeach
+                            @error('typologies')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror --}}
+
                             <div class="form-group mt-5">
                                 <label for="image">Immagine ristorante</label>
                                 <input type="file" class="form-control-file" name="image">
