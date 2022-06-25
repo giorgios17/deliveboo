@@ -25,6 +25,7 @@
                 <div>
                     <img class="w-50" src="{{ asset('storage/' . Auth::user()->image) }}" alt="">
                 </div>
+                <a href="/admin/plate/create">Aggiungi un piatto</a>
             </div>
         </div>
     </div>
