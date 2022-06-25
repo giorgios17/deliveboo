@@ -124,5 +124,11 @@ class PlateController extends Controller
     public function destroy($id)
     {
         //
+        $plate = Plate::findOrFail($id);
+        if($plate->image){
+            Storage::delete($plate->image);
+        }
+        $plate->delete();
+        return redirect()->route('admin.plate.index');
     }
 }

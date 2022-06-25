@@ -25,10 +25,14 @@
             <p>
             <h5>Giorno di chiusura: </h5>{{ Auth::user()->closing_day }}</p>
             <p>
-            <h5>Spedizione gratuita: </h5>{{ Auth::user()->free_shipping }}</p>
-            <p>
-            <h5>Costo spedizione:</h5>{{ Auth::user()->shipping_price }}</p>
-            <div class="mb-2">
+                @if (Auth::user()->free_shipping)
+                    <h5>Spedizione gratuita</h5>
+                @else
+                    <p>
+                    <h5>Costo spedizione:</h5>{{ Auth::user()->shipping_price }}
+            </p>
+            @endif
+            <div class="mt-4 mb-2">
                 <a class="btn btn-primary" href="{{ route('admin.plate.create') }}">Aggiungi un piatto</a>
             </div>
             <div class="mb-2">
