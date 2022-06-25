@@ -6,9 +6,20 @@ use App\Plate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PlateController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +28,9 @@ class PlateController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        $plates = $user->plate;
+        return view('admin.plate.index', compact('plates'));
     }
 
     /**
@@ -43,9 +57,11 @@ class PlateController extends Controller
         $plate->description = $newPlate["description"];
         $plate->price = $newPlate["price"];
         $plate->visible = $newPlate["visible"];
-        $plate->image = $newPlate["image"];
+        $img_path = Storage::put('uploads', $newPlate['image']);
+        $plate->image = $img_path;
         $plate->user_id = Auth::user()->id;
         $plate->save();
+        return redirect()->route('admin.plate.index');
     }
 
     /**
@@ -68,6 +84,8 @@ class PlateController extends Controller
     public function edit($id)
     {
         //
+        $plate = Plate::findOrFail($id);
+        return view('admin.plate.edit', compact('plate'));
     }
 
     /**
@@ -79,7 +97,22 @@ class PlateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plate = Plate::findOrFail($id);
+        $plateUpdated = $request->all();
+        if(array_key_exists('image', $plateUpdated)){
+            if($plate->image){
+                Storage::delete($plate->image);
+                }
+            $img_path = Storage::put("uploads", $plateUpdated["image"]);
+            $plate['image'] = $img_path;
+            }
+        $plate->name = $plateUpdated['name'];
+        $plate->description = $plateUpdated['description'];
+        $plate->price = $plateUpdated['price'];
+        $plate->visible = $plateUpdated['visible'];
+        $plate->save();
+        return redirect()->route('admin.plate.index');
+
     }
 
     /**
