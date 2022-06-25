@@ -50,7 +50,7 @@
         <a class="col-1" href=""><i class="fa-solid fa-cart-shopping"></i></a>
 
         <li class="col-2">
-          <a class="p-2" href=""> Sei un ristoratore? REGISTRATI/LOGIN</a>
+          <a class="p-2" href="/admin"> Sei un ristoratore? REGISTRATI/LOGIN</a>
         </li>
       </ul>
     </div>
