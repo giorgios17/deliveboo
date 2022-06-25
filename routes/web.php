@@ -16,18 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Rotta landing page guest.home
+Route::resource('/', 'GuestController');
+
 Route::middleware('auth')
     ->namespace('Admin')
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
         Route::get('/', 'HomeController@index')->name('index');
+        Route::resource('/user', 'UserController');
+        Route::resource('/plate', 'PlateController');
     });
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/register', 'TypologyController@index')->name('register');
 
 Route::get('{any?}', function () {
-    return view('guest.home');
+    return view('404.notFound');
 })->where('any', '.*');
