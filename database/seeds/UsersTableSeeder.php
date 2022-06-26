@@ -31,6 +31,7 @@ class UsersTableSeeder extends Seeder
             $newUser->shipping_price = $user['shipping_price'];
             $newUser->slug = User::generateSlug($user['business_name']);
             $newUser->save();
+            $newUser->typology()->sync($user['typology']);
         }
     }
 }
