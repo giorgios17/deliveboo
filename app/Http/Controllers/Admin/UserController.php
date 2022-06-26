@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Plate;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $plates = Plate::where('user_id', Auth::user()->id)->get();
+        return view('user.index', compact('plates'));
     }
 
     /**
