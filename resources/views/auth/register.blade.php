@@ -200,7 +200,6 @@
                                 <option value="0">No</option>
                             </select>
 
-
                             <div class="form-group row mt-3">
                                 <label for="shipping_price"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Costo di spedizione') }}</label>
