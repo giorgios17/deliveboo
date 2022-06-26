@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
 class RegisterController extends Controller
 {
     /*
@@ -62,8 +63,8 @@ class RegisterController extends Controller
             'closing_time' => ['required'],
             'closing_day' => ['required', 'string'],
             'free_shipping' => ['required', 'boolean'],
-            'shipping_price' => ['required','numeric', 'between:0.00,99.99'],
-            'typologies[]'=>['exists:typologies,id']
+            'shipping_price' => ['required', 'numeric', 'between:0.00,99.99'],
+            'typologies[]' => ['exists:typologies,id']
         ]);
     }
 
@@ -76,14 +77,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $img_path = Storage::put('uploads', $data['image']);
-        return User::create([
+        $user = User::create([
             'business_name' => $data['business_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'vat_number' => $data['vat_number'],
             'description' => $data['description'],
-            'image'=> $img_path,
+            'image' => $img_path,
             'phone' => $data['phone'],
             'opening_time' => $data['opening_time'],
             'closing_time' => $data['closing_time'],
@@ -92,5 +93,8 @@ class RegisterController extends Controller
             'shipping_price' => $data['shipping_price'],
             'slug' => User::generateSlug($data['business_name']),
         ]);
+
+        $user->typology()->sync($data['typologies']);
+        return $user;
     }
 }
