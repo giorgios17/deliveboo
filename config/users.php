@@ -14,6 +14,12 @@ return [
         "closing_day" => 'Lunedì',
         "free_shipping" => '0',
         "shipping_price" => '2.99',
+        "typology" => [
+            1,
+            2,
+            7,
+            8
+        ]
     ],
     [
         "business_name" => "Pizzeria da Ciro",
@@ -29,6 +35,12 @@ return [
         "closing_day" => 'Lunedì',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => [
+            1,
+            2,
+            7,
+            8
+        ]
     ],
     [
         "business_name" => "Hokkaido",
@@ -44,6 +56,10 @@ return [
         "closing_day" => 'Lunedì',
         "free_shipping" => "0",
         "shipping_price" => '4.99',
+        "typology" => [
+            4,
+            7,
+        ]
     ],
     [
         "business_name" => "Pizzeria Samuele",
@@ -59,6 +75,12 @@ return [
         "closing_day" => 'Giovedi',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => [
+            1,
+            2,
+            7,
+            8
+        ]
     ],
     [
         "business_name" => "Gluten Free",
@@ -74,6 +96,7 @@ return [
         "closing_day" => 'Martedì',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => 10
     ],
     [
         "business_name" => "Voglia di pizza",
@@ -89,6 +112,12 @@ return [
         "closing_day" => 'Mercoledì',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => [
+            1,
+            2,
+            7,
+            8
+        ]
     ],
     [
         "business_name" => "Hachi Ristorante Giapponese",
@@ -104,6 +133,10 @@ return [
         "closing_day" => 'Martedi',
         "free_shipping" => '0',
         "shipping_price" => '2.99',
+        "typology" => [
+            4,
+            7
+        ]
     ],
     [
         "business_name" => "La Pazzeria",
@@ -119,6 +152,12 @@ return [
         "closing_day" => 'Martedì',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => [
+            1,
+            2,
+            7,
+            8
+        ]
     ],
     [
         "business_name" => "Poke House",
@@ -134,6 +173,7 @@ return [
         "closing_day" => 'Lunedì',
         "free_shipping" => '0',
         "shipping_price" => '2.99',
+        "typology" => 14
     ],
     [
         "business_name" => "NaBeer Birroteca",
@@ -149,6 +189,11 @@ return [
         "closing_day" => 'Domenica',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => [
+            1,
+            7,
+            8,
+        ]
     ],
     [
         "business_name" => "Shabnaz",
@@ -164,6 +209,11 @@ return [
         "closing_day" => 'Venerdì',
         "free_shipping" => '1',
         "shipping_price" => '0.00',
+        "typology" => [
+            6,
+            7,
+            8,
+        ]
     ],
     [
         "business_name" => "The Mexican",
@@ -179,6 +229,7 @@ return [
         "closing_day" => 'Lunedì',
         "free_shipping" => '0',
         "shipping_price" => '2.99',
+        "typology" => 5
     ],
 
 ];
