@@ -1,9 +1,16 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row text-center mt-5">
+            <div class="col-12">
+                <h1>
+                    LA TUA LISTA PIATTI
+                </h1>
+            </div>
+        </div>
+        <div class="row mt-5">
             @foreach ($plates as $plate)
-                <div class="card" style="width: 18rem;">
+                <div class="card mr-5" style="width: 18rem;">
                     <img src="{{ asset('storage/' . $plate->image) }}" class="card-img-top" alt="{{ $plate->name }}">
                     <div class="card-body">
                         <h4 class="card-title">{{ $plate->name }}</h4>
@@ -22,6 +29,12 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="row text-center mt-5">
+            <div class="col-12 gap-3">
+                <a class="btn btn-primary" href="/admin/plate/create">Aggiungi un piatto</a>
+                <a class="btn btn-primary" href="/admin/user">Torna alla Dashboard</a>
+            </div>
         </div>
     </div>
 @endsection
