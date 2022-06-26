@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PlateController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -57,7 +57,7 @@ class PlateController extends Controller
         $plate->description = $newPlate["description"];
         $plate->price = $newPlate["price"];
         $plate->visible = $newPlate["visible"];
-        $img_path = Storage::put('uploads', $newPlate['image']);
+        $img_path = Storage::put('plates', $newPlate['image']);
         $plate->image = $img_path;
         $plate->user_id = Auth::user()->id;
         $plate->save();
@@ -99,20 +99,19 @@ class PlateController extends Controller
     {
         $plate = Plate::findOrFail($id);
         $plateUpdated = $request->all();
-        if(array_key_exists('image', $plateUpdated)){
-            if($plate->image){
+        if (array_key_exists('image', $plateUpdated)) {
+            if ($plate->image) {
                 Storage::delete($plate->image);
-                }
+            }
             $img_path = Storage::put("uploads", $plateUpdated["image"]);
             $plate['image'] = $img_path;
-            }
+        }
         $plate->name = $plateUpdated['name'];
         $plate->description = $plateUpdated['description'];
         $plate->price = $plateUpdated['price'];
         $plate->visible = $plateUpdated['visible'];
         $plate->save();
         return redirect()->route('admin.plate.index');
-
     }
 
     /**
@@ -125,7 +124,7 @@ class PlateController extends Controller
     {
         //
         $plate = Plate::findOrFail($id);
-        if($plate->image){
+        if ($plate->image) {
             Storage::delete($plate->image);
         }
         $plate->delete();
