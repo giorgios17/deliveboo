@@ -72,6 +72,9 @@
                             <div class="form-group mt-5">
                                 <label for="image">Immagine piatto</label>
                                 <input type="file" class="form-control-file" name="image">
+                                <div class="mt-3">
+                                    <img class="w-50" src="{{ asset('storage/' . $plate->image) }}">
+                                </div>
                             </div>
 
                             <div class="form-group row mb-0">
