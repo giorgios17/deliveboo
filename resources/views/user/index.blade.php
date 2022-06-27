@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('content')
     @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -8,12 +8,15 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-4 bg-warning">
-                <div class=" p-5">
-                    <h2>
-                        Benvenuto, {{ Auth::user()->business_name }}
+            <div class="col-2 restaurant-bg">
+                <div class="text-center p-2">
+                    <div class="restaurant-img">
+                        <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="">
+                    </div>
+                    <h2 class="mb-5">
+                        {{ Auth::user()->business_name }}
                     </h2>
-                    <p>
+                    {{-- <p>
                     <h5>Indirizzo: </h5>{{ Auth::user()->address }}</p>
                     <p>
                     <h5>Telefono: </h5>{{ Auth::user()->phone }}</p>
@@ -34,22 +37,28 @@
                             <p>
                             <h5>Costo spedizione:</h5>{{ Auth::user()->shipping_price }}
                         @endif
-                    </p>
-                    <div class="mb-2">
-                        <a class="btn btn-primary" href="{{ route('admin.plate.index') }}">Lista piatti</a>
+                    </p> --}}
+                    <a class="btn btn-primary mb-3" href="/admin/plate/create">Aggiungi un piatto</a>
+                    <div class="mb-3">
+                        <a class="btn btn-primary" href="{{ route('admin.plate.index') }}">Visualizza i tuoi piatti</a>
                     </div>
+                    <a class="btn btn-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
-                <div>
-                    <img class="w-50" src="{{ asset('storage/' . Auth::user()->image) }}" alt="">
-                </div>
+
             </div>
-
-            <div class="col-8">
+            <div class="col-10 plates-bg">
                 <div class="row mt-5 justify-content-around">
                     <div class="col-12 text-center mb-4">
-                        <h1>
-                            LA TUA LISTA PIATTI
+                        <h1 class="text-white">
+                            I TUOI PIATTI
                         </h1>
                     </div>
                     @foreach ($plates as $plate)

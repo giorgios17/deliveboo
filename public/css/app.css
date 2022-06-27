@@ -1,5 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10951,5 +10962,32 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.restaurant-bg {
+  background-color: #FCBF49;
+  height: 100vh;
+}
+
+.restaurant-img {
+  display: flex;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  flex-shrink: 0;
+  margin: 20px auto;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-size: cover;
+  background-position: center;
+}
+
+.restaurant-img img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.plates-bg {
+  background-color: #EAE2B7;
 }
 
