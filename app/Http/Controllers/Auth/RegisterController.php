@@ -50,52 +50,55 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'business_name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => ['required', 'string'],
-            'vat_number' => ['required', 'digits:11', 'numeric'],
-            'description' => ['required', 'string', 'min:10'],
-            'image' => ['required', 'mimes:jpg,bmp,png,jpeg', 'max:2048'],
-            'phone' => ['required', 'numeric'],
-            'opening_time' => ['required', 'date_format:H:i'],
-            'closing_time' => ['required', 'date_format:H:i'],
-            'closing_day' => ['required', 'string'],
-            'shipping_price' => ['required', 'numeric', 'between:0.00,99.99'],
-            'typologies[]' => ['required','exists:typologies,id'],
+        return Validator::make(
+            $data,
+            [
+                'business_name' => ['required', 'string', 'max:100'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'address' => ['required', 'string'],
+                'vat_number' => ['required', 'digits:11', 'numeric'],
+                'description' => ['required', 'string', 'min:10'],
+                'image' => ['required', 'mimes:jpg,bmp,png,jpeg', 'max:2048'],
+                'phone' => ['required', 'numeric'],
+                'opening_time' => ['required', 'date_format:H:i'],
+                'closing_time' => ['required', 'date_format:H:i'],
+                'closing_day' => ['required', 'string'],
+                'shipping_price' => ['required', 'numeric', 'between:0.00,99.99'],
+                'typologies[]' => ['required', 'exists:typologies,id'],
 
-        ],
-        [
-            'business_name.required' => 'Il campo nome ristorante non può essere vuoto.',
-            'business_name.max' => 'Il nome non deve superare i 100 caratteri.',
-            'email.required' => 'Il campo email non può essere vuoto.',
-            'email.email' => 'Formato email non valido.',
-            'email.unique' => 'Email già registrata.',
-            'password.required' => 'Il campo password non può essere vuoto.',
-            'password.min' => 'La password deve essere minimo 8 caratteri.',
-            'password.confirmed' => 'La password di conferma non coincide.',
-            'address.required' => 'Il campo indirizzo non può essere vuoto.',
-            'vat_number.required' => 'Il campo P.IVA non può essere vuoto.',
-            'vat_number.digits' => 'Il campo P.IVA deve avere 11 cifre.',
-            'vat_number.numeric' => 'Formato P.IVA non valido.',
-            'description.required' => 'Il campo descrizione non può essere vuoto.',
-            'description.min' => 'Il campo descrizione deve essere minimo 10 caratteri.',
-            'image.required' => 'Carica un immagine del ristorante.',
-            'image.mimes' => 'Formato immagine non valida.',
-            'image.max' => 'Dimensione massima consentita 2048kb.',
-            'phone.required'=>'Il campo numero di telefono è obbligatorio.',
-            'opening_time.required'=>'Il campo orario di apertura è obbligatorio.',
-            'closing_time.required'=>'Il campo orario di chiusura è obbligatorio.',
-            'closing_day.required'=>'Il campo giorno di chiusura è obbligatorio.',
-            'shipping_price.required'=>'Il campo costo di spedizione è obbligatorio.',
-            'shipping_price.numeric'=>'Il campo costo di spedizione deve essere un numero.',
-            'shipping_price.between'=>'il campo costo di spedizione deve essere compreso tra 0.00 e 99.99.',
-            'typologies[].required'=>'Almeno una tipologia deve essere selezionata.',
-            'typologies[].exists'=>'La tipologia selezionata non esiste.'
+            ],
+            [
+                'business_name.required' => 'Il campo nome ristorante non può essere vuoto.',
+                'business_name.max' => 'Il nome non deve superare i 100 caratteri.',
+                'email.required' => 'Il campo email non può essere vuoto.',
+                'email.email' => 'Formato email non valido.',
+                'email.unique' => 'Email già registrata.',
+                'password.required' => 'Il campo password non può essere vuoto.',
+                'password.min' => 'La password deve essere minimo 8 caratteri.',
+                'password.confirmed' => 'La password di conferma non coincide.',
+                'address.required' => 'Il campo indirizzo non può essere vuoto.',
+                'vat_number.required' => 'Il campo P.IVA non può essere vuoto.',
+                'vat_number.digits' => 'Il campo P.IVA deve avere 11 cifre.',
+                'vat_number.numeric' => 'Formato P.IVA non valido.',
+                'description.required' => 'Il campo descrizione non può essere vuoto.',
+                'description.min' => 'Il campo descrizione deve essere minimo 10 caratteri.',
+                'image.required' => 'Carica un immagine del ristorante.',
+                'image.mimes' => 'Formato immagine non valida.',
+                'image.max' => 'Dimensione massima consentita 2048kb.',
+                'phone.required' => 'Il campo numero di telefono è obbligatorio.',
+                'opening_time.required' => 'Il campo orario di apertura è obbligatorio.',
+                'closing_time.required' => 'Il campo orario di chiusura è obbligatorio.',
+                'closing_day.required' => 'Il campo giorno di chiusura è obbligatorio.',
+                'shipping_price.required' => 'Il campo costo di spedizione è obbligatorio.',
+                'shipping_price.numeric' => 'Il campo costo di spedizione deve essere un numero.',
+                'shipping_price.between' => 'il campo costo di spedizione deve essere compreso tra 0.00 e 99.99.',
+                'typologies[].required' => 'Almeno una tipologia deve essere selezionata.',
+                'typologies[].exists' => 'La tipologia selezionata non esiste.'
 
 
-        ]);
+            ]
+        );
     }
 
     /**
