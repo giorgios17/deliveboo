@@ -25,7 +25,7 @@
                                 <div class="col-md-6">
                                     <input id="business_name" type="text"
                                         class="form-control @error('business_name') is-invalid @enderror"
-                                        name="business_name" value="{{ old('business_name') }}" required
+                                        name="business_name" value="{{ old('business_name') }}" required maxlength="100"
                                         autocomplete="business_name" placeholder="Inserisci il nome del tuo ristorante"
                                         autofocus>
                                     @error('business_name')
@@ -127,8 +127,8 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}
                                     <span class="text-warning">*</span></label>
                                 <div class="col-md-6">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        @error('description') is-invalid @enderror name="description" required autocomplete="description" minlength="10"
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
+                                        rows="3" name="description" required autocomplete="description" minlength="10"
                                         placeholder="Inserisci la descrizione">{{ old('description') }}</textarea>
                                     <small>Minimo 10 caratteri</small>
                                     @error('description')
@@ -224,10 +224,11 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Costo di spedizione') }}
                                     <span class="text-warning">*</span></label>
                                 <div class="col-md-6">
-                                    <input id="shipping_price" type="number" min="0" step=".01"
-                                        class="form-control @error('shipping_price') is-invalid @enderror"
-                                        name="shipping_price" value="{{ old('shipping_price') }}" required
-                                        autocomplete="shipping_price" placeholder="10.00">
+                                    <input id="shipping_price"
+                                        class="form-control @error('shipping_price') is-invalid @enderror" type="number"
+                                        min="0" max="99.99" step=".01" name="shipping_price"
+                                        value="{{ old('shipping_price') }}" required autocomplete="shipping_price"
+                                        placeholder="10.00">
                                     @error('shipping_price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -243,8 +244,8 @@
                                 <div class="offset-md-8"></div>
                                 @foreach ($typologies as $typology)
                                     <div class="offset-md-4 col-md-8">
-                                        <input type="checkbox" name="typologies[]"
-                                            value="{{ $typology->id }} required"
+                                        <input class="@error('typologies') is-invalid @enderror" type="checkbox"
+                                            name="typologies[]" value="{{ $typology->id }} required"
                                             {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
                                         <label> {{ $typology->name }}</label>
                                     </div>
