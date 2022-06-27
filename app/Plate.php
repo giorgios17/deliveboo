@@ -13,6 +13,13 @@ class Plate extends Model
      */
     protected $table = "plates";
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
     // funzione che collega la tabella plate con la tabella user (one to many)
     public function user()
     {
