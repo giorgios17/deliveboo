@@ -16,7 +16,8 @@ class TypologyController extends Controller
     {
         //
         $typologies = Typology::all();
-        return view('auth.register', compact('typologies'));
+        $days = config("closing_day");
+        return view('auth.register', compact('typologies', "days"));
     }
 
     /**
