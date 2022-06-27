@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -9,17 +9,24 @@
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.plate.store') }}" enctype="multipart/form-data">
+                            {{-- token --}}
                             @csrf
 
+                            {{-- box alert campi obbligatori --}}
+                            <div class="alert alert-warning" role="alert">
+                                I campi contrassegnati dall'asterisco (*) sono obbligatori.
+                            </div>
+
+                            {{-- input nome piatto --}}
                             <div class="form-group row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome piatto') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Nome piatto') }}
+                                    <span class="text-warning">*</span></label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror"
-                                        name="name" value="{{ old('name') }}" required
-                                        autocomplete="name" autofocus>
+                                        class="form-control @error('name') is-invalid @enderror" name="name"
+                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -51,9 +58,8 @@
 
                                 <div class="col-md-6">
                                     <input id="price" type="number" min="0" step=".01"
-                                        class="form-control @error('price') is-invalid @enderror"
-                                        name="price" value="{{ old('price') }}" required
-                                        autocomplete="price" autofocus>
+                                        class="form-control @error('price') is-invalid @enderror" name="price"
+                                        value="{{ old('price') }}" required autocomplete="price" autofocus>
 
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
@@ -68,7 +74,7 @@
                                 <option value="1">Si</option>
                                 <option value="0">No</option>
                             </select>
-                            
+
                             <div class="form-group mt-5">
                                 <label for="image">Immagine piatto</label>
                                 <input type="file" class="form-control-file" name="image">
