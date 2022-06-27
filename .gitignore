@@ -12,3 +12,9 @@ npm-debug.log
 yarn-error.log
 public/js
 public/css
+public/mix-manifest.json
+public/mix-manifest.json
+public/images/deliveboo-logo-green.png
+public/js/deliveboo.js
+public/js/app.js
+public/css/app.css
