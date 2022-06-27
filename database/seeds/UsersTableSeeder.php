@@ -27,11 +27,19 @@ class UsersTableSeeder extends Seeder
             $newUser->opening_time = $user['opening_time'];
             $newUser->closing_time = $user['closing_time'];
             $newUser->closing_day = $user['closing_day'];
-            $newUser->free_shipping = $user['free_shipping'];
             $newUser->shipping_price = $user['shipping_price'];
             $newUser->slug = User::generateSlug($user['business_name']);
             $newUser->save();
             $newUser->typology()->sync($user['typology']);
         }
+
+        // foreach ($users as $user) {
+        //     $newUser = new User();
+        //     $newUser->fill($user);
+        //     $newUser->password = Hash::make($user['password']);
+        //     $newUser->slug = User::generateSlug($user['business_name']);
+        //     $newUser->save();
+        //     $newUser->typology()->sync($user['typology']);
+        // }
     }
 }
