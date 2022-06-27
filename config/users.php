@@ -12,7 +12,6 @@ return [
         "opening_time" => '18:00:00',
         "closing_time" => '24:00:00',
         "closing_day" => 'Lunedì',
-        "free_shipping" => '0',
         "shipping_price" => '2.99',
         "typology" => [
             1,
@@ -33,7 +32,6 @@ return [
         "opening_time" => '10:00:00',
         "closing_time" => '23:00:00',
         "closing_day" => 'Lunedì',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => [
             1,
@@ -54,7 +52,6 @@ return [
         "opening_time" => '19:30:00',
         "closing_time" => '23:30:00',
         "closing_day" => 'Lunedì',
-        "free_shipping" => "0",
         "shipping_price" => '4.99',
         "typology" => [
             4,
@@ -73,7 +70,6 @@ return [
         "opening_time" => '16:30:00',
         "closing_time" => '23:00:00',
         "closing_day" => 'Giovedi',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => [
             1,
@@ -94,7 +90,6 @@ return [
         "opening_time" => '10:00:00',
         "closing_time" => '23:00:00',
         "closing_day" => 'Martedì',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => 10
     ],
@@ -110,7 +105,6 @@ return [
         "opening_time" => '12:00:00',
         "closing_time" => '24:00:00',
         "closing_day" => 'Mercoledì',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => [
             1,
@@ -131,7 +125,6 @@ return [
         "opening_time" => '10:50:00',
         "closing_time" => '22:30:00',
         "closing_day" => 'Martedi',
-        "free_shipping" => '0',
         "shipping_price" => '2.99',
         "typology" => [
             4,
@@ -150,7 +143,6 @@ return [
         "opening_time" => '11:00:00',
         "closing_time" => '24:00:00',
         "closing_day" => 'Martedì',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => [
             1,
@@ -171,7 +163,6 @@ return [
         "opening_time" => '11:00:00',
         "closing_time" => '24:00:00',
         "closing_day" => 'Lunedì',
-        "free_shipping" => '0',
         "shipping_price" => '2.99',
         "typology" => 14
     ],
@@ -187,7 +178,6 @@ return [
         "opening_time" => '11:20:00',
         "closing_time" => '23:50:00',
         "closing_day" => 'Domenica',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => [
             1,
@@ -207,7 +197,6 @@ return [
         "opening_time" => '19:00:00',
         "closing_time" => '23:50:00',
         "closing_day" => 'Venerdì',
-        "free_shipping" => '1',
         "shipping_price" => '0.00',
         "typology" => [
             6,
@@ -227,7 +216,6 @@ return [
         "opening_time" => '12:00:00',
         "closing_time" => '24:00:00',
         "closing_day" => 'Lunedì',
-        "free_shipping" => '0',
         "shipping_price" => '2.99',
         "typology" => 5
     ],
