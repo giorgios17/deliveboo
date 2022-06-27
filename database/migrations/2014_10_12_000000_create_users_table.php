@@ -15,21 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('business_name', 100)->required();
-            $table->string('email')->unique()->required();
-            $table->string('password');
-            $table->string('address')->required();
-            $table->string('vat_number', 11)->required();
+            $table->string('business_name', 100)->nullable(false);
+            $table->string('email')->unique()->nullable(false);
+            $table->string('password')->nullable(false);
+            $table->string('address')->nullable(false);
+            $table->string('vat_number', 11)->nullable(false);
             $table->text('description')->nullable();
-            $table->string('image')->required();
-            $table->string('phone')->required();
+            $table->string('image')->nullable(false);
+            $table->string('phone')->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
-            $table->time('opening_time')->required();
-            $table->time('closing_time')->required();
-            $table->string('closing_day', 20);
-            $table->boolean('free_shipping')->required();
-            $table->float('shipping_price', 4, 2);
-            $table->string('slug')->unique();
+            $table->time('opening_time')->nullable(false);
+            $table->time('closing_time')->nullable(false);
+            $table->string('closing_day')->nullable(false);
+            $table->float('shipping_price', 4, 2)->nullable(false);
+            $table->string('slug')->unique()->nullable(false);
             $table->rememberToken();
             $table->timestamps();
         });
