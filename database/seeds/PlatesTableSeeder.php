@@ -13,14 +13,19 @@ class PlatesTableSeeder extends Seeder
     public function run()
     {
         $plates = config("plates");
+        // foreach ($plates as $plate) {
+        //     $newPlate = new Plate();
+        //     $newPlate->name = $plate['name'];
+        //     $newPlate->description = $plate['description'];
+        //     $newPlate->price = $plate['price'];
+        //     $newPlate->visible = $plate['visible'];
+        //     $newPlate->image = $plate['image'];
+        //     $newPlate->user_id = $plate['user_id'];
+        //     $newPlate->save();
+        // }
         foreach ($plates as $plate) {
             $newPlate = new Plate();
-            $newPlate->name = $plate['name'];
-            $newPlate->description = $plate['description'];
-            $newPlate->price = $plate['price'];
-            $newPlate->visible = $plate['visible'];
-            $newPlate->image = $plate['image'];
-            $newPlate->user_id = $plate['user_id'];
+            $newPlate->fill($plate);
             $newPlate->save();
         }
     }

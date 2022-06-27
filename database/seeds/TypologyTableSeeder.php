@@ -18,11 +18,17 @@ class TypologyTableSeeder extends Seeder
         //prendo il file config
         $typologies = config("typologies");
 
+        // foreach ($typologies as $typology) {
+        //     $newTypology = new Typology();
+        //     $newTypology->name = $typology['name'];
+        //     $newTypology->description = $typology['description'];
+        //     $newTypology->image = $typology['image'];
+        //     $newTypology->save();
+        // }
+
         foreach ($typologies as $typology) {
             $newTypology = new Typology();
-            $newTypology->name = $typology['name'];
-            $newTypology->description = $typology['description'];
-            $newTypology->image = $typology['image'];
+            $newTypology->fill($typology);
             $newTypology->save();
         }
     }
