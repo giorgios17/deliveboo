@@ -10,11 +10,22 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Rimosse freccie in input number
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+// Sfondo dashboard lato ristoratore
 .restaurant-bg {
     background-color: #FCBF49;
     height: 100vh;
 }
 
+// Immagine ristorante
 .restaurant-img {
     display: flex;
     justify-content: center;
