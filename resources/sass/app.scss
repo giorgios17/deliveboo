@@ -9,3 +9,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.bg-warning {
+    height: calc(100vh - 55px);
+}
