@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = "/admin";
 
     /**
      * Create a new controller instance.
@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'opening_time' => ['required'],
             'closing_time' => ['required'],
             'closing_day' => ['required', 'string'],
-            'free_shipping' => ['required', 'boolean'],
             'shipping_price' => ['required', 'numeric', 'between:0.00,99.99'],
             'typologies[]' => ['exists:typologies,id']
         ]);
@@ -89,7 +88,6 @@ class RegisterController extends Controller
             'opening_time' => $data['opening_time'],
             'closing_time' => $data['closing_time'],
             'closing_day' => $data['closing_day'],
-            'free_shipping' => $data['free_shipping'],
             'shipping_price' => $data['shipping_price'],
             'slug' => User::generateSlug($data['business_name']),
         ]);
