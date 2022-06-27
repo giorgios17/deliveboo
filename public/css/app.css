@@ -10964,7 +10964,30 @@ a.text-dark:focus {
   }
 }
 
-.bg-warning {
-  height: calc(100vh - 55px);
+.restaurant-bg {
+  background-color: #FCBF49;
+  height: 100vh;
+}
+
+.restaurant-img {
+  display: flex;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  flex-shrink: 0;
+  margin: 20px auto;
+  border-radius: 50%;
+  border: 2px solid black;
+  background-size: cover;
+  background-position: center;
+}
+
+.restaurant-img img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.plates-bg {
+  background-color: #EAE2B7;
 }
 
