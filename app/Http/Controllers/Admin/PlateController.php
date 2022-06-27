@@ -85,7 +85,11 @@ class PlateController extends Controller
     {
         //
         $plate = Plate::findOrFail($id);
-        return view('admin.plate.edit', compact('plate'));
+        if ($plate->user_id != Auth::user()->id) {
+            return view('404.notFound');
+        } else {
+            return view('admin.plate.edit', compact('plate'));
+        }
     }
 
     /**
