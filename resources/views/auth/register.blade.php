@@ -148,7 +148,7 @@
                                     <input id="phone" type="tel"
                                         class="form-control @error('phone') is-invalid @enderror" name="phone"
                                         value="{{ old('phone') }}" required autocomplete="phone" pattern="[0-9]{10}"
-                                        placeholder="Inserisci il nnumero di telefono">
+                                        placeholder="Inserisci il numero di telefono">
                                     <small>Formato 0817384022</small>
                                     @error('phone')
                                         <span class="invalid-feedback" role="alert">
