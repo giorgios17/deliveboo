@@ -53,7 +53,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                        required autocomplete="new-password" minlength="8">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -64,8 +64,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right"
+                                    minlength="8">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -98,7 +98,8 @@
                                 <div class="col-md-6">
                                     <input id="vat_number" type="text"
                                         class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
-                                        value="{{ old('vat_number') }}" required autocomplete="vat_number" autofocus>
+                                        value="{{ old('vat_number') }}" required minlength="11" maxlength="11"
+                                        autocomplete="vat_number" autofocus>
 
                                     @error('vat_number')
                                         <span class="invalid-feedback" role="alert">
@@ -115,7 +116,7 @@
                                 <div class="col-md-6">
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                         @error('description') is-invalid @enderror name="description" value="{{ old('description') }}" required
-                                        autocomplete="description" autofocus></textarea>
+                                        autocomplete="description" autofocus minlength="10"></textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -129,9 +130,11 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Numero di telefono') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="text"
+                                    <input id="phone" type="tel"
                                         class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                        value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                        value="{{ old('phone') }}" required autocomplete="phone" pattern="[0-9]{10}"
+                                        autofocus>
+                                    <small>Formato: 0817384022</small>
 
                                     @error('phone')
                                         <span class="invalid-feedback" role="alert">
@@ -177,27 +180,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="closing_day"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Giorno di chiusura') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="closing_day" type="text"
-                                        class="form-control @error('closing_day') is-invalid @enderror" name="closing_day"
-                                        value="{{ old('closing_day') }}" required autocomplete="closing_day" autofocus>
-
-                                    @error('closing_day')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <select class="form-control" name="free_shipping">
-                                <option hidden>Spedizione gratuita</option>
-                                <option value="1">Si</option>
-                                <option value="0">No</option>
+                            <select class="form-control mb-3 @error('closing_day') is-invalid @enderror"
+                                name="closing_day" required autocomplete="closing_day" autofocus>
+                                <option hidden>{{ __('Giorno di chiusura') }}</option>
+                                @foreach ($days as $day)
+                                    {{-- <option value="{{ $day }}">{{ $day }}</option> --}}
+                                    <option value="{{ $day }}"
+                                        {{ $day == old('closing_day') ? 'selected' : '' }}>{{ $day }}</option>
+                                @endforeach
+                                @error('closing_day')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </select>
 
                             <div class="form-group row mt-3">
@@ -222,7 +217,7 @@
                             <p>Tipologia ristorante</p>
                             @foreach ($typologies as $typology)
                                 <div>
-                                    <input type="checkbox" name="typologies[]" value="{{ $typology->id }}"
+                                    <input type="checkbox" name="typologies[]" value="{{ $typology->id }} required"
                                         {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
                                     <label> {{ $typology->name }}</label>
                                 </div>
@@ -233,7 +228,7 @@
 
                             <div class="form-group mt-5">
                                 <label for="image">Immagine ristorante</label>
-                                <input type="file" class="form-control-file" name="image">
+                                <input type="file" class="form-control-file" name="image" required>
                             </div>
 
                             <div class="form-group row mb-0">
