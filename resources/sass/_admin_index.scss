@@ -1,0 +1,19 @@
+// importate le variabili
+@import "variables";
+@import "mixin";
+
+
+
+//layout plate.create
+#admin_index {
+    .card-header {
+        background-color: $blue;
+        color: $tortora;
+    }
+
+    //button dashboard
+    .btn_index_admin {
+        @include buttonDashboard($yellow, $blue, 0.4rem 1.5rem);
+
+    }
+}
