@@ -65,7 +65,7 @@ class RegisterController extends Controller
                 'closing_time' => ['required', 'date_format:H:i'],
                 'closing_day' => ['required', 'string'],
                 'shipping_price' => ['required', 'numeric', 'between:0.00,99.99'],
-                'typologies[]' => ['required', 'exists:typologies,id'],
+                'typologies' => ['required', 'exists:typologies,id'],
 
             ],
             [
@@ -93,8 +93,8 @@ class RegisterController extends Controller
                 'shipping_price.required' => 'Il campo costo di spedizione è obbligatorio.',
                 'shipping_price.numeric' => 'Il campo costo di spedizione deve essere un numero.',
                 'shipping_price.between' => 'il campo costo di spedizione deve essere compreso tra 0.00 e 99.99.',
-                'typologies[].required' => 'Almeno una tipologia deve essere selezionata.',
-                'typologies[].exists' => 'La tipologia selezionata non esiste.'
+                'typologies.required' => 'Almeno una tipologia deve essere selezionata.',
+                'typologies.exists' => 'La tipologia selezionata non esiste.'
 
 
             ]
