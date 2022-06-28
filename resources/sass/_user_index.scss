@@ -1,43 +1,49 @@
-// importate le variabili
+// importate file parziali scss
+@import "resets";
 @import "variables";
 @import "mixin";
 
-
-
 #user_index {
 
-    .plates-bg {
-        background-color: white;
-    }
-
     // Sfondo dashboard lato ristoratore
-    .restaurant-bg {
+    .restaurant_bg {
         background-color: $blue;
         height: calc(100vh - 60px);
     }
 
     // Immagine ristorante
-    .restaurant-img {
-        display: flex;
-        justify-content: center;
+    .restaurant_img {
         width: 125px;
         height: 125px;
-        flex-shrink: 0;
-        margin: 20px auto;
         border-radius: 50%;
-        border: 2px solid black;
-        background-size: cover;
-        background-position: center;
+        border: 2px solid white;
 
         img {
             width: 100%;
-            border-radius: 50%;
         }
+    }
+
+    .right_column {
+        height: calc(100vh - 60px);
+        overflow-y: scroll;
     }
 
     //button dashboard
     .btn_dashboard {
         @include buttonDashboard($yellow, $blue, 0.4rem 1.5rem);
-
     }
+
+    @media screen and (max-width: 768px) {
+
+        // Sfondo dashboard lato ristoratore
+        .restaurant_bg {
+            height: auto;
+        }
+
+        .right_column {
+            height: auto;
+            overflow-y: hidden;
+        }
+    }
+
 }

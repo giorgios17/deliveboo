@@ -97,41 +97,7 @@
         </div>
 
         <main>
-            <div id="user_index" class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4 col-xl-3 restaurant_bg">
-                        <div class="d-flex flex-column align-items-center">
-                            <div class="restaurant_img mt-5 mb-4">
-                                <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="">
-                            </div>
-                            <h2 class="mb-5 text-white">
-                                {{ Auth::user()->business_name }}
-                            </h2>
-                            <a class="btn btn_dashboard mb-3" href="{{ route('admin.user.index') }}"><i
-                                    class="fa-solid fa-gear"></i> Dashboard</a>
-                            <a class="btn btn_dashboard mb-3" href="{{ route('admin.plate.create') }}"><i
-                                    class="fa-solid fa-plus"></i> Aggiungi un
-                                piatto</a>
-                            <a class="btn btn_dashboard mb-3" href="{{ route('admin.plate.index') }}"><i
-                                    class="fa-solid fa-magnifying-glass"></i> Visualizza i
-                                tuoi piatti</a>
-                            <a class="btn btn-danger mb-5" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();"><i
-                                    class="fa-solid fa-arrow-right-from-bracket"></i>
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-xl-9 pt-3 right_column">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
+            @yield('content')
         </main>
     </div>
 </body>
