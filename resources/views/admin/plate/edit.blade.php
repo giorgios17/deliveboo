@@ -44,8 +44,8 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}
                                     <span class="text-warning">*</span></label>
                                 <div class="col-md-6">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                        @error('description') is-invalid @enderror name="description" required autocomplete="description" minlength="10"
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
+                                        rows="3" name="description" required autocomplete="description" minlength="10"
                                         placeholder="Inserisci la descrizione del piatto">{{ $plate->description }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
