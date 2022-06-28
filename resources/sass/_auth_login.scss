@@ -1,0 +1,11 @@
+// importate le variabili
+@import "variables";
+
+
+//layout login.blade
+#auth_login {
+    .card-header {
+        background-color: $blue;
+        color: $tortora;
+    }
+}
