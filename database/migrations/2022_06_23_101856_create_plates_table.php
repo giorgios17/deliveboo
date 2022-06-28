@@ -15,11 +15,11 @@ class CreatePlatesTable extends Migration
     {
         Schema::create('plates', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->required();
-            $table->text('description')->required();
-            $table->float('price', 6, 2)->required();
-            $table->boolean('visible')->required();
-            $table->string('image')->required();
+            $table->string('name')->nullable(false);
+            $table->text('description')->nullable(false);
+            $table->float('price', 6, 2)->nullable(false);
+            $table->boolean('visible')->nullable(false);
+            $table->string('image')->nullable(false);
             $table->timestamps();
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")

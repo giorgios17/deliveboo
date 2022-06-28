@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name')->required();
-            $table->string('customer_surname')->required();
-            $table->string('customer_address')->required();
-            $table->string('customer_phone')->required();
-            $table->text('customer_note')->required();
-            $table->float('total_price', 10, 2)->required();
+            $table->string('customer_name')->nullable(false);
+            $table->string('customer_surname')->nullable(false);
+            $table->string('customer_address')->nullable(false);
+            $table->string('customer_phone')->nullable(false);
+            $table->text('customer_note')->nullable(false);
+            $table->float('total_price', 10, 2)->nullable(false);
             $table->timestamps();
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")

@@ -18,7 +18,7 @@ class CreateTypologiesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('description');
-            $table->string('image')->required();
+            $table->string('image')->nullable(false);
         });
     }
 
