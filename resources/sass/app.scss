@@ -1,5 +1,6 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 
 // Variables
 @import 'variables';
@@ -10,40 +11,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Rimosse freccie in input number
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
-}
 
-// Sfondo dashboard lato ristoratore
-.restaurant-bg {
-    background-color: #FCBF49;
-    height: 100vh;
-}
-
-// Immagine ristorante
-.restaurant-img {
-    display: flex;
-    justify-content: center;
-    width: 125px;
-    height: 125px;
-    flex-shrink: 0;
-    margin: 20px auto;
-    border-radius: 50%;
-    border: 2px solid black;
-    background-size: cover;
-    background-position: center;
-
-    img {
-        width: 100%;
-        border-radius: 50%;
-    }
-}
-
-.plates-bg {
-    background-color: #EAE2B7;
-}
+// import style backend
+@import 'mixin';
+@import 'layout_base';
+@import 'auth_login';
+@import 'auth_register';
+@import 'plate_create';
+@import 'plate_edit';
+@import 'user_index';

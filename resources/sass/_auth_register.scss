@@ -1,0 +1,11 @@
+// importate le variabili
+@import "variables";
+
+
+//layout register.blade
+#auth_register {
+    .card-header {
+        background-color: $blue;
+        color: $tortora;
+    }
+}

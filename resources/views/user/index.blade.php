@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 @section('content')
     @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -6,14 +6,14 @@
         </div>
     @endif
 
-    <div class="container-fluid">
+    <div id="user_index" class="container-fluid">
         <div class="row">
             <div class="col-2 restaurant-bg">
                 <div class="text-center p-2">
                     <div class="restaurant-img">
                         <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="">
                     </div>
-                    <h2 class="mb-5">
+                    <h2 class="mb-5 text-white">
                         {{ Auth::user()->business_name }}
                     </h2>
                     {{-- <p>
@@ -38,9 +38,9 @@
                             <h5>Costo spedizione:</h5>{{ Auth::user()->shipping_price }}
                         @endif
                     </p> --}}
-                    <a class="btn btn-primary mb-3" href="/admin/plate/create">Aggiungi un piatto</a>
+                    <a class="btn btn_dashboard mb-3" href="/admin/plate/create">Aggiungi un piatto</a>
                     <div class="mb-3">
-                        <a class="btn btn-primary" href="{{ route('admin.plate.index') }}">Visualizza i tuoi piatti</a>
+                        <a class="btn btn_dashboard" href="{{ route('admin.plate.index') }}">Visualizza i tuoi piatti</a>
                     </div>
                     <a class="btn btn-danger" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -57,7 +57,7 @@
             <div class="col-10 plates-bg">
                 <div class="row mt-5 justify-content-around">
                     <div class="col-12 text-center mb-4">
-                        <h1 class="text-white">
+                        <h1 class="text-dark">
                             I TUOI PIATTI
                         </h1>
                     </div>
