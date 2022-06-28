@@ -1,19 +1,20 @@
-// importate le variabili
+// importato file parziali scss
 @import "variables";
 @import "mixin";
 
-
-
-//layout plate.create
+//layout admin index
 #admin_index {
     .card-header {
         background-color: $blue;
         color: $tortora;
+
+        h5 {
+            margin: 0 !important;
+        }
     }
 
     //button dashboard
     .btn_index_admin {
         @include buttonDashboard($yellow, $blue, 0.4rem 1.5rem);
-
     }
 }
