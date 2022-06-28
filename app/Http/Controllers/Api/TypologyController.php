@@ -52,9 +52,6 @@ class TypologyController extends Controller
     public function show($id)
     {
         //
-        $typology = Typology::find($id);
-        $result = ['result' => $typology, 'success' => true];
-        return response()->json($result);
     }
 
     /**

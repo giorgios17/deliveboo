@@ -51,9 +51,6 @@ class PlateController extends Controller
     public function show($id)
     {
         //
-        $post = Post::find($id)->with(['typology'])->first();
-        $result = ['results'=>$post, 'success'=>true];
-        return response()->json($result);
     }
 
     /**
