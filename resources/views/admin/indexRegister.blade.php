@@ -1,6 +1,6 @@
 @extends('layouts.appAdmin')
 @section('content')
-    <div class="container my-5">
+    <div id="admin_indexRegister" class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -14,7 +14,7 @@
                             Congratulazioni {{ Auth::user()->business_name }}, la registrazione ha avuto successo.
                         </div>
                         </p>
-                        <a href="admin/user" class="btn btn-success">Vai alla Dashboard</a>
+                        <a href="/admin/user" class="btn btn_index_admin">Vai alla Dashboard</a>
                     </div>
                 </div>
             </div>
