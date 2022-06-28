@@ -244,13 +244,13 @@
                                 <div class="offset-md-8"></div>
                                 @foreach ($typologies as $typology)
                                     <div class="offset-md-4 col-md-8">
-                                        <input class="@error('typologies[]') is-invalid @enderror" type="checkbox"
-                                            name="typologies[]" value="{{ $typology->id }} required"
+                                        <input class="@error('typologies') is-invalid @enderror" type="checkbox"
+                                            name="typologies[]" value="{{ $typology->id }}"
                                             {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
                                         <label> {{ $typology->name }}</label>
                                     </div>
                                 @endforeach
-                                @error('typologies[]')
+                                @error('typologies')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
