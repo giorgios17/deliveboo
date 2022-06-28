@@ -1,0 +1,11 @@
+@import "variables";
+
+.layout_base {
+    .wrapper_logo {
+        width: 150px;
+    }
+
+    .navbar {
+        background-color: $yellow;
+    }
+}
