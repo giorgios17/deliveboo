@@ -16,3 +16,6 @@ public/mix-manifest.json
 public/css/app.css
 public/js/app.js
 public/js/deliveboo.js
+public/images/Google_Play_Store_badge.svg
+.gitignore
+public/images
