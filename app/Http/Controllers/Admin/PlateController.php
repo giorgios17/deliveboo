@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+
 class PlateController extends Controller
 {
     /**
@@ -51,24 +52,25 @@ class PlateController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=> 'required',
-            'description'=> 'required',
-            'price'=> 'required|numeric|min:0.01',
-            'visible'=> 'required',
-            'image'=> 'required|mimes:jpg,bmp,png,jpeg|max:4096',
-        ],
-        [
-            'name.required'=>'Il campo nome è obbligatorio.',
-            'description.required'=>'Il campo descrizione è obbligatorio.',
-            'price.required'=>'Il prezzo è obbligatorio.',
-            'price.numeric'=>'Formato prezzo non valido.',
-            'price.min'=>'Il prezzo deve essere uguale o maggiore a 0.01',
-            'image.required' => 'Carica un immagine.',
-            'image.mimes' => 'Formato immagine non valido.',
-            'image.max' => 'Dimensioni massime consentite 4096kb.'
-        ]
-    );
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required|numeric|min:0.01',
+                'visible' => 'required',
+                'image' => 'required|mimes:jpg,bmp,png,jpeg|max:4096',
+            ],
+            [
+                'name.required' => 'Il campo nome è obbligatorio.',
+                'description.required' => 'Il campo descrizione è obbligatorio.',
+                'price.required' => 'Il prezzo è obbligatorio.',
+                'price.numeric' => 'Formato prezzo non valido.',
+                'price.min' => 'Il prezzo deve essere uguale o maggiore a 0.01',
+                'image.required' => 'Carica un immagine.',
+                'image.mimes' => 'Formato immagine non valido.',
+                'image.max' => 'Dimensioni massime consentite 4096kb.'
+            ]
+        );
 
 
         $plateData = $request->all();
@@ -118,24 +120,25 @@ class PlateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=> 'required',
-            'description'=> 'required',
-            'price'=> 'required|numeric|min:0.1',
-            'visible'=> 'required',
-            'image'=> 'required|mimes:jpg,bmp,png,jpeg|max:4096',
-        ],
-        [
-            'name.required'=>'Il campo nome è obbligatorio.',
-            'description.required'=>'Il campo descrizione è obbligatorio.',
-            'price.required'=>'Il prezzo è obbligatorio.',
-            'price.numeric'=>'Formato prezzo non valido.',
-            'price.min'=>'Il prezzo deve essere uguale o maggiore a 0.10',
-            'image.required' => 'Carica un immagine.',
-            'image.mimes' => 'Formato immagine non valido.',
-            'image.max' => 'Dimensioni massime consentite 4096kb.'
-        ]
-    );
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+                'price' => 'required|numeric|min:0.1',
+                'visible' => 'required',
+                'image' => 'required|mimes:jpg,bmp,png,jpeg|max:4096',
+            ],
+            [
+                'name.required' => 'Il campo nome è obbligatorio.',
+                'description.required' => 'Il campo descrizione è obbligatorio.',
+                'price.required' => 'Il prezzo è obbligatorio.',
+                'price.numeric' => 'Formato prezzo non valido.',
+                'price.min' => 'Il prezzo deve essere uguale o maggiore a 0.10',
+                'image.required' => 'Carica un immagine.',
+                'image.mimes' => 'Formato immagine non valido.',
+                'image.max' => 'Dimensioni massime consentite 4096kb.'
+            ]
+        );
 
         $plate = Plate::findOrFail($id);
         $plateUpdated = $request->all();
@@ -146,7 +149,7 @@ class PlateController extends Controller
             $img_path = Storage::put("uploads", $plateUpdated["image"]);
             $plate['image'] = $img_path;
         }
-        $plate->fill($plateData);
+        $plate->fill($plateUpdated);
         $plate->save();
         return redirect()->route('admin.plate.index');
     }
