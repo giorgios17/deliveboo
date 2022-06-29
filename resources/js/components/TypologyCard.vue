@@ -12,9 +12,9 @@
           v-for="(typology, index) in arrayTypologies"
           :key="index"
         >
-          <router-link to="/restaurants">
+          <router-link :to="{ name: 'restaurants' }">
             <img
-              @click="getTypology(typology.name)"
+              @click="getTypology(typology.id)"
               :src="typology.image"
               :alt="typology.name"
             />
@@ -39,8 +39,8 @@ export default {
   },
   methods: {
     // Funzione per passare il valore della tipologia selezionata
-    getTypology(typologyName) {
-      this.typologySelected = typologyName;
+    getTypology(typologyId) {
+      this.typologySelected = typologyId;
       console.log(this.typologySelected);
     },
   },
