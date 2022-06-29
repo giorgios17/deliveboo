@@ -1,5 +1,15 @@
 <template>
-  <div class="mt-5">Pagina ristoranti</div>
+  <div class="container my-5">
+    <div class="row">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 col-12 text-center my-3"
+        v-for="(restaurant, index) in arrayUsers"
+        :key="index"
+      >
+        <h1>{{ restaurant.business_name }}</h1>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
