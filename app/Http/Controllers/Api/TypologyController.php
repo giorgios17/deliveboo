@@ -15,11 +15,9 @@ class TypologyController extends Controller
      */
     public function index()
     {
-        //
         return response()->json([
-           'response'=>Typology::all()
-       ]);
-
+            'response' => Typology::all()
+        ]);
     }
 
     /**

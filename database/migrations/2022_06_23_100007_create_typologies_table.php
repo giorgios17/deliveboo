@@ -16,8 +16,8 @@ class CreateTypologiesTable extends Migration
         Schema::create('typologies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->text('description');
+            $table->string('name')->nullable(false);
+            $table->text('description')->nullable(false);
             $table->string('image')->nullable(false);
         });
     }

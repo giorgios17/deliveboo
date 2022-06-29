@@ -15,10 +15,9 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
         return response()->json([
-           'response'=>Plate::all()
-       ]);
+            'response' => Plate::all()
+        ]);
     }
 
     /**
