@@ -49,10 +49,8 @@
         <div class="col-12 col-md-5 px-5">
           <h3 class="mb-3">SCARICA LA NOSTRA APP!</h3>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-            tempora veniam tenetur explicabo blanditiis! Officia nostrum quam
-            enim mollitia, iusto qui quae ad voluptatem possimus id sint eius!
-            Voluptatibus, similique.
+            Scaricala ora la nostra app e ordina i tuoi pitti preferiti
+            comodamente a casa tua! - disponibile su Apple store e Google Play
           </p>
           <div class="row">
             <div class="col-6 d-flex justify-content-center py-5">
