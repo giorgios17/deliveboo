@@ -12,7 +12,9 @@
           v-for="(typology, index) in arrayTypologies"
           :key="index"
         >
-          <router-link :to="{ name: 'restaurants' }">
+          <router-link
+            :to="{ name: 'restaurants', params: { id: typology.id } }"
+          >
             <img
               @click="getTypology(typology.id)"
               :src="typology.image"

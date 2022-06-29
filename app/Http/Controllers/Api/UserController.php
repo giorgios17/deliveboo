@@ -15,9 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'response' => User::all()
-        ]);
+        // return response()->json([
+        //     'response' => User::all()
+        // ]);
+        $allRestaurant = User::all();
+        $restaurant = User::whit('Typology')->where('')
     }
 
     /**
