@@ -72,7 +72,7 @@
         <div class="col-5 d-none d-md-block d-lg-block">
           <img
             class="download_cover"
-            src="../img/download-cover.png"
+            src="../img/Deliveroo-app_.png"
             alt="download"
           />
         </div>
