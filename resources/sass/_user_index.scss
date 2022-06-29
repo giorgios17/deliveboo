@@ -15,7 +15,12 @@
     .restaurant_img {
         width: 125px;
         height: 125px;
+        border-radius: 50%;
         border: 2px solid white;
+
+        img {
+            width: 100%;
+        }
     }
 
     .right_column {

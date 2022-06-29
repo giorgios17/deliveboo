@@ -101,9 +101,8 @@
                 <div class="row">
                     <div class="col-md-4 col-xl-3 restaurant_bg">
                         <div class="d-flex flex-column align-items-center">
-                            <div class="restaurant_img mt-5 mb-4 d-flex justify-content-center rounded-circle">
-                                <img class="w-100 rounded-circle" src="{{ asset('storage/' . Auth::user()->image) }}"
-                                    alt="">
+                            <div class="restaurant_img mt-5 mb-4">
+                                <img src="{{ asset('storage/' . Auth::user()->image) }}" alt="">
                             </div>
                             <h2 class="mb-5 text-white">
                                 {{ Auth::user()->business_name }}
