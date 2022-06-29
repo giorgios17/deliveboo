@@ -1,70 +1,61 @@
 <template>
   <header class="container-fluid">
-    <div class="d-md-none">
-      <ul
-        class="
-          d-flex
-          justify-content-between
-          p-2
-          text-center
-          align-items-center
-          m-0
-        "
+    <nav class="navbar navbar-expand-lg navbar-light pt-2">
+      <div class="container_img">
+        <img class="w-100" src="../img/deliveboo-logo-blue.png" alt="" />
+      </div>
+      <button
+        class="navbar-toggler box_hamburgher"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
-        <div class="dropdown">
-          <button
-            class="btn"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div
-            class="dropdown-menu bg_yellow"
-            aria-labelledby="dropdownMenuButton"
-          >
-            <router-link class="dropdown-item" to="/">Home</router-link>
-            <a class="dropdown-item" href="#">Chi siamo</a>
-            <a class="dropdown-item" href="#">Lavora con noi</a>
-          </div>
-        </div>
-
-        <img class="w-50" src="../img/deliveboo-logo-blue.svg" alt="" />
-
-        <li class="col-4 d-flex justify-content-center">
-          <a href="/admin"><i class="fa-solid fa-user fa-xl mx-3"></i></a>
-
-          <a href=""><i class="fa-solid fa-cart-shopping fa-xl"></i></a>
-        </li>
-      </ul>
-    </div>
-    <div class="d-none d-md-block d-lg-block">
-      <ul
-        class="
-          nav
-          justify-content-between
-          p-2
-          text-center
-          align-items-center
-          nav_link
-        "
-      >
-        <img class="col-2" src="../img/deliveboo-logo-blue.svg" alt="" />
-
-        <li class="col-2"><router-link to="/">HOME</router-link></li>
-        <li class="col-2"><a href="">CHI SIAMO</a></li>
-        <li class="col-2"><a href="">LAVORA CON NOI</a></li>
-        <a class="col-1" href=""
-          ><i class="fa-solid fa-cart-shopping fa-xl"></i
-        ></a>
-
-        <li class="col-2">
-          <a class="p-1" href="/admin"> Sei un ristoratore? REGISTRATI/LOGIN</a>
-        </li>
-      </ul>
-    </div>
+        <span class="navbar-toggler-icon hamburgher_menu"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Chi siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Lavora con noi</a>
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="nav-link" href="#">Carrello</a>
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="nav-link" href="/login">Accedi</a>
+          </li>
+          <li class="nav-item d-lg-none">
+            <a class="nav-link" href="/register">Registrati</a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link">
+              <div class="d-lg-none d-xl-none">Carrello</div>
+              <div class="d-none d-lg-block d-xl-block">
+                <i class="fa-solid fa-cart-shopping"></i></div
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link d-inline-block">Accedi</a>
+            /
+            <a href="/register" class="nav-link d-inline-block">Registrati</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
 </template>
 
@@ -79,20 +70,27 @@ export default {
 
 header {
   background-color: $yellow;
-  font-weight: 700;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  ul {
-    list-style-type: none;
+
+  a {
+    font-weight: 700;
+    font-size: 17.5px;
+    color: $blue !important;
   }
-  .bg_yellow {
-    background-color: $yellow;
-    a {
-      background-color: $yellow;
-      font-weight: 700;
+  .container_img {
+    width: 100px;
+  }
+  @media screen and (max-width: 250px) {
+    // Sfondo dashboard lato ristoratore
+    .container_img {
+      width: 75px;
+    }
+    .box_hamburgher {
+      padding: 0rem 0.3rem;
+    }
+
+    .hamburgher_menu {
+      width: 15px !important;
     }
   }
 }
-</style>>
+</style>
