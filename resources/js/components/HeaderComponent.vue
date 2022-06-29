@@ -8,6 +8,7 @@
           p-2
           text-center
           align-items-center
+          m-0
         "
       >
         <li class="nav-item dropdown">
