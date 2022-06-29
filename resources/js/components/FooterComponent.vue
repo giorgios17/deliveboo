@@ -4,7 +4,7 @@
       <div class="row">
         <!--logo deliveboo-->
         <a href="">
-          <img src="../img/deliveboo-logo-green.png" alt="deliveboo-logo" />
+          <img src="../img/deliveboo-logo-yellow.svg" alt="deliveboo-logo" />
         </a>
       </div>
     </div>

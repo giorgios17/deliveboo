@@ -28,7 +28,7 @@
           </ul>
         </li>
 
-        <img class="w-50" src="../img/deliveboo-logo-green.png" alt="" />
+        <img class="w-50" src="../img/deliveboo-logo-blue.svg" alt="" />
 
         <li class="col-4 d-flex justify-content-center">
           <a href="/admin"><i class="fa-solid fa-user fa-xl mx-3"></i></a>
@@ -48,7 +48,7 @@
           nav_link
         "
       >
-        <img class="col-2" src="../img/deliveboo-logo-green.png" alt="" />
+        <img class="col-2" src="../img/deliveboo-logo-blue.svg" alt="" />
 
         <li class="col-2"><a href="/home">HOME</a></li>
         <li class="col-2"><a href="">CHI SIAMO</a></li>
