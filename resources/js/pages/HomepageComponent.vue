@@ -114,8 +114,8 @@ export default {
 
 <style lang="scss" scoped>
 .jb {
-  background-image: url(../img/background-hp.jpg);
-  background-position: bottom;
+  background-image: url("../img/jumbotron.png");
+  background-position: top;
   background-size: cover;
   h1 {
     font-size: 60px;

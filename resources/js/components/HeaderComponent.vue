@@ -44,7 +44,7 @@
       <ul
         class="
           nav
-          justify-content-evenly
+          justify-content-between
           p-2
           text-center
           align-items-center
@@ -80,6 +80,10 @@ export default {
 header {
   background-color: $yellow;
   font-weight: 700;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
   ul {
     list-style-type: none;
   }

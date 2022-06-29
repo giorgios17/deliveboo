@@ -12,10 +12,14 @@
           v-for="(typology, index) in arrayTypologies"
           :key="index"
         >
-          <a href="/">
-            <img :src="typology.image" :alt="typology.name" />
+          <router-link to="/restaurants">
+            <img
+              @click="getTypology(typology.name)"
+              :src="typology.image"
+              :alt="typology.name"
+            />
             <h4>{{ typology.name }}</h4>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -30,8 +34,15 @@ export default {
   },
   data() {
     return {
-      typologySelected: "Pizzeria",
+      typologySelected: "",
     };
+  },
+  methods: {
+    // Funzione per passare il valore della tipologia selezionata
+    getTypology(typologyName) {
+      this.typologySelected = typologyName;
+      console.log(this.typologySelected);
+    },
   },
 };
 </script>
@@ -44,7 +55,10 @@ img {
 a:hover {
   text-decoration: none;
 }
-.typology_card:hover {
-  transform: scale(1.05);
+.typology_card {
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 </style>
