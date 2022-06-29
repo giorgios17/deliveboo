@@ -37,7 +37,7 @@
                 <div class="container-fluid">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <div class="wrapper_logo">
-                            <img class="w-100" src="{{ asset('images/deliveboo-logo-green.png') }}" alt="">
+                            <img class="w-100 p-2" src="{{ asset('images/deliveboo-logo-blue.svg') }}" alt="">
                         </div>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
