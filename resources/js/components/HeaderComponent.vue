@@ -25,7 +25,7 @@
             class="dropdown-menu bg_yellow"
             aria-labelledby="dropdownMenuButton"
           >
-            <a class="dropdown-item" href="/home">Home</a>
+            <router-link class="dropdown-item" to="/">Home</router-link>
             <a class="dropdown-item" href="#">Chi siamo</a>
             <a class="dropdown-item" href="#">Lavora con noi</a>
           </div>
@@ -53,7 +53,7 @@
       >
         <img class="col-2" src="../img/deliveboo-logo-blue.svg" alt="" />
 
-        <li class="col-2"><a href="/home">HOME</a></li>
+        <li class="col-2"><router-link to="/">HOME</router-link></li>
         <li class="col-2"><a href="">CHI SIAMO</a></li>
         <li class="col-2"><a href="">LAVORA CON NOI</a></li>
         <a class="col-1" href=""
