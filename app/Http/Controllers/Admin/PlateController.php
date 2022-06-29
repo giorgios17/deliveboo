@@ -126,7 +126,7 @@ class PlateController extends Controller
                 'description' => 'required',
                 'price' => 'required|numeric|min:0.1',
                 'visible' => 'required',
-                'image' => 'required|mimes:jpg,bmp,png,jpeg|max:4096',
+                'image' => 'required|image|mimes:jpg,bmp,png,jpeg|max:4096',
             ],
             [
                 'name.required' => 'Il campo nome è obbligatorio.',
@@ -142,13 +142,14 @@ class PlateController extends Controller
 
         $plate = Plate::findOrFail($id);
         $plateUpdated = $request->all();
-        if (array_key_exists('image', $plateUpdated)) {
-            if ($plate->image) {
-                Storage::delete($plate->image);
+        if(array_key_exists('image',$plateUpdated)){
+            if($plate->image){
+                Storage::delete('$plate->image');
             }
-            $img_path = Storage::put("uploads", $plateUpdated["image"]);
-            $plate['image'] = $img_path;
+            $img_path = Storage::put('uploads', $plateUpdated['image']);
+            $plateUpdated['image'] = $img_path;
         }
+
         $plate->fill($plateUpdated);
         $plate->save();
         return redirect()->route('admin.plate.index');
