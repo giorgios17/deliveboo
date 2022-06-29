@@ -11,23 +11,25 @@
           m-0
         "
       >
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-bs-toggle="dropdown"
+        <div class="dropdown">
+          <button
+            class="btn"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
             aria-expanded="false"
           >
-            <i class="fa-solid fa-bars fa-xl"></i>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Home</a></li>
-            <li><a class="dropdown-item" href="#">Chi siamo</a></li>
-            <li><a class="dropdown-item" href="#">Lavora con noi</a></li>
-          </ul>
-        </li>
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            class="dropdown-menu bg_yellow"
+            aria-labelledby="dropdownMenuButton"
+          >
+            <a class="dropdown-item" href="/home">Home</a>
+            <a class="dropdown-item" href="#">Chi siamo</a>
+            <a class="dropdown-item" href="#">Lavora con noi</a>
+          </div>
+        </div>
 
         <img class="w-50" src="../img/deliveboo-logo-blue.svg" alt="" />
 
@@ -80,6 +82,13 @@ header {
   font-weight: 700;
   ul {
     list-style-type: none;
+  }
+  .bg_yellow {
+    background-color: $yellow;
+    a {
+      background-color: $yellow;
+      font-weight: 700;
+    }
   }
 }
 </style>>
