@@ -13,13 +13,12 @@
           :key="index"
         >
           <router-link
-            :to="{ name: 'restaurant', params: { id: typology.id } }"
+            :to="{
+              name: 'typologies_restaurants',
+              params: { id: typology.id },
+            }"
           >
-            <img
-              @click="getTypology(typology.id)"
-              :src="typology.image"
-              :alt="typology.name"
-            />
+            <img :src="typology.image" :alt="typology.name" />
             <h4>{{ typology.name }}</h4>
           </router-link>
         </div>
@@ -33,18 +32,6 @@ export default {
   name: "TypologyCard",
   props: {
     arrayTypologies: Array,
-  },
-  data() {
-    return {
-      typologySelected: "",
-    };
-  },
-  methods: {
-    // Funzione per passare il valore della tipologia selezionata
-    getTypology(typologyId) {
-      this.typologySelected = typologyId;
-      console.log(this.typologySelected);
-    },
   },
 };
 </script>
