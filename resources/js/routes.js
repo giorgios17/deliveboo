@@ -2,7 +2,7 @@ import Vue from "vue";
 
 import VueRouter from "vue-router";
 import HomepageComponent from './pages/HomepageComponent';
-import RestaurantsComponent from './pages/RestaurantsComponent';
+import RestaurantComponent from './pages/RestaurantComponent';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -14,9 +14,9 @@ const router = new VueRouter({
             component: HomepageComponent
         },
         {
-            path: '/restaurants/:id',
-            name: 'restaurants',
-            component: RestaurantsComponent
+            path: '/restaurant/:slug',
+            name: 'restaurant',
+            component: RestaurantComponent
         }
     ]
 })
