@@ -1,25 +1,57 @@
 <template>
-  <div>
-    <img :src="'storage' + restaurant.image" :alt="restaurant.name" />
-    <h1>{{ restaurant.business_name }}</h1>
-    <p>Orario apertura {{ restaurant.opening_time }}</p>
-    <p>Orario chiusura {{ restaurant.closing_time }}</p>
-    <p>Giorno di chiusura: {{ restaurant.closing_day }}</p>
-    <p>{{ restaurant.description }}</p>
-    <div class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg">
-      <p>Seleziona il tuo piatto preferito</p>
-    </div>
-    <div class="row justify-content-center my-5">
+  <div class="container">
+    <!-- <img :src="'storage' + restaurant.image" :alt="restaurant.name" /> -->
+    <div class="row py-5">
+      <div class="col-6">
+        <img
+          class="w-100"
+          src="../../../public/storage/images/pizza.png"
+          alt=""
+        />
+      </div>
+      <div class="col-6">
+        <h1>{{ restaurant.business_name }}</h1>
+        <div class="d-flex">
+          <p class="font-weight-bold mr-2">ORARIO DI APERTURA</p>
+          <p>{{ restaurant.opening_time }}</p>
+        </div>
+        <div class="d-flex">
+          <p class="font-weight-bold mr-2">ORARIO DI CHIUSURA</p>
+          <p>{{ restaurant.closing_time }}</p>
+        </div>
+        <div class="d-flex">
+          <p class="font-weight-bold mr-2">GIORNO DI CHIUSURA:</p>
+          <p>{{ restaurant.closing_day }}</p>
+        </div>
+        <p>{{ restaurant.description }}</p>
+      </div>
       <div
-        v-for="(plate, index) in restaurant.plate"
-        :key="index"
-        class="card m-3"
-        style="width: 18rem"
+        class="
+          col-md-3 col-sm-3 col-12
+          text-center
+          card
+          p-2
+          mt-2
+          bg
+          d-flex
+          justify-content-center
+        "
       >
-        <img :src="plate.image" class="card-img-top" :alt="plate.name" />
-        <div class="card-body">
-          <h4 class="card-title">{{ plate.name }}</h4>
-          <p class="card-text">{{ plate.description }}</p>
+        <p>Seleziona il tuo piatto preferito</p>
+      </div>
+      <div class="row justify-content-center my-5">
+        <div
+          v-for="(plate, index) in restaurant.plate"
+          :key="index"
+          class="card m-3"
+          style="width: 18rem"
+        >
+          <img :src="plate.image" class="card-img-top" :alt="plate.name" />
+          <div class="card-body">
+            <h4 class="card-title">{{ plate.name }}</h4>
+            <p class="card-text">{{ plate.description }}</p>
+            <p class="card-text">Prezzo: {{ plate.price }}€</p>
+          </div>
         </div>
       </div>
     </div>
