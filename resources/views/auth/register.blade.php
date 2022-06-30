@@ -111,6 +111,7 @@
                                     <input id="vat_number" type="text"
                                         class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
                                         value="{{ old('vat_number') }}" required minlength="11" maxlength="11"
+                                        pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
                                         autocomplete="vat_number" placeholder="Inserisci la Partita IVA">
                                     <small>La partita IVA deve essere di 11 cifre</small>
                                     @error('vat_number')
