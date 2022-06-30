@@ -13,7 +13,7 @@
           :key="index"
         >
           <router-link
-            :to="{ name: 'restaurants', params: { id: typology.id } }"
+            :to="{ name: 'restaurant', params: { id: typology.id } }"
           >
             <img
               @click="getTypology(typology.id)"

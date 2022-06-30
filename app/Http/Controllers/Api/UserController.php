@@ -15,11 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        // return response()->json([
-        //     'response' => User::all()
-        // ]);
-        $allRestaurant = User::all();
-        $restaurant = User::whit('Typology')->where('')
+         return response()->json([
+            'response' => User::all()
+         ]);
+        // $allRestaurant = User::all();
+        // $restaurant = User::whit('Typology')->where('')
     }
 
     /**
@@ -49,9 +49,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $restaurant = User::where("slug", $slug)->with('Plate')->first();
+        return response()->json($restaurant);
     }
 
     /**
