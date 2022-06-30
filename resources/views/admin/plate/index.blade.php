@@ -11,6 +11,13 @@
                     <h4 class="card-title">{{ $plate->name }}</h4>
                     <p class="card-text mb-2">{{ $plate->description }}</p>
                     <p class="card-text mb-2">Prezzo: {{ $plate->price }}€</p>
+                    <p class="card-text mb-2">Visibile:
+                        @if ($plate->visible)
+                            Si
+                        @else
+                            No
+                        @endif
+                    </p>
                     <a href="{{ route('admin.plate.edit', $plate->id) }}" class="btn btn-primary">Modifica</a>
                     <form action="{{ route('admin.plate.destroy', $plate->id) }}" method="post" class=" d-inline-block">
                         @csrf
