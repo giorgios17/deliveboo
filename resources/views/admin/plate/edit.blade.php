@@ -96,10 +96,16 @@
                                 <span class="text-warning">*</span>
                             </label>
                             <div class="col-md-6">
-                                <input type="file" class="form-control-file" name="image">
+                                <input type="file" class="form-control-file @error('image') is-invalid @enderror"
+                                    name="image">
                             </div>
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div class="mt-3">
-                                <img class="w-50" src="{{ asset('storage/' . $plate->image) }}">
+                                <img class="w-50 " src="{{ asset('storage/' . $plate->image) }}">
                             </div>
                         </div>
 
