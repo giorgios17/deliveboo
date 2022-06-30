@@ -20,6 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('plates', 'Api\PlateController@index');
 Route::get('typologies', 'Api\TypologyController@index');
-Route::get('users', 'Api\UserController@index');
-
-Route::get('/users/{slug}', 'Api\UserController@show');
+Route::get('/users/{slug}', 'Api\RestaurantsController@getPlates');
+Route::get('/filtered/{id}', 'Api\RestaurantsController@filterRestaurants');
