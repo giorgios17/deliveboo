@@ -12,7 +12,7 @@
     <!--Sezione tipologie ristoranti-->
     <div class="container my-5">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-center">
           <h3>Le cucine più amate</h3>
           <p>
             Trova le cucine più amate dei nostri ristoranti e ordina online a
@@ -37,7 +37,7 @@
     </div>
 
     <TypologyCard :arrayTypologies="arrayTypologies" />
-    <div class="container">
+    <!-- <div class="container">
       <div class="row m-top100 mb-5 justify-content-between g-5">
         <div
           v-for="(restaurant, index) in arrayUsers"
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--Sezione recensioni-->
     <div class="container-fluid py-5 text-center bg">
       <h1>SLIDER RECENSIONI</h1>
@@ -118,12 +118,10 @@ export default {
   data() {
     return {
       arrayTypologies: [],
-      arrayUsers: [],
     };
   },
   mounted() {
     this.axiosCall("/api/typologies");
-    this.callRestaurants("/api/users");
   },
   methods: {
     axiosCall(url) {
@@ -131,21 +129,6 @@ export default {
         .get(url)
         .then((result) => {
           this.arrayTypologies = result.data.response;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    //chiamata axios ristoranti
-    callRestaurants(url) {
-      window.axios
-        .get(url)
-        .then((result) => {
-          this.arrayUsers = result.data.response;
-          //   this.arrayUsers = restaurants.filter((restaurant) =>
-          //     restaurant.typol.includes("food")
-          //   );
-          console.log(this.arrayUsers);
         })
         .catch((error) => {
           console.log(error);
