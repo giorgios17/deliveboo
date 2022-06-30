@@ -1,0 +1,14 @@
+// importato file parziali scss
+@import "resets";
+@import "variables";
+
+#not_found {
+    .card-header {
+        background-color: $blue;
+        color: $tortora;
+
+        h5 {
+            margin: 0 !important;
+        }
+    }
+}
