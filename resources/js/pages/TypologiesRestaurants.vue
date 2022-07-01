@@ -1,26 +1,32 @@
 <template>
-  <div class="row m-top100 mb-5 justify-content-between g-5">
-    <div
-      v-for="(restaurant, index) in arrayRestaurants"
-      :key="index"
-      class="card mb-3"
-      style="width: 18rem"
-    >
-      <img
-        :src="'storage' + restaurant.image"
-        class="card-img-top"
-        :alt="restaurant.business_name"
-      />
-      <div class="card-body">
-        <h5 class="card-title">{{ restaurant.business_name }}</h5>
-        <p class="card-text">
-          {{ restaurant.description }}
-        </p>
-        <router-link
-          :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-          class="btn btn-primary"
-          >Vai al ristorante
-        </router-link>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-12 text-center my-4">
+        <h3>SELZIONA IL RISTORANTE</h3>
+        <p>Seleziona il ritorante più adatto alle tue esigenze!</p>
+      </div>
+      <div
+        v-for="(restaurant, index) in arrayRestaurants"
+        :key="index"
+        class="card my-4"
+        style="width: 20rem"
+      >
+        <img
+          :src="'storage' + restaurant.image"
+          class="card-img-top"
+          :alt="restaurant.business_name"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ restaurant.business_name }}</h5>
+          <p class="card-text my-2">
+            {{ restaurant.description }}
+          </p>
+          <router-link
+            :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
+            class="btn btn-primary"
+            >Vai al ristorante
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
