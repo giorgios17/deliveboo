@@ -14,7 +14,7 @@
                             La pagina che stai cercando non esiste.
                         </div>
                         </p>
-                        <a href="admin/user" class="btn btn-danger">Torna alla Home</a>
+                        <a href="/" class="btn btn-danger">Torna alla Home</a>
                     </div>
                 </div>
             </div>
