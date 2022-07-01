@@ -6,8 +6,7 @@
 #user_index {
     h1 {
         background-color: $tortora;
-        font-weight: 900;
-        color: $blue;
+        @include h1($blue);
     }
 
     .card {
@@ -23,13 +22,11 @@
         }
 
         h4 {
-            font-weight: 900;
-            color: $blue;
+            @include h4($blue);
         }
 
         p {
-            font-weight: 600;
-            color: $blue;
+            @include p($blue);
         }
     }
 }

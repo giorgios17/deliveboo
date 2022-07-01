@@ -1,6 +1,7 @@
 // importato file parziali scss
 @import "resets";
 @import "variables";
+@import "mixin";
 
 #not_found {
     .card-header {
@@ -8,6 +9,7 @@
         color: $tortora;
 
         h5 {
+            @include h5($tortora);
             margin: 0 !important;
         }
     }
