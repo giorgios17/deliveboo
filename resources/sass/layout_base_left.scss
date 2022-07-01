@@ -6,7 +6,7 @@
 #layout_base_left {
 
     h2 {
-        color: $tortora;
+        @include h2($yellow);
     }
 
     // Sfondo dashboard lato ristoratore
@@ -17,9 +17,9 @@
 
     // Immagine ristorante
     .restaurant_img {
-        width: 125px;
-        height: 125px;
-        border: 2px solid white;
+        width: 200px;
+        height: 200px;
+        border: 2px solid $yellow;
     }
 
     .right_column {
@@ -29,7 +29,7 @@
 
     //button dashboard
     .btn_dashboard {
-        @include buttonDashboard($yellow, $blue, 0.4rem 1.5rem);
+        @include button($yellow, $yellow, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
     }
 
     @media screen and (max-width: 768px) {
@@ -42,6 +42,15 @@
         .right_column {
             height: auto;
             overflow-y: hidden;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+
+        // Immagine ristorante
+        .restaurant_img {
+            width: 125px;
+            height: 125px;
         }
     }
 
