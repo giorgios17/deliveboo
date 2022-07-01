@@ -3,7 +3,6 @@
     <div id="admin_index" class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Benvenuto {{ Auth::user()->business_name }}</h5>

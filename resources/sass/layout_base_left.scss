@@ -1,0 +1,57 @@
+// importato file parziali scss
+@import "resets";
+@import "variables";
+@import "mixin";
+
+#layout_base_left {
+
+    h2 {
+        @include h2($yellow);
+    }
+
+    // Sfondo dashboard lato ristoratore
+    .restaurant_bg {
+        background-color: $blue;
+        height: calc(100vh - 63px);
+    }
+
+    // Immagine ristorante
+    .restaurant_img {
+        width: 200px;
+        height: 200px;
+        border: 2px solid $yellow;
+    }
+
+    .right_column {
+        height: calc(100vh - 63px);
+        overflow-y: scroll;
+    }
+
+    //button dashboard
+    .btn_dashboard {
+        @include button($yellow, $yellow, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
+    }
+
+    @media screen and (max-width: 768px) {
+
+        // Sfondo dashboard lato ristoratore
+        .restaurant_bg {
+            height: auto;
+        }
+
+        .right_column {
+            height: auto;
+            overflow-y: hidden;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+
+        // Immagine ristorante
+        .restaurant_img {
+            width: 125px;
+            height: 125px;
+        }
+    }
+
+}

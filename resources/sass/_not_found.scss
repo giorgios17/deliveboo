@@ -1,16 +1,16 @@
 // importato file parziali scss
 @import "resets";
 @import "variables";
+@import "mixin";
 
-//layout plate.create
-#plate_create {
-    h1 {
-        background-color: $tortora;
-        @include h1($blue);
-    }
-
+#not_found {
     .card-header {
         background-color: $blue;
         color: $tortora;
+
+        h5 {
+            @include h5($tortora);
+            margin: 0 !important;
+        }
     }
 }
