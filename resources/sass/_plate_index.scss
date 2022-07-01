@@ -1,0 +1,34 @@
+// importato file parziali scss
+@import "resets";
+@import "variables";
+@import "mixin";
+
+#plate_index {
+    h1 {
+        background-color: $tortora;
+        @include h1($blue);
+    }
+
+    .card {
+
+        .wrapper_img {
+            height: 180px;
+            background-color: $tortora;
+
+            img {
+                object-fit: cover;
+                object-position: top;
+            }
+        }
+
+        h4 {
+            font-weight: 900;
+            color: $blue;
+        }
+
+        p {
+            font-weight: 600;
+            color: $blue;
+        }
+    }
+}
