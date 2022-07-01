@@ -65,9 +65,7 @@
       </div>
     </div> -->
     <!--Sezione recensioni-->
-    <div class="container-fluid py-5 text-center bg">
-      <h1>SLIDER RECENSIONI</h1>
-    </div>
+    <CarouselComponent />
 
     <!--Sezione download-->
     <div class="container my-5">
@@ -109,11 +107,13 @@
 
 <script>
 import TypologyCard from "../components/TypologyCard.vue";
+import CarouselComponent from "../components/CarouselComponent.vue";
 
 export default {
   name: "HomepageComponent",
   components: {
     TypologyCard,
+    CarouselComponent,
   },
   data() {
     return {
