@@ -18,3 +18,45 @@
     padding: $padding  !important;
 
 }
+
+@mixin h1 ($color) {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: $color;
+}
+
+@mixin h2 ($color) {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: $color;
+}
+
+@mixin h3 ($color) {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color;
+}
+
+@mixin h4 ($color) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $color;
+}
+
+@mixin h5 ($color) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color;
+}
+
+@mixin h6 ($color) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $color;
+}
+
+@mixin p ($color) {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $color;
+}
