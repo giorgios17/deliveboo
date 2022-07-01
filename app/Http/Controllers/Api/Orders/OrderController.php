@@ -23,24 +23,22 @@ class OrderController extends Controller
         $result = $gateway->transaction()->sale([
             'amount' => '10.00',
             'paymentMethodNonce' => $request->token,
-            'option' => [
+            'options' => [
                 'submitForSettlement' => true
             ]
         ]);
-        if($result->success){
+        if ($result->success) {
             $data = [
                 "success" => true,
                 "message" => "Pagamento approvato"
             ];
             return response()->json($data, 200);
-        }else {
+        } else {
             $data = [
                 "success" => false,
                 "message" => "Pagamento fallito"
             ];
             return response()->json($data, 401);
         }
-
-        return "prova";
     }
 }
