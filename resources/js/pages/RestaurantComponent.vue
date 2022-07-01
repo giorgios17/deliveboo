@@ -38,7 +38,11 @@
             class="card m-3"
             style="width: 18rem"
           >
-            <img :src="plate.image" class="card-img-top" :alt="plate.name" />
+            <img
+              :src="'/storage/' + plate.image"
+              class="card-img-top"
+              :alt="plate.name"
+            />
             <div class="card-body">
               <h4 class="card-title">{{ plate.name }}</h4>
               <p class="card-text">{{ plate.description }}</p>
