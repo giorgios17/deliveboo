@@ -57,7 +57,7 @@ return [
     ],
     [
         "name" => "Dessert",
-        "description" => "",
+        "description" => "Addolcisci la tua serata con un buon dessert",
         "image" => '/images/typologies/dessert.png',
     ],
     [
