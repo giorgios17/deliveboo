@@ -21,3 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('plates', 'Api\PlateController@index');
 Route::get('typologies', 'Api\TypologyController@index');
 Route::get('users', 'Api\UserController@index');
+
+// rotte per la gestione dei pagamenti
+Route::get("orders/generate", "Api\Orders\OrderController@generate");
+Route::post("orders/make-payment", "Api\Orders\OrderController@makePayment");
