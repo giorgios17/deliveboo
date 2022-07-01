@@ -5,33 +5,23 @@
 // layout app.blade
 .layout_base {
 
-    .position-fixed {
-        top: 0;
-        left: 0;
-        z-index: 2;
+    .navbar {
+        background-color: $yellow;
 
-        .navbar {
-            background-color: $yellow;
-
-            .wrapper_logo {
-                width: 150px;
-            }
-
-            .navbar-toggler {
-                color: $blue  !important;
-                border-color: $blue  !important;
-                padding: 0.25rem 0.5rem !important;
-            }
-
-            .font-weight-bold {
-                color: $blue  !important;
-                text-align: center;
-            }
+        .wrapper_logo {
+            width: 150px;
         }
-    }
 
-    main {
-        padding-top: 60px;
+        .navbar-toggler {
+            color: $blue  !important;
+            border-color: $blue  !important;
+            padding: 0.25rem 0.5rem !important;
+        }
+
+        .font-weight-bold {
+            color: $blue  !important;
+            text-align: center;
+        }
     }
 
 }
