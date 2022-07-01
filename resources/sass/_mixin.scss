@@ -1,21 +1,34 @@
 //mixin per i button
-@mixin button($bgColor, $color, $bgColorHover, $colorHover) {
-    background-color: $bgColor;
+@mixin button($borderColor, $color, $size, $weight, $padding, $bgColorHover, $colorHover) {
+    border: 1px solid $borderColor;
     color: $color;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 10px 20px;
+    font-size: $size;
+    font-weight: $weight;
+    padding: $padding;
 
-    &:hover {
+    &:hover,
+    &:focus {
+        animation: pulse 1s;
+        box-shadow: 0 0 0 0.75em rgba(#fff, 0);
         background-color: $bgColorHover;
         color: $colorHover;
-    }
-}
 
-@mixin buttonDashboard($bgColor, $color, $padding) {
-    background-color: $bgColor;
-    color: $color;
-    padding: $padding  !important;
+    }
+
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 $yellow;
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+        font-size: calc($size * 0.75);
+    }
+
+    @media screen and (max-width: 175px) {
+        font-size: calc($size * 0.5);
+    }
+
 
 }
 
@@ -23,40 +36,91 @@
     font-size: 2.5rem;
     font-weight: 900;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 2rem;
+    }
+
+    @media screen and (max-width: 175px) {
+        font-size: 1.75rem;
+    }
+
 }
 
 @mixin h2 ($color) {
     font-size: 2.25rem;
     font-weight: 700;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 1.75rem;
+    }
+
+    @media screen and (max-width: 175px) {
+        font-size: 1.5rem;
+    }
+
 }
 
 @mixin h3 ($color) {
     font-size: 2rem;
     font-weight: 700;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 1.5rem;
+    }
+
+    @media screen and (max-width: 175px) {
+        font-size: 1.25rem;
+    }
+
 }
 
 @mixin h4 ($color) {
     font-size: 1.75rem;
     font-weight: 700;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 1.25rem;
+    }
+
+    @media screen and (max-width: 175px) {
+        font-size: 1rem;
+    }
+
 }
 
 @mixin h5 ($color) {
     font-size: 1.5rem;
     font-weight: 700;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 1rem;
+    }
+
 }
 
 @mixin h6 ($color) {
     font-size: 1.25rem;
     font-weight: 700;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 0.75rem;
+    }
+
 }
 
 @mixin p ($color) {
     font-size: 1rem;
     font-weight: 600;
     color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 0.75rem;
+    }
+
 }
