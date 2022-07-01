@@ -66,7 +66,7 @@
                         @else
                             <li class="nav-item">
 
-                                <a class="text-danger" href="{{ route('logout') }}"
+                                <a class="text-danger nav-link text-center" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();"><i
                                         class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -92,15 +92,15 @@
                                 <img class="w-100 rounded-circle" src="{{ asset('storage/' . Auth::user()->image) }}"
                                     alt="">
                             </div>
-                            <h2 class="mb-5">
+                            <h2 class="text-center mb-5">
                                 {{ Auth::user()->business_name }}
                             </h2>
-                            <a class="btn btn_dashboard mb-3" href="{{ route('admin.user.index') }}"><i
+                            <a class="btn btn_dashboard mb-4" href="{{ route('admin.user.index') }}"><i
                                     class="fa-solid fa-gear"></i> Dashboard</a>
-                            <a class="btn btn_dashboard mb-3" href="{{ route('admin.plate.create') }}"><i
+                            <a class="btn btn_dashboard mb-4" href="{{ route('admin.plate.create') }}"><i
                                     class="fa-solid fa-plus"></i> Aggiungi un
                                 piatto</a>
-                            <a class="btn btn_dashboard mb-3" href="{{ route('admin.plate.index') }}"><i
+                            <a class="btn btn_dashboard mb-4" href="{{ route('admin.plate.index') }}"><i
                                     class="fa-solid fa-magnifying-glass"></i> Visualizza i
                                 tuoi piatti</a>
                         </div>
