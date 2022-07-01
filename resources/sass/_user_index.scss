@@ -4,41 +4,32 @@
 @import "mixin";
 
 #user_index {
-
-    // Sfondo dashboard lato ristoratore
-    .restaurant_bg {
-        background-color: $blue;
-        height: calc(100vh - 60px);
+    h1 {
+        background-color: $tortora;
+        font-weight: 900;
+        color: $blue;
     }
 
-    // Immagine ristorante
-    .restaurant_img {
-        width: 125px;
-        height: 125px;
-        border: 2px solid white;
-    }
+    .card {
 
-    .right_column {
-        height: calc(100vh - 60px);
-        overflow-y: scroll;
-    }
+        .wrapper_img {
+            height: 180px;
+            background-color: $tortora;
 
-    //button dashboard
-    .btn_dashboard {
-        @include buttonDashboard($yellow, $blue, 0.4rem 1.5rem);
-    }
-
-    @media screen and (max-width: 768px) {
-
-        // Sfondo dashboard lato ristoratore
-        .restaurant_bg {
-            height: auto;
+            img {
+                object-fit: cover;
+                object-position: top;
+            }
         }
 
-        .right_column {
-            height: auto;
-            overflow-y: hidden;
+        h4 {
+            font-weight: 900;
+            color: $blue;
+        }
+
+        p {
+            font-weight: 600;
+            color: $blue;
         }
     }
-
 }
