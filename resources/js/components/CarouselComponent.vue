@@ -1,0 +1,74 @@
+<template>
+  <!-- carousel -->
+  <div class="container-fluid bg py-3">
+    <div class="row">
+      <!-- Controllo sx -->
+      <div
+        class="col-2 d-flex justify-content-center align-items-center prev"
+        @click="toggleImg('prev')"
+      >
+        <i class="fa-solid fa-4x fa-circle-chevron-left"></i>
+      </div>
+      <div class="col-8 d-flex justify-content-center">
+        <img :src="review" />
+      </div>
+      <!-- Controllo dx -->
+      <div
+        class="col-2 d-flex justify-content-center align-items-center next"
+        @click="toggleImg('next')"
+      >
+        <i class="fa-solid fa-4x fa-circle-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      reviewList: [
+        {
+          id: 1,
+          src: "https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32382-hamburger-icon.png",
+        },
+        {
+          id: 2,
+          src: "https://icons.iconarchive.com/icons/martin-berube/food/256/pizza-icon.png",
+        },
+        {
+          id: 3,
+          src: "https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32408-sushi-icon.png",
+        },
+      ],
+
+      position: 0,
+    };
+  },
+  computed: {
+    review() {
+      return this.reviewList[this.position].src;
+    },
+  },
+
+  methods: {
+    toggleImg(type) {
+      if (type === "prev") {
+        this.position === 0
+          ? (this.position = this.reviewList.length - 1)
+          : this.position--;
+      } else {
+        this.position === this.reviewList.length - 1
+          ? (this.position = 0)
+          : this.position++;
+      }
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.bg {
+  background-color: #003049;
+}
+</style>
