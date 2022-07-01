@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="plate_create" class="row justify-content-center py-5">
+    <div id="plate_create" class="row justify-content-center pb-5">
+        <h1 class="col-12 text-center p-3 mb-5 shadow">
+            AGGIUNGI UN NUOVO PIATTO
+        </h1>
         <div class="col-md-10 col-lg-9 col-xl-8">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header">{{ __('Nuovo piatto') }}</div>
 
                 <div class="card-body">
