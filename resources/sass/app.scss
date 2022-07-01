@@ -13,8 +13,10 @@
 // import style backend
 @import 'mixin';
 @import 'layout_base';
+@import 'layout_base_left';
 @import 'auth_login';
 @import 'auth_register';
+@import 'plate_index';
 @import 'plate_create';
 @import 'plate_edit';
 @import 'user_index';
