@@ -5,13 +5,16 @@
             {{ session('status') }}
         </div>
     @endif --}}
-    <h1 class="text-center mt-5">
-        I TUOI PIATTI
-    </h1>
-    <div class="row justify-content-center my-5">
+    <div id="user_index" class="row justify-content-center mb-5">
+        <h1 class="col-12 text-center p-3 mb-5 shadow">
+            I TUOI PIATTI
+        </h1>
         @foreach ($plates as $plate)
-            <div class="card m-3" style="width: 18rem;">
-                <img src="{{ asset('storage/' . $plate->image) }}" class="card-img-top" alt="{{ $plate->name }}">
+            <div class="card m-3 shadow" style="width: 18rem;">
+                <div class="wrapper_img p-3">
+                    <img src="{{ asset('storage/' . $plate->image) }}" class="card-img-top h-100 w-100"
+                        alt="{{ $plate->name }}">
+                </div>
                 <div class="card-body">
                     <h4 class="card-title">{{ $plate->name }}</h4>
                     <p class="card-text">{{ $plate->description }}</p>
