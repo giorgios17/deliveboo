@@ -1,9 +1,12 @@
 <template>
   <div class="container">
-    <!-- <img :src="'storage' + restaurant.image" :alt="restaurant.name" /> -->
     <div class="row py-5">
       <div class="col-6">
-        <img class="w-100" src="../img/restaurant.jpg" alt="" />
+        <img
+          class="w-100"
+          :src="'/storage/' + restaurant.image"
+          :alt="restaurant.name"
+        />
       </div>
       <div class="col-6">
         <h1>{{ restaurant.business_name }}</h1>

@@ -12,7 +12,7 @@
         style="width: 20rem"
       >
         <img
-          :src="'/storage' + restaurant.image"
+          :src="'/storage/' + restaurant.image"
           class="card-img-top"
           :alt="restaurant.business_name"
         />
