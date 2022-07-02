@@ -12,5 +12,11 @@
             @include h5($tortora);
             margin: 0 !important;
         }
+
+        .btn {
+            background-color: none;
+            @include button($red, $red, 1rem, 600, 0.4rem 1.5rem, $red, white, $red);
+        }
     }
+
 }
