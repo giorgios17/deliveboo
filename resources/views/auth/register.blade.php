@@ -8,7 +8,8 @@
                     <div class="card-header"><i class="fa-solid fa-pen-to-square"></i> {{ __('Registrazione') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        <form action="{{ route('register') }}" onsubmit="return valthisform()" method="POST"
+                            enctype="multipart/form-data">
                             {{-- token --}}
                             @csrf
 
@@ -238,24 +239,6 @@
                                 </div>
                             </div>
 
-                            {{-- checkbox tipologie --}}
-                            <div class="form-group row">
-                                <p class="col-md-4 col-form-label text-md-right">Tipologia ristorante <span
-                                        class="text-warning">*</span></p>
-                                <div class="offset-md-8"></div>
-                                @foreach ($typologies as $typology)
-                                    <div class="offset-md-4 col-md-8">
-                                        <input class="@error('typologies') is-invalid @enderror" type="checkbox"
-                                            name="typologies[]" value="{{ $typology->id }}"
-                                            {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
-                                        <label> {{ $typology->name }}</label>
-                                    </div>
-                                @endforeach
-                                @error('typologies')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
                             {{-- input immagine --}}
                             <div class="form-group row">
                                 <label for="image"
@@ -265,6 +248,28 @@
                                 <div class="col-md-6">
                                     <input type="file" class="form-control-file" name="image" required>
                                 </div>
+                            </div>
+
+                            {{-- checkbox tipologie --}}
+                            <div class="form-group row">
+                                <p class="col-md-4 col-form-label text-md-right">Tipologia ristorante <span
+                                        class="text-warning">*</span></p>
+                                <div class="offset-md-8"></div>
+                                @foreach ($typologies as $typology)
+                                    <div class="offset-md-4 col-md-8">
+                                        <input
+                                            class="categoryInput form-check-input @error('typologies') is-invalid @enderror"
+                                            type="checkbox" name="typologies[]" value="{{ $typology->id }}"
+                                            {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
+                                        <label> {{ $typology->name }}</label>
+                                    </div>
+                                @endforeach
+                                <div id="alert" class="alert alert-danger m-auto" style="display:none">
+                                    Seleziona almeno una categoria
+                                </div>
+                                @error('typologies')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             {{-- bottone di submit dati --}}
