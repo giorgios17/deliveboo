@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Plate;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PlateResource;
 
 class PlateController extends Controller
 {
@@ -15,9 +16,9 @@ class PlateController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'response' => Plate::all()
-        ]);
+        $plates = Plate::all();
+        return PlateResource::collection($plates);
+
     }
 
     /**
