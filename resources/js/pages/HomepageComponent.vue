@@ -37,33 +37,6 @@
     </div>
 
     <TypologyCard :arrayTypologies="arrayTypologies" />
-    <!-- <div class="container">
-      <div class="row m-top100 mb-5 justify-content-between g-5">
-        <div
-          v-for="(restaurant, index) in arrayUsers"
-          :key="index"
-          class="card mb-3"
-          style="width: 18rem"
-        >
-          <img
-            :src="'storage' + restaurant.image"
-            class="card-img-top"
-            :alt="restaurant.business_name"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ restaurant.business_name }}</h5>
-            <p class="card-text">
-              {{ restaurant.description }}
-            </p>
-            <router-link
-              :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-              class="btn btn-primary"
-              >Vai al ristorante
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <!--Sezione recensioni-->
     <CarouselComponent />
 
@@ -152,8 +125,6 @@ export default {
 .bg {
   background-color: #003049;
   color: hsl(53deg 37% 77%);
-  //background-color: #fcbf49;
-  //color: #003049;
 }
 .download_logo {
   width: 80%;

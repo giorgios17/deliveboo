@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 img {
-  width: 100%;
+  width: 75%;
   border-radius: 10px;
 }
 a:hover {

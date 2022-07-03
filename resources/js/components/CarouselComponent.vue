@@ -68,7 +68,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bg {
-  background-color: #003049;
+.fa-circle-chevron-left,
+.fa-circle-chevron-right {
+  cursor: pointer;
+  transition: transform 0.1s linear;
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 </style>
