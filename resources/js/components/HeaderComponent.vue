@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../sass/_variables.scss";
+@import "/resources/sass/_variables.scss";
 
 header {
   background-color: $yellow;

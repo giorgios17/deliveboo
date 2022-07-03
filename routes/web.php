@@ -33,5 +33,5 @@ Route::middleware('auth')
 Route::get('/register', 'TypologyController@index')->name('register');
 
 Route::get('{any?}', function () {
-    return view('404.notFound');
+    return view('guest.home');
 })->where('any', '.*');
