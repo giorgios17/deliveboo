@@ -10,7 +10,7 @@
         <i class="fa-solid fa-4x fa-circle-chevron-left"></i>
       </div>
       <div class="col-8 d-flex justify-content-center">
-        <img :src="review" />
+        <img :src="'/storage' + review" />
       </div>
       <!-- Controllo dx -->
       <div
@@ -30,15 +30,15 @@ export default {
       reviewList: [
         {
           id: 1,
-          src: "https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32382-hamburger-icon.png",
+          src: "/images/reviews/review1.png",
         },
         {
           id: 2,
-          src: "https://icons.iconarchive.com/icons/martin-berube/food/256/pizza-icon.png",
+          src: "/images/reviews/review2.png",
         },
         {
           id: 3,
-          src: "https://icons.iconarchive.com/icons/google/noto-emoji-food-drink/256/32408-sushi-icon.png",
+          src: "/images/reviews/review3.png",
         },
       ],
 
