@@ -35,21 +35,18 @@
 
       <div class="container">
         <div class="row justify-content-center my-5">
-          <div
-            v-for="(plate, index) in restaurant.plate"
-            :key="index"
-            class="card m-3"
-            style="width: 18rem"
-          >
-            <img
-              :src="'/storage/' + plate.image"
-              class="card-img-top"
-              :alt="plate.name"
-            />
-            <div class="card-body">
-              <h4 class="card-title">{{ plate.name }}</h4>
-              <p class="card-text">{{ plate.description }}</p>
-              <p class="card-text">Prezzo: {{ plate.price }}€</p>
+          <div v-for="(plate, index) in restaurant.plate" :key="index">
+            <div v-if="plate.visible" class="card m-3" style="width: 18rem">
+              <img
+                :src="'/storage/' + plate.image"
+                class="card-img-top"
+                :alt="plate.name"
+              />
+              <div class="card-body">
+                <h4 class="card-title">{{ plate.name }}</h4>
+                <p class="card-text">{{ plate.description }}</p>
+                <p class="card-text">Prezzo: {{ plate.price }}€</p>
+              </div>
             </div>
           </div>
         </div>
