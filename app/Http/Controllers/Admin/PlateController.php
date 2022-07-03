@@ -29,8 +29,7 @@ class PlateController extends Controller
     public function index()
     {
         //
-        $user = Auth::user();
-        $plates = $user->plate;
+        $plates = Plate::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
         return view('admin.plate.index', compact('plates'));
     }
 

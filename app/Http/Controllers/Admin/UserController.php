@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $plates = Plate::where('user_id', Auth::user()->id)->get();
+        $plates = Plate::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
         return view('user.index', compact('plates'));
     }
 
