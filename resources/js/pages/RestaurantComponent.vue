@@ -37,11 +37,13 @@
         <div class="row justify-content-center my-5">
           <div v-for="(plate, index) in restaurant.plate" :key="index">
             <div v-if="plate.visible" class="card m-3" style="width: 18rem">
-              <img
-                :src="'/storage/' + plate.image"
-                class="card-img-top"
-                :alt="plate.name"
-              />
+              <div class="wrapper_img p-3">
+                <img
+                  :src="'/storage/' + plate.image"
+                  class="card-img-top h-100 w-100"
+                  :alt="plate.name"
+                />
+              </div>
               <div class="card-body">
                 <h4 class="card-title">{{ plate.name }}</h4>
                 <p class="card-text">{{ plate.description }}</p>
@@ -84,8 +86,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "/resources/sass/_variables.scss";
+
 .bg {
   background-color: #003049;
   color: hsl(53deg 37% 77%);
+}
+.wrapper_img {
+  height: 180px;
+  background-color: $tortora;
+
+  img {
+    object-fit: cover;
+    object-position: top;
+  }
 }
 </style>
