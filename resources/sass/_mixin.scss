@@ -1,5 +1,5 @@
 //mixin per i button
-@mixin button($borderColor, $color, $size, $weight, $padding, $bgColorHover, $colorHover, $pulse) {
+@mixin button($borderColor, $color, $size, $weight, $padding, $bgColorHover, $colorHover) {
     border: 1px solid $borderColor;
     color: $color;
     font-size: $size;
@@ -17,7 +17,7 @@
 
     @keyframes pulse {
         0% {
-            box-shadow: 0 0 0 0 $pulse;
+            box-shadow: 0 0 0 0 $yellow;
         }
     }
 
