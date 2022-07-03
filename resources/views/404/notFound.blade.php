@@ -15,7 +15,7 @@
                                 La pagina che stai cercando non esiste.
                             </div>
                             </p>
-                            <a href="/" class="btn">Torna alla Home</a>
+                            <a href="/" class="btn btn-danger">Torna alla Home</a>
                         </div>
                     </div>
                 @else
@@ -30,7 +30,7 @@
                                 La pagina che stai cercando non esiste.
                             </div>
                             </p>
-                            <a href="/admin/user" class="btn">Torna alla Dashboard</a>
+                            <a href="/admin/user" class="btn btn-danger">Torna alla Dashboard</a>
                         </div>
                     </div>
                 @endguest
