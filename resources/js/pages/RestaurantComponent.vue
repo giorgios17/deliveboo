@@ -102,10 +102,6 @@ export default {
       this.saveCart();
       //   console.log(this.cart);
     },
-    // removeCart(x) {
-    //   this.cart.splice(x, 1);
-    //   this.saveCats();
-    // },
     saveCart() {
       const parsed = JSON.stringify(this.cart);
       localStorage.setItem("plate", parsed);

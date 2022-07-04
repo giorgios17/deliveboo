@@ -57,9 +57,13 @@
                           <div style="width: 80px">
                             <h5 class="mb-0">${{ item.price }}</h5>
                           </div>
-                          <a href="#!" style="color: #cecece"
+                          <button @click="removeCart()">
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
+
+                          <!-- <a href="#!" style="color: #cecece"
                             ><i class="fas fa-trash-alt"></i
-                          ></a>
+                          ></a> -->
                         </div>
                       </div>
                     </div>
@@ -218,6 +222,16 @@ export default {
       this.cart = JSON.parse(localStorage.getItem("plate"));
       console.log(this.cart);
     }
+  },
+  methods: {
+    saveCart() {
+      const parsed = JSON.stringify(this.cart);
+      localStorage.setItem("plate", parsed);
+    },
+    removeCart(x) {
+      this.cart.splice(x, 1);
+      this.saveCart();
+    },
   },
 };
 </script>
