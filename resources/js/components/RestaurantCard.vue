@@ -2,7 +2,7 @@
   <!-- Card Ristoranti -->
   <div class="container" v-if="arrayRestaurants.length > 0">
     <div class="row justify-content-center">
-      <div class="col-md-6 text-center my-4">
+      <div class="col-md-6 text-center">
         <h3 class="p-4 mb-3 shadow">RISTORANTI</h3>
         <p>Seleziona il ritorante più adatto alle tue esigenze!</p>
       </div>
@@ -89,6 +89,17 @@ export default {
       $yellow,
       $blue
     );
+  }
+}
+
+@media screen and (max-width: 250px) {
+  h3 {
+    font-size: 1rem !important;
+  }
+}
+@media screen and (max-width: 190px) {
+  h3 {
+    font-size: 0.6rem !important;
   }
 }
 </style>
