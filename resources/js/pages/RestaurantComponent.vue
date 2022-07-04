@@ -72,6 +72,8 @@ export default {
   },
   mounted() {
     this.getRestaurant();
+
+    //localstorage per dati (carrello)
     if (localStorage.getItem("cart")) {
       try {
         this.cart = JSON.parse(localStorage.getItem("cart"));
@@ -93,10 +95,12 @@ export default {
         })
         .catch((e) => console.log(e));
     },
+
+    //funzione per aggiunta al carrello
     AddCart(data) {
       this.cart.push(data);
       this.saveCart();
-      console.log(this.cart);
+      //   console.log(this.cart);
     },
     // removeCart(x) {
     //   this.cart.splice(x, 1);
