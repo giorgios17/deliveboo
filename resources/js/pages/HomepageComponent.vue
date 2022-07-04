@@ -1,77 +1,18 @@
 <template>
   <div>
     <!--Jumbotron-->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center align-items-center jb">
-          <h1>DELIVEBOO</h1>
-        </div>
-      </div>
-    </div>
-
+    <JumboComponent />
     <!--Sezione tipologie ristoranti-->
-    <div class="container my-5">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h3>Le cucine più amate</h3>
-          <p>
-            Trova le cucine più amate dei nostri ristoranti e ordina online a
-            domicilio
-          </p>
-        </div>
-      </div>
+    <SuggestionComponent />
 
-      <div class="container mt-5">
-        <div class="row justify-content-around flex-wrap">
-          <div class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg">
-            <p>Scegli i tui piatti dal menù!</p>
-          </div>
-          <div class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg">
-            Ordina da tuo ristorante preferito.
-          </div>
-          <div class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg">
-            Prepara il tavolo, arriviamo!
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- Card Tipologie -->
     <TypologyCard
       @getTypologies="getTypologies"
       :arrayTypologies="arrayTypologies"
     />
 
-    <div class="container" v-if="arrayRestaurants.length > 0">
-      <div class="row justify-content-between">
-        <div class="col-12 text-center my-4">
-          <h3>SELZIONA IL RISTORANTE</h3>
-          <p>Seleziona il ritorante più adatto alle tue esigenze!</p>
-        </div>
-        <div
-          v-for="(restaurant, index) in arrayRestaurants"
-          :key="index"
-          class="card my-4"
-          style="width: 20rem"
-        >
-          <img
-            :src="'/storage/' + restaurant.image"
-            class="card-img-top"
-            :alt="restaurant.business_name"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ restaurant.business_name }}</h5>
-            <p class="card-text my-2">
-              {{ restaurant.description }}
-            </p>
-            <router-link
-              :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-              class="btn btn-primary"
-              >Vai al ristorante
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Card Ristoranti -->
+    <RestaurantCard :arrayRestaurants="arrayRestaurants" />
 
     <!--Sezione recensioni-->
     <CarouselComponent />
@@ -124,12 +65,18 @@
 <script>
 import TypologyCard from "../components/TypologyCard.vue";
 import CarouselComponent from "../components/CarouselComponent.vue";
+import JumboComponent from "../components/JumboComponent.vue";
+import SuggestionComponent from "../components/SuggestionComponent.vue";
+import RestaurantCard from "../components/RestaurantCard.vue";
 
 export default {
   name: "HomepageComponent",
   components: {
     TypologyCard,
     CarouselComponent,
+    JumboComponent,
+    SuggestionComponent,
+    RestaurantCard,
   },
   data() {
     return {
@@ -154,6 +101,8 @@ export default {
     getTypologies: function (typologies) {
       if (typologies) {
         this.axiosCallFilterRestaurants(typologies);
+      } else {
+        this.arrayRestaurants = [];
       }
     },
     axiosCallFilterRestaurants(typologies) {
@@ -172,16 +121,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.jb {
-  background-image: url("../img/jumbotron.png");
-  background-position: top;
-  background-size: cover;
-  h1 {
-    font-size: 60px;
-    font-weight: 800;
-    padding: 350px 0;
-  }
-}
+@import "/resources/sass/_variables";
+@import "/resources/sass/_mixin";
+
 .bg {
   background-color: #003049;
   color: hsl(53deg 37% 77%);
