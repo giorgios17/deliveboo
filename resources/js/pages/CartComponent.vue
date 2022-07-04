@@ -1,8 +1,14 @@
-<template><div>Carrello</div></template>
+<template><div></div></template>
 
 <script>
 export default {
   name: "CartComponent",
+  data() {
+    return {
+      cart: [],
+    };
+  },
+  methods: {},
 };
 </script>
 
