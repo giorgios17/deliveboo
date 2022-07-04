@@ -32,6 +32,11 @@
           Vai ai Ristoranti
         </button>
       </div>
+      <div v-if="errorTypology" class="row justify-content-center">
+        <div class="alert alert-danger" role="alert">
+          Seleziona almeno una tipologia
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +50,7 @@ export default {
   data() {
     return {
       selectedTypologies: [],
+      errorTypology: false,
     };
   },
   methods: {
@@ -56,7 +62,13 @@ export default {
       }
     },
     getData() {
-      return this.selectedTypologies;
+      if (this.selectedTypologies.length > 0) {
+        this.errorTypology = false;
+        return this.selectedTypologies;
+      } else {
+        this.errorTypology = true;
+        return false;
+      }
     },
   },
 };

@@ -40,6 +40,39 @@
       @getTypologies="getTypologies"
       :arrayTypologies="arrayTypologies"
     />
+
+    <div class="container" v-if="arrayRestaurants.length > 0">
+      <div class="row justify-content-between">
+        <div class="col-12 text-center my-4">
+          <h3>SELZIONA IL RISTORANTE</h3>
+          <p>Seleziona il ritorante più adatto alle tue esigenze!</p>
+        </div>
+        <div
+          v-for="(restaurant, index) in arrayRestaurants"
+          :key="index"
+          class="card my-4"
+          style="width: 20rem"
+        >
+          <img
+            :src="'/storage/' + restaurant.image"
+            class="card-img-top"
+            :alt="restaurant.business_name"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ restaurant.business_name }}</h5>
+            <p class="card-text my-2">
+              {{ restaurant.description }}
+            </p>
+            <router-link
+              :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
+              class="btn btn-primary"
+              >Vai al ristorante
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--Sezione recensioni-->
     <CarouselComponent />
 
@@ -101,6 +134,7 @@ export default {
   data() {
     return {
       arrayTypologies: [],
+      arrayRestaurants: [],
     };
   },
   mounted() {
@@ -118,17 +152,16 @@ export default {
         });
     },
     getTypologies: function (typologies) {
-      console.log(typologies);
-      this.axiosCallFilterRestaurants(typologies);
+      if (typologies) {
+        this.axiosCallFilterRestaurants(typologies);
+      }
     },
     axiosCallFilterRestaurants(typologies) {
-      // console.log(JSON.stringify(typologies));
       let params = JSON.stringify(typologies);
-      console.log("/api/restaurants/filter/" + params);
       window.axios
         .get("/api/restaurants/filter/" + params)
         .then((result) => {
-          console.log(result);
+          this.arrayRestaurants = result.data;
         })
         .catch((error) => {
           console.log(error);
