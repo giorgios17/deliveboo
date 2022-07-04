@@ -56,7 +56,7 @@ export default {
       }
     },
     getData() {
-      return JSON.parse(JSON.stringify(this.selectedTypologies));
+      return this.selectedTypologies;
     },
   },
 };
@@ -65,8 +65,6 @@ export default {
 <style lang="scss" scoped>
 @import "/resources/sass/_variables";
 @import "/resources/sass/_mixin";
-
-// codice style
 
 h6 {
   @include h6($blue);
@@ -96,11 +94,10 @@ button {
 .option_item .option_inner {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: $tortora;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
-  color: #585c68;
   display: block;
   border: 5px solid transparent;
   position: relative;
@@ -127,19 +124,19 @@ button {
   top: -1px;
   left: -1px;
   border: 20px solid;
-  border-color: #000 transparent transparent #000;
+  border-color: $blue transparent transparent $blue;
   display: none;
 }
 
 .option_item .option_inner .tickmark:before {
   content: "";
   position: absolute;
-  top: -18px;
-  left: -18px;
+  top: -15px;
+  left: -15px;
   width: 15px;
-  height: 5px;
+  height: 7.5px;
   border: 3px solid;
-  border-color: transparent transparent #fff #fff;
+  border-color: transparent transparent $tortora $tortora;
   transform: rotate(-45deg);
 }
 
