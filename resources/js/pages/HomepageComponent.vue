@@ -82,8 +82,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-@import "/resources/sass/_variables";
-@import "/resources/sass/_mixin";
-</style>
