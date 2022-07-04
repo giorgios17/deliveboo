@@ -50,6 +50,9 @@
               <h4 class="card-title">{{ plate.name }}</h4>
               <p class="card-text">{{ plate.description }}</p>
               <p class="card-text">Prezzo: {{ plate.price }}€</p>
+              <button class="btn btn-primary mt-2" @click="AddCart(plate)">
+                Aggiungi al carrello
+              </button>
             </div>
           </div>
         </div>
@@ -64,10 +67,18 @@ export default {
   data() {
     return {
       restaurant: [],
+      cart: [],
     };
   },
   mounted() {
     this.getRestaurant();
+    if (localStorage.getItem("cart")) {
+      try {
+        this.cart = JSON.parse(localStorage.getItem("cart"));
+      } catch (e) {
+        localStorage.removeItem("cart");
+      }
+    }
   },
   methods: {
     getRestaurant() {
@@ -81,6 +92,19 @@ export default {
           console.log(this.restaurant);
         })
         .catch((e) => console.log(e));
+    },
+    AddCart(data) {
+      this.cart.push(data);
+      this.saveCart();
+      console.log(this.cart);
+    },
+    // removeCart(x) {
+    //   this.cart.splice(x, 1);
+    //   this.saveCats();
+    // },
+    saveCart() {
+      const parsed = JSON.stringify(this.cart);
+      localStorage.setItem("plate", parsed);
     },
   },
 };
