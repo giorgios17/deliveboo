@@ -52,11 +52,16 @@
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px">
-                            <h5 class="fw-normal mb-0">2</h5>
+                            <button @click="removeQuantity()">-</button>
+
+                            <h5 class="fw-normal mb-0">{{ count }}</h5>
+
+                            <button @click="addQuantity()">+</button>
                           </div>
                           <div style="width: 80px">
-                            <h5 class="mb-0">${{ item.price }}</h5>
+                            <h5 class="mb-0">${{ price }}</h5>
                           </div>
+
                           <button @click="removeCart()">
                             <i class="fas fa-trash-alt"></i>
                           </button>
@@ -81,12 +86,6 @@
                         "
                       >
                         <h5 class="mb-0">Card details</h5>
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                          class="img-fluid rounded-3"
-                          style="width: 45px"
-                          alt="Avatar"
-                        />
                       </div>
 
                       <p class="small mb-2">Card type</p>
@@ -215,6 +214,10 @@ export default {
   data() {
     return {
       cart: [],
+
+      count: 1,
+
+      price: "",
     };
   },
   mounted() {
@@ -231,6 +234,29 @@ export default {
     removeCart(x) {
       this.cart.splice(x, 1);
       this.saveCart();
+    },
+
+    addQuantity() {
+      this.count++;
+      return this.count;
+      console.log(this.count);
+    },
+    removeQuantity() {
+      if (this.count > 1) {
+        this.count--;
+
+        return this.count;
+        console.log(this.count);
+      }
+    },
+
+    priceForQuantity() {
+      if (this.count === 1) {
+        return this.plate.price;
+      } else {
+        this.price = this.plate.price * this.count;
+      }
+      console.log(this.price);
     },
   },
 };
