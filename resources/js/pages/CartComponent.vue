@@ -52,15 +52,11 @@
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px">
-<<<<<<< HEAD
                             <button @click="removeQuantity()">-</button>
 
                             <h5 class="fw-normal mb-0">{{ count }}</h5>
 
                             <button @click="addQuantity()">+</button>
-=======
-                            <h5 class="fw-normal mb-0">1</h5>
->>>>>>> 4c20d36b34936aaf0f3654be0220c839e3ad9705
                           </div>
                           <div style="width: 80px">
                             <h5 class="mb-0">${{ price }}</h5>
@@ -85,17 +81,7 @@
                           mb-4
                         "
                       >
-<<<<<<< HEAD
                         <h5 class="mb-0">Card details</h5>
-=======
-                        <h5 class="mb-0">Dettagli carrello</h5>
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                          class="img-fluid rounded-3"
-                          style="width: 45px"
-                          alt="Avatar"
-                        />
->>>>>>> 4c20d36b34936aaf0f3654be0220c839e3ad9705
                       </div>
 
                       <p class="small mb-2">Tipo di carta</p>
