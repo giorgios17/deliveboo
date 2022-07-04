@@ -7,7 +7,7 @@
           v-for="(typology, index) in arrayTypologies"
           :key="index"
         >
-          <label class="option_item">
+          <label class="option_item shadow">
             <input
               @click="addTypology(typology.id)"
               type="checkbox"
@@ -116,6 +116,10 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.25s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .option_item .option_inner .icon {
