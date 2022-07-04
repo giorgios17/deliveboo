@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="container">
-      <div class="row">
+      <div class="row pl-3">
         <!--logo deliveboo-->
         <a href="">
           <img src="../img/deliveboo-logo-yellow.svg" alt="deliveboo-logo" />
@@ -10,10 +10,10 @@
     </div>
 
     <div class="container">
-      <div class="row justify-content-between">
+      <div class="row pl-3 justify-content-between">
         <!--Sezione Contatti-->
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 pd">
-          <h4>CONTATTI</h4>
+          <h5>CONTATTI</h5>
           <ul>
             <li>
               <i class="fa-solid fa-headset"></i><a href="">0555-010101</a>
@@ -27,7 +27,7 @@
 
         <!--Sezione About Us-->
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 pd">
-          <h4>ABOUT US</h4>
+          <h5>ABOUT US</h5>
           <ul>
             <li>
               <i class="fa-solid fa-people-roof"></i><a href="">Chi siamo</a>
@@ -37,7 +37,7 @@
 
         <!--Sezione Download-->
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 pd">
-          <h4>SCARICA APP</h4>
+          <h5>SCARICA APP</h5>
           <ul>
             <li>
               <i class="fa-brands fa-app-store-ios"></i
@@ -58,7 +58,7 @@
 
         <!--Sezione Social-->
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 pd">
-          <h4>SEGUICI</h4>
+          <h5>SEGUICI</h5>
           <ul>
             <li>
               <i class="fa-brands fa-facebook"></i
@@ -79,7 +79,7 @@
 
         <!--Sezione Pagamenti-->
         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 pd">
-          <h4>PAGAMENTI</h4>
+          <h5>PAGAMENTI</h5>
           <ul>
             <li>
               <i class="fa-brands fa-cc-mastercard"></i
@@ -99,9 +99,9 @@
 
     <!--sezione copyright-->
     <div class="container">
-      <div class="row">
+      <div class="row pl-3">
         <div class="col-12 pd">
-          <h4>COPYRIGHT BY</h4>
+          <h5>COPYRIGHT BY</h5>
           <ul>
             <li>
               <i class="fa-brands fa-github"></i
@@ -147,6 +147,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "/resources/sass/_variables";
+@import "/resources/sass/_mixin";
+
 footer {
   background-color: hsl(201deg 100% 14%);
   color: white;
@@ -154,7 +157,8 @@ footer {
     width: 70%;
     margin: 40px 0;
   }
-  h4 {
+  h5 {
+    @include h5(white);
     padding-top: 10px;
   }
   .pd {
@@ -190,6 +194,17 @@ footer {
         font-size: 12px;
         padding-bottom: 20px;
       }
+    }
+  }
+
+  @media screen and (max-width: 250px) {
+    ul > li > a {
+      font-size: 0.75rem;
+    }
+  }
+  @media screen and (max-width: 175px) {
+    ul > li > a {
+      font-size: 0.65rem;
     }
   }
 }
