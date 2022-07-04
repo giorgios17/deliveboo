@@ -36,7 +36,10 @@
       </div>
     </div>
 
-    <TypologyCard :arrayTypologies="arrayTypologies" />
+    <TypologyCard
+      @getTypologies="getTypologies"
+      :arrayTypologies="arrayTypologies"
+    />
     <!--Sezione recensioni-->
     <CarouselComponent />
 
@@ -109,6 +112,25 @@ export default {
         .get(url)
         .then((result) => {
           this.arrayTypologies = result.data.response;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getTypologies: function (typologies) {
+      this.axiosCallFilterRestaurants(typologies);
+    },
+    axiosCallFilterRestaurants(typologies) {
+      let params = {
+        typologies: typologies,
+      };
+      console.log(params);
+
+      console.log("/api/restaurants/filter/", params);
+      window.axios
+        .get("/api/restaurants/filter/", params)
+        .then((result) => {
+          console.log(result);
         })
         .catch((error) => {
           console.log(error);

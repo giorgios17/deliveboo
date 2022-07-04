@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class RestaurantsController extends Controller
 {
-    public function filterRestaurants($id)
+    public function filterRestaurants(Request $request, $id)
     {
         return response()->json([
             'response' => Typology::with("User")->where("id", $id)->get()
