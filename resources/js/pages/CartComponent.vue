@@ -9,8 +9,8 @@
                 <div class="col-lg-7">
                   <h5 class="mb-3">
                     <a href="#!" class="text-body"
-                      ><i class="fas fa-long-arrow-alt-left me-2"></i> Continue
-                      shopping</a
+                      ><i class="fas fa-long-arrow-alt-left me-2"></i>Continua
+                      lo shopping</a
                     >
                   </h5>
                   <hr />
@@ -24,8 +24,8 @@
                     "
                   >
                     <div>
-                      <p class="mb-1">Shopping cart</p>
-                      <p class="mb-0">You have items in your cart</p>
+                      <p class="mb-1">Carrello</p>
+                      <p class="mb-0">Hai articoli nel carrello</p>
                     </div>
                     <div></div>
                   </div>
@@ -52,11 +52,15 @@
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px">
+<<<<<<< HEAD
                             <button @click="removeQuantity()">-</button>
 
                             <h5 class="fw-normal mb-0">{{ count }}</h5>
 
                             <button @click="addQuantity()">+</button>
+=======
+                            <h5 class="fw-normal mb-0">1</h5>
+>>>>>>> 4c20d36b34936aaf0f3654be0220c839e3ad9705
                           </div>
                           <div style="width: 80px">
                             <h5 class="mb-0">${{ price }}</h5>
@@ -65,10 +69,6 @@
                           <button @click="removeCart()">
                             <i class="fas fa-trash-alt"></i>
                           </button>
-
-                          <!-- <a href="#!" style="color: #cecece"
-                            ><i class="fas fa-trash-alt"></i
-                          ></a> -->
                         </div>
                       </div>
                     </div>
@@ -85,10 +85,20 @@
                           mb-4
                         "
                       >
+<<<<<<< HEAD
                         <h5 class="mb-0">Card details</h5>
+=======
+                        <h5 class="mb-0">Dettagli carrello</h5>
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                          class="img-fluid rounded-3"
+                          style="width: 45px"
+                          alt="Avatar"
+                        />
+>>>>>>> 4c20d36b34936aaf0f3654be0220c839e3ad9705
                       </div>
 
-                      <p class="small mb-2">Card type</p>
+                      <p class="small mb-2">Tipo di carta</p>
                       <a href="#!" type="submit" class="text-white"
                         ><i class="fab fa-cc-mastercard fa-2x me-2"></i
                       ></a>
@@ -109,10 +119,10 @@
                             id="typeName"
                             class="form-control form-control-lg"
                             siez="17"
-                            placeholder="Cardholder's Name"
+                            placeholder="Nome intestatario"
                           />
                           <label class="form-label" for="typeName"
-                            >Cardholder's Name</label
+                            >Nome intestatario</label
                           >
                         </div>
 
@@ -127,7 +137,7 @@
                             maxlength="19"
                           />
                           <label class="form-label" for="typeText"
-                            >Card Number</label
+                            >Numero carta</label
                           >
                         </div>
 
@@ -144,7 +154,7 @@
                                 maxlength="7"
                               />
                               <label class="form-label" for="typeExp"
-                                >Expiration</label
+                                >Data di scadenza</label
                               >
                             </div>
                           </div>
@@ -154,7 +164,7 @@
                                 type="password"
                                 id="typeText"
                                 class="form-control form-control-lg"
-                                placeholder="&#9679;&#9679;&#9679;"
+                                placeholder="123"
                                 size="1"
                                 minlength="3"
                                 maxlength="3"
@@ -170,17 +180,17 @@
                       <hr class="my-4" />
 
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Subtotal</p>
+                        <p class="mb-2">Totale</p>
                         <p class="mb-2">$4798.00</p>
                       </div>
 
                       <div class="d-flex justify-content-between">
-                        <p class="mb-2">Shipping</p>
+                        <p class="mb-2">Spedizione</p>
                         <p class="mb-2">$20.00</p>
                       </div>
 
                       <div class="d-flex justify-content-between mb-4">
-                        <p class="mb-2">Total(Incl. taxes)</p>
+                        <p class="mb-2">Totale(Incl. iva)</p>
                         <p class="mb-2">$4818.00</p>
                       </div>
 
@@ -223,7 +233,7 @@ export default {
   mounted() {
     if (localStorage.plate) {
       this.cart = JSON.parse(localStorage.getItem("plate"));
-      console.log(this.cart);
+      //console.log(this.cart);
     }
   },
   methods: {
