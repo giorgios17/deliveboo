@@ -13,7 +13,7 @@
               type="checkbox"
               class="checkbox"
             />
-            <div class="option_inner facebook">
+            <div class="option_inner food">
               <div class="tickmark"></div>
               <div class="icon">
                 <img
@@ -99,12 +99,14 @@ button {
   background: #fff;
   border-radius: 5px;
   text-align: center;
-  padding: 58px 40px;
   cursor: pointer;
   color: #585c68;
   display: block;
   border: 5px solid transparent;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .option_item .option_inner .icon {
@@ -115,7 +117,7 @@ button {
   user-select: none;
 }
 
-.option_item .checkbox:checked ~ .option_inner.facebook {
+.option_item .checkbox:checked ~ .option_inner.food {
   border-color: $blue;
   color: $blue;
 }
@@ -145,7 +147,7 @@ button {
   display: block;
 }
 
-.option_item .option_inner.facebook .tickmark {
+.option_item .option_inner.food .tickmark {
   border-color: $blue transparent transparent $blue;
 }
 </style>
