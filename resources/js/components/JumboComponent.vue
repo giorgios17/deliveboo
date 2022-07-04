@@ -37,5 +37,17 @@ export default {
       padding: 200px 0;
     }
   }
+  @media screen and (max-width: 300px) {
+    h1.h1_jumbo {
+      font-size: 25px;
+      padding: 200px 0;
+    }
+  }
+  @media screen and (max-width: 200px) {
+    h1.h1_jumbo {
+      font-size: 15px;
+      padding: 200px 0;
+    }
+  }
 }
 </style>
