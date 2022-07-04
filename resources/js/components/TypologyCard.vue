@@ -54,10 +54,9 @@ export default {
       } else {
         this.selectedTypologies.push(id);
       }
-      console.log(this.selectedTypologies);
     },
     getData() {
-      return this.selectedTypologies;
+      return JSON.parse(JSON.stringify(this.selectedTypologies));
     },
   },
 };
