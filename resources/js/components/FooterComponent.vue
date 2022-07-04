@@ -40,10 +40,18 @@
           <h4>SCARICA APP</h4>
           <ul>
             <li>
-              <i class="fa-brands fa-app-store-ios"></i><a href="">App Store</a>
+              <i class="fa-brands fa-app-store-ios"></i
+              ><a
+                href="https://apps.apple.com/it/app/deliveroo-consegna-di-cibo/id1001501844"
+                >App Store</a
+              >
             </li>
             <li>
-              <i class="fa-brands fa-google-play"></i><a href="">Google Play</a>
+              <i class="fa-brands fa-google-play"></i
+              ><a
+                href="https://play.google.com/store/apps/details?id=com.deliveroo.orderapp&hl=it&gl=US"
+                >Google Play</a
+              >
             </li>
           </ul>
         </div>
@@ -53,11 +61,18 @@
           <h4>SEGUICI</h4>
           <ul>
             <li>
-              <i class="fa-brands fa-facebook"></i><a href="">Facebook</a>
+              <i class="fa-brands fa-facebook"></i
+              ><a href="https://it-it.facebook.com/DeliverooIT/">Facebook</a>
             </li>
-            <li><i class="fa-brands fa-twitter"></i><a href="">Twitter</a></li>
             <li>
-              <i class="fa-brands fa-instagram"></i><a href="">Instagram</a>
+              <i class="fa-brands fa-twitter"></i
+              ><a href="https://twitter.com/deliveroo_italy">Twitter</a>
+            </li>
+            <li>
+              <i class="fa-brands fa-instagram"></i
+              ><a href="https://www.instagram.com/deliveroo_italy/?hl=it"
+                >Instagram</a
+              >
             </li>
           </ul>
         </div>
