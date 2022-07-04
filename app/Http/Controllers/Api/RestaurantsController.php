@@ -9,11 +9,16 @@ use App\Http\Controllers\Controller;
 
 class RestaurantsController extends Controller
 {
-    public function filterRestaurants(Request $request, $id)
+    public function filterRestaurants($id)
     {
+        $data = json_decode($id);
+        // dd($data[0]);
+        // foreach ($data as $value) {
+        // dd($value);
         return response()->json([
-            'response' => Typology::with("User")->where("id", $id)->get()
+            'response' => Typology::with("User")->whereIn("id", $data)->get()
         ]);
+        // }
     }
     public function getPlates($slug)
     {

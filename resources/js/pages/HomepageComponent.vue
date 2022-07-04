@@ -118,17 +118,15 @@ export default {
         });
     },
     getTypologies: function (typologies) {
+      console.log(typologies);
       this.axiosCallFilterRestaurants(typologies);
     },
     axiosCallFilterRestaurants(typologies) {
-      let params = {
-        typologies: typologies,
-      };
-      console.log(params);
-
-      console.log("/api/restaurants/filter/", params);
+      // console.log(JSON.stringify(typologies));
+      let params = JSON.stringify(typologies);
+      console.log("/api/restaurants/filter/" + params);
       window.axios
-        .get("/api/restaurants/filter/", params)
+        .get("/api/restaurants/filter/" + params)
         .then((result) => {
           console.log(result);
         })
