@@ -8,8 +8,8 @@
                     <div class="card-header"><i class="fa-solid fa-pen-to-square"></i> {{ __('Registrazione') }}</div>
 
                     <div class="card-body">
-                        <form action="{{ route('register') }}" onsubmit="return valthisform()" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('register') }}" onsubmit="return valthisform() && verifyPassword()"
+                            method="POST" enctype="multipart/form-data">
                             {{-- token --}}
                             @csrf
 
@@ -85,9 +85,12 @@
                                     <small>Assicurati che le password coincidano</small>
                                 </div>
                             </div>
+                            <div id="alert-password" class="alert alert-danger m-auto" style="display:none">
+                                Le password non coincidono
+                            </div>
 
                             {{-- input indirizzo --}}
-                            <div class="form-group row">
+                            <div class="form-group row mt-3">
                                 <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}
                                     <span class="text-warning">*</span></label>
                                 <div class="col-md-6">
