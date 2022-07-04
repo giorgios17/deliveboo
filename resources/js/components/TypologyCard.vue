@@ -163,4 +163,11 @@ button {
 .option_item .option_inner.food .tickmark {
   border-color: $blue transparent transparent $blue;
 }
+
+@media screen and (max-width: 250px) {
+  .container .option_item {
+    width: 100px;
+    height: 100px;
+  }
+}
 </style>
