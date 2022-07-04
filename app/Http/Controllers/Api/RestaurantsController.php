@@ -12,13 +12,12 @@ class RestaurantsController extends Controller
     public function filterRestaurants($id)
     {
         $data = json_decode($id);
-        // dd($data[0]);
-        // foreach ($data as $value) {
-        // dd($value);
-        return response()->json([
-            'response' => Typology::with("User")->whereIn("id", $data)->get()
-        ]);
-        // }
+
+        $restaurants = User::whereHas('typology', function ($query) use ($data) {
+            $query->whereIn('id', $data);
+        })->get();
+
+        return response()->json($restaurants);
     }
     public function getPlates($slug)
     {
