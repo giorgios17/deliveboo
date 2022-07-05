@@ -40,8 +40,8 @@
           </div>
           <div class="card-body">
             <h4 class="card-title">{{ plate.name }}</h4>
-            <p class="card-text">{{ plate.description }}</p>
-            <p class="card-text">Prezzo: {{ plate.price }}€</p>
+            <p class="card-text mb-2">{{ plate.description }}</p>
+            <p class="card-text mb-3">Prezzo: {{ plate.price }}€</p>
             <button @click="addToCart(plate)" class="btn btn-primary">
               Aggiungi al Carrello
             </button>
