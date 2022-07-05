@@ -1,7 +1,7 @@
 <template>
-   <div id="not_found" class="container my-5">
+   <div id="not_found" class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">404 Not Found</h5>
@@ -43,5 +43,7 @@ export default {
       margin: 0 !important;
     }
   }
+
+  margin: 250px 0;
 }
 </style>
