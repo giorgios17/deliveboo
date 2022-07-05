@@ -13,7 +13,7 @@ class RestaurantsController extends Controller
     {
         $data = json_decode($id);
 
-        $restaurants = User::whereHas('typology', function ($query) use ($data) {
+        $restaurants = User::with('typology')->whereHas('typology', function ($query) use ($data) {
             $query->whereIn('id', $data);
         })->get();
 

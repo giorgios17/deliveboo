@@ -24,6 +24,11 @@
         </div>
         <div class="card-body">
           <h4 class="card-title mb-2">{{ restaurant.business_name }}</h4>
+          <h5>Categorie:</h5>
+          <span v-for="(typology, index) in restaurant.typology" :key="index">
+            -{{ typology.name }}</span
+          >
+
           <p class="card-text mb-3">{{ restaurant.description }}</p>
           <router-link
             tag="button"
