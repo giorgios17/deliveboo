@@ -24,7 +24,9 @@
         </div>
         <p>{{ restaurant.description }}</p>
       </div>
-
+      <!-- INIZIO CARRELLO -->
+      <CartComponent />
+      <!-- FINE CARRELLO -->
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-3 col-sm-3 col-12 card my-3 p-4 bg">
@@ -62,6 +64,8 @@
 </template>
 
 <script>
+import CartComponent from "../pages/CartComponent.vue";
+
 export default {
   name: "RestaurantComponent",
   data() {
@@ -69,6 +73,9 @@ export default {
       restaurant: [],
       cart: [],
     };
+  },
+  components: {
+    CartComponent,
   },
   mounted() {
     this.getRestaurant();
@@ -105,6 +112,24 @@ export default {
     saveCart() {
       const parsed = JSON.stringify(this.cart);
       localStorage.setItem("plate", parsed);
+    },
+    removeCart(x) {
+      this.cart.splice(x, 1);
+      this.saveCart();
+    },
+
+    addQuantity() {
+      this.count++;
+      return this.count;
+      console.log(this.count);
+    },
+    removeQuantity() {
+      if (this.count > 1) {
+        this.count--;
+
+        return this.count;
+        console.log(this.count);
+      }
     },
   },
 };
