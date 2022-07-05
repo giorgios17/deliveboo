@@ -94,17 +94,21 @@ export default {
         .catch((e) => console.log(e));
     },
     addToCart(plate) {
-      if (this.cart.find((item) => item.id === plate.id)) {
-        this.cart.find((item) => item.id === plate.id).quantity++;
+      if (this.cart.length > 0 && plate.user_id != this.cart[0].user_id) {
+        alert("Puoi comprare i piatti solo da un singolo ristorante");
       } else {
-        this.cart.push({
-          id: plate.id,
-          name: plate.name,
-          image: plate.image,
-          price: plate.price,
-          user_id: plate.user_id,
-          quantity: 1,
-        });
+        if (this.cart.find((item) => item.id === plate.id)) {
+          this.cart.find((item) => item.id === plate.id).quantity++;
+        } else {
+          this.cart.push({
+            id: plate.id,
+            name: plate.name,
+            image: plate.image,
+            price: plate.price,
+            user_id: plate.user_id,
+            quantity: 1,
+          });
+        }
       }
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
