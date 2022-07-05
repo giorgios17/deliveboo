@@ -59,7 +59,7 @@
                             <button @click="addQuantity()">+</button>
                           </div>
                           <div style="width: 80px">
-                            <h5 class="mb-0">${{ price }}</h5>
+                            <h5 class="mb-0">${{ item.price }}</h5>
                           </div>
 
                           <button @click="removeCart()">
@@ -212,8 +212,6 @@ export default {
       cart: [],
 
       count: 1,
-
-      price: "",
     };
   },
   mounted() {
@@ -244,15 +242,6 @@ export default {
         return this.count;
         console.log(this.count);
       }
-    },
-
-    priceForQuantity() {
-      if (this.count === 1) {
-        return this.plate.price;
-      } else {
-        this.price = this.plate.price * this.count;
-      }
-      console.log(this.price);
     },
   },
 };
