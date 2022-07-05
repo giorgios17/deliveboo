@@ -1,7 +1,9 @@
 <template>
-   <div id="not_found" class="container-fluid">
+  <div>
+    <JumboComponent />
+    <div id="not_found" class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">404 Not Found</h5>
@@ -19,11 +21,16 @@
             </div>  
         </div>
     </div>
+  </div>
 </template>
 
 <script>
+import JumboComponent from "../components/JumboComponent.vue";
 export default {
   name: "NotFound",
+  components: {
+    JumboComponent,
+  },
 };
 </script>
 
@@ -44,6 +51,6 @@ export default {
     }
   }
 
-  margin: 250px 0;
+  margin: 100px 0;
 }
 </style>
