@@ -90,7 +90,7 @@ export default {
 .fa-circle-chevron-right {
   color: $tortora;
   cursor: pointer;
-  transition: transform 0.1s linear;
+  transition: transform 0.25s ease-in-out;
   &:hover {
     transform: scale(1.2);
   }
