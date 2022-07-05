@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('plates', 'Api\PlateController@index');
 Route::get('typologies', 'Api\TypologyController@index');
 Route::get('/users/{slug}', 'Api\RestaurantsController@getPlates');
+Route::get('/shipping-price/{id}', 'Api\RestaurantsController@getShippingPrice');
 Route::get('/restaurants/filter/{typologies}', 'Api\RestaurantsController@filterRestaurants');
 
 // rotte per la gestione dei pagamenti
