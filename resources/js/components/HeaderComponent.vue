@@ -29,7 +29,9 @@
             <a class="nav-link" href="#">Lavora con noi</a>
           </li>
           <li class="nav-item d-lg-none">
-            <a class="nav-link" href="#">Carrello</a>
+            <router-link class="nav-link" :to="{ name: 'cart' }"
+              >Carrello</router-link
+            >
           </li>
           <li class="nav-item d-lg-none">
             <a class="nav-link" href="/login">Accedi</a>
@@ -42,11 +44,11 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link">
+            <router-link class="nav-link" :to="{ name: 'cart' }">
               <div class="d-lg-none d-xl-none">Carrello</div>
               <div class="d-none d-lg-block d-xl-block">
                 <i class="fa-solid fa-cart-shopping"></i></div
-            ></a>
+            ></router-link>
           </li>
           <li class="nav-item">
             <a href="/login" class="nav-link d-inline-block">Accedi</a>
