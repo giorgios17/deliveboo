@@ -24,4 +24,9 @@ class RestaurantsController extends Controller
         $restaurant = User::where("slug", $slug)->with('Plate')->first();
         return response()->json($restaurant);
     }
+    public function getShippingPrice($id)
+    {
+        $restaurant = User::find($id);
+        return response()->json($restaurant->shipping_price);
+    }
 }
