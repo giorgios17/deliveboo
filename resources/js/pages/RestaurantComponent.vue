@@ -22,6 +22,13 @@
           <p class="font-weight-bold mr-2">GIORNO DI CHIUSURA:</p>
           <p>{{ restaurant.closing_day }}</p>
         </div>
+        <div class="d-flex my-2">
+          <p class="font-weight-bold mr-2">COSTO DI SPEDIZIONE:</p>
+          <p v-if="restaurant.shipping_price != 0">
+            {{ restaurant.shipping_price }}
+          </p>
+          <p v-else>Spedizione Gratuita</p>
+        </div>
         <p>{{ restaurant.description }}</p>
       </div>
 
@@ -48,6 +55,9 @@
                 <h4 class="card-title">{{ plate.name }}</h4>
                 <p class="card-text">{{ plate.description }}</p>
                 <p class="card-text">Prezzo: {{ plate.price }}€</p>
+                <button @click="addToCart(plate)" class="btn btn-primary">
+                  Aggiungi al Carrello
+                </button>
               </div>
             </div>
           </div>
@@ -63,23 +73,45 @@ export default {
   data() {
     return {
       restaurant: [],
+      cart: [],
     };
   },
   mounted() {
     this.getRestaurant();
+    this.getCart();
   },
   methods: {
     getRestaurant() {
       const slug = this.$route.params.slug;
-      console.log("parametro slug" + slug);
+      // console.log("parametro slug" + slug);
       window.axios
         .get("/api/users/" + slug)
         .then(({ data }) => {
-          console.log(data);
+          // console.log(data);
           this.restaurant = data;
-          console.log(this.restaurant);
+          // console.log(this.restaurant);
         })
         .catch((e) => console.log(e));
+    },
+    addToCart(plate) {
+      if (this.cart.find((item) => item.id === plate.id)) {
+        this.cart.find((item) => item.id === plate.id).quantity++;
+      } else {
+        this.cart.push({
+          id: plate.id,
+          name: plate.name,
+          image: plate.image,
+          price: plate.price,
+          user_id: plate.user_id,
+          quantity: 1,
+        });
+      }
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+    getCart() {
+      if (localStorage.getItem("cart")) {
+        this.cart = JSON.parse(localStorage.getItem("cart"));
+      }
     },
   },
 };
