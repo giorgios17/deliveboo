@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row py-5">
+    <div class="row my-5">
       <div class="col-6">
         <img
           class="w-100"
@@ -9,57 +9,42 @@
         />
       </div>
       <div class="col-6">
-        <h1>{{ restaurant.business_name }}</h1>
-        <div class="d-flex my-2">
-          <p class="font-weight-bold mr-2">ORARIO DI APERTURA</p>
-          <p>{{ restaurant.opening_time }}</p>
-        </div>
-        <div class="d-flex my-2">
-          <p class="font-weight-bold mr-2">ORARIO DI CHIUSURA</p>
-          <p>{{ restaurant.closing_time }}</p>
-        </div>
-        <div class="d-flex my-2">
-          <p class="font-weight-bold mr-2">GIORNO DI CHIUSURA:</p>
-          <p>{{ restaurant.closing_day }}</p>
-        </div>
-        <div class="d-flex my-2">
-          <p class="font-weight-bold mr-2">COSTO DI SPEDIZIONE:</p>
-          <p v-if="restaurant.shipping_price != 0">
-            {{ restaurant.shipping_price }}
-          </p>
-          <p v-else>Spedizione Gratuita</p>
-        </div>
+        <h2 class="mb-2">{{ restaurant.business_name }}</h2>
+        <p>ORARIO DI APERTURA: {{ restaurant.opening_time }}</p>
+        <p>ORARIO DI CHIUSURA: {{ restaurant.closing_time }}</p>
+        <p>GIORNO DI CHIUSURA: {{ restaurant.closing_day }}</p>
+        <p>COSTO DI SPEDIZIONE: {{ restaurant.opening_time }}</p>
+        <p v-if="restaurant.shipping_price != 0">
+          COSTO DI SPEDIZIONE: € {{ restaurant.shipping_price }}
+        </p>
+        <p v-else>COSTO DI SPEDIZIONE: Spedizione Gratuita</p>
         <p>{{ restaurant.description }}</p>
       </div>
+    </div>
 
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-3 col-sm-3 col-12 card my-3 p-4 bg">
-            <p>Seleziona il tuo piatto preferito</p>
-          </div>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-sm-3 col-12 card my-3 p-4 bg">
+        <p class="text-center">Seleziona il tuo piatto preferito</p>
       </div>
+    </div>
 
-      <div class="container">
-        <div class="row justify-content-center my-5">
-          <div v-for="(plate, index) in restaurant.plate" :key="index">
-            <div v-if="plate.visible" class="card m-3" style="width: 18rem">
-              <div class="wrapper_img p-3">
-                <img
-                  :src="'/storage/' + plate.image"
-                  class="card-img-top h-100 w-100"
-                  :alt="plate.name"
-                />
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">{{ plate.name }}</h4>
-                <p class="card-text">{{ plate.description }}</p>
-                <p class="card-text">Prezzo: {{ plate.price }}€</p>
-                <button @click="addToCart(plate)" class="btn btn-primary">
-                  Aggiungi al Carrello
-                </button>
-              </div>
-            </div>
+    <div class="row justify-content-center my-5">
+      <div v-for="(plate, index) in restaurant.plate" :key="index">
+        <div v-if="plate.visible" class="card m-3" style="width: 18rem">
+          <div class="wrapper_img p-3">
+            <img
+              :src="'/storage/' + plate.image"
+              class="card-img-top h-100 w-100"
+              :alt="plate.name"
+            />
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{ plate.name }}</h4>
+            <p class="card-text">{{ plate.description }}</p>
+            <p class="card-text">Prezzo: {{ plate.price }}€</p>
+            <button @click="addToCart(plate)" class="btn btn-primary">
+              Aggiungi al Carrello
+            </button>
           </div>
         </div>
       </div>
@@ -123,10 +108,21 @@ export default {
 
 <style lang="scss" scoped>
 @import "/resources/sass/_variables.scss";
+@import "/resources/sass/_mixin.scss";
+
+h2 {
+  @include h2($blue);
+}
+
+p {
+  @include p($blue);
+}
 
 .bg {
-  background-color: #003049;
-  color: hsl(53deg 37% 77%);
+  background-color: $blue;
+  p.text-center {
+    @include p($tortora);
+  }
 }
 .wrapper_img {
   height: 180px;
