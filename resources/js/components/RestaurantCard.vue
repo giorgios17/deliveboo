@@ -24,10 +24,25 @@
         </div>
         <div class="card-body">
           <h4 class="card-title mb-2">{{ restaurant.business_name }}</h4>
-          <h5>Categorie:</h5>
-          <span v-for="(typology, index) in restaurant.typology" :key="index">
-            -{{ typology.name }}</span
+          <h6>Categorie:</h6>
+          <div
+            class="d-inline-block mb-2"
+            v-for="(typology, index) in restaurant.typology"
+            :key="index"
           >
+            <p
+              class="d-inline-block"
+              v-if="index != restaurant.typology.length - 1"
+            >
+              {{ typology.name }},
+            </p>
+            <p
+              class="d-inline-block"
+              v-if="index == restaurant.typology.length - 1"
+            >
+              {{ typology.name }}.
+            </p>
+          </div>
 
           <p class="card-text mb-3">{{ restaurant.description }}</p>
           <router-link
@@ -80,6 +95,9 @@ export default {
 .card-body {
   h4 {
     @include h4($blue);
+  }
+  h6 {
+    @include h6($blue);
   }
   p {
     @include p($blue);
