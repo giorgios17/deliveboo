@@ -190,4 +190,8 @@ export default {
 .wrapper_image {
   height: 30px;
 }
+.fa-circle-minus,
+.fa-circle-plus {
+  cursor: pointer;
+}
 </style>
