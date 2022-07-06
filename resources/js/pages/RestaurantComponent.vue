@@ -1,10 +1,12 @@
 <template>
   <div>
+    <!-- info ristorante -->
     <div class="container">
       <div class="row my-5">
         <div class="col-6">
           <img
             class="w-100"
+            style="border-radius: 5px"
             :src="'/storage/' + restaurant.image"
             :alt="restaurant.name"
           />
@@ -29,11 +31,12 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row my-5">
-        <div class="row col-9 px-3">
+    <!-- card piatto -->
+    <div class="container-fluid p-3">
+      <div class="row">
+        <div class="row justify-content-center col-8">
           <div v-for="(plate, index) in restaurant.plate" :key="index">
-            <div v-if="plate.visible" class="card m-1" style="width: 18rem">
+            <div v-if="plate.visible" class="card mx-4" style="width: 18rem">
               <div class="wrapper_img p-3">
                 <img
                   :src="'/storage/' + plate.image"
@@ -52,11 +55,19 @@
             </div>
           </div>
         </div>
-        <div class="col-3">
-          <!-- inizio carrello -->
-          <div v-if="cart.length > 0" class="col-12 cart_style">
+        <!-- inizio carrello -->
+        <div
+          class="col-4 bg-primary py-3"
+          style="border-radius: 5px; overflow-y: auto"
+        >
+          <div
+            v-if="cart.length > 0"
+            class="col-12 cart_style"
+            style="border-radius: 5px"
+          >
+            <h3 class="full-cart mb-3 py-3">Carrello</h3>
             <div v-for="plate in cart" :key="plate.id" class="plate_row mb-3">
-              <div class="row align-items-center">
+              <div class="row align-items-center py-2">
                 <h6 class="col-3">
                   {{ plate.name }}
                 </h6>
@@ -96,9 +107,16 @@
                 </div>
               </div>
             </div>
-            <a class="go_checkout" href="/cart">Vai al Checkout</a>
+            <div class="ck-border py-3">
+              <a class="go_checkout py-2" href="/cart"
+                ><i class="fa-solid fa-md fa-arrow-right-long mr-2"></i> Vai al
+                Checkout</a
+              >
+            </div>
           </div>
-          <p v-else class="col-12 py-3">Il tuo carrello è vuoto</p>
+          <p v-else class="col-12 py-3 text-center empty-cart">
+            Il tuo carrello è vuoto
+          </p>
           <!-- fine carrello -->
         </div>
       </div>
@@ -210,8 +228,18 @@ p {
   }
 }
 .cart_style {
-  border: 10px solid $blue;
   background-color: $yellow;
+}
+.full-cart {
+  border-bottom: 2px solid $blue;
+}
+.empty-cart {
+  color: $blue;
+  background-color: $yellow;
+  border-radius: 5px;
+}
+.ck-border {
+  border-top: 2px solid $blue;
 }
 a.go_checkout {
   text-decoration: none;
