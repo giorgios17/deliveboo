@@ -4,7 +4,7 @@
     <div class="row justify-content-center align-items-center">
       <!-- Controllo sx -->
       <div
-        class="col-md-1 col-sm-2 text-center prev"
+        class="col-md-2 col-sm-2 text-center prev"
         @click="toggleImg('prev')"
       >
         <i class="fa-solid fa-2x fa-circle-chevron-left"> </i>
