@@ -143,6 +143,7 @@ return [
         "closing_day" => 'Martedì',
         "shipping_price" => '0.00',
         "typology" => [
+            12,
             13
         ]
     ],
