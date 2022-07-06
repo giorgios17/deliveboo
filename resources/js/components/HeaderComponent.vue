@@ -220,6 +220,11 @@ header {
   .fa-circle-plus,
   .fa-circle-xmark {
     cursor: pointer;
+    color: $blue;
+    transition: transform 0.25s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   .col-3 > .btn-danger {
