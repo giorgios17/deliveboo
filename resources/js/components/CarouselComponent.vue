@@ -1,31 +1,26 @@
 <template>
   <!-- carousel -->
   <div class="container-fluid bg py-5">
-    <div class="row justify-content-center mb-5">
-      <div class="wrapper_img">
-        <img class="w-100" :src="'/storage' + review" />
-      </div>
-    </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center">
       <!-- Controllo sx -->
       <div
-        class="col-md-2 col-sm-4 text-center prev mb-4"
+        class="col-md-2 col-sm-4 text-center prev"
         @click="toggleImg('prev')"
       >
-        <i class="fa-solid fa-2x fa-circle-chevron-left">
-          <p class="mt-2">Precedente</p>
-        </i>
+        <i class="fa-solid fa-2x fa-circle-chevron-left"> </i>
+      </div>
+      <div class="wrapper_img">
+        <img class="w-100" :src="'/storage' + review" />
       </div>
       <!-- Controllo dx -->
       <div
         class="col-md-2 col-sm-4 text-center next"
         @click="toggleImg('next')"
       >
-        <i class="fa-solid fa-2x fa-circle-chevron-right">
-          <p class="mt-2">Successivo</p>
-        </i>
+        <i class="fa-solid fa-2x fa-circle-chevron-right"> </i>
       </div>
     </div>
+    <div class="row justify-content-center"></div>
   </div>
 </template>
 
@@ -83,7 +78,7 @@ export default {
 }
 
 .wrapper_img {
-  width: 250px;
+  width: 350px;
 }
 
 .fa-circle-chevron-left,
