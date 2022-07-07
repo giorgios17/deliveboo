@@ -22,8 +22,16 @@
             color: $blue  !important;
         }
 
-        a.text-danger {
+        a.logout_anchor {
             @include p($red);
+            transition: all 0.25s ease-in-out;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: $red;
+                color: white;
+                border-radius: 5px;
+            }
         }
 
         @media screen and (max-width: 350px) {
