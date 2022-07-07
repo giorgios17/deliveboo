@@ -30,7 +30,7 @@ class BraintreeController extends Controller
             return view ('dashboard');
         }else{
             $clientToken = $gateway->clientToken()->generate();
-            return view ('braintree',['token' => $clientToken]);
+            return view ('guest.braintree',['token' => $clientToken]);
         }
     }
 }
