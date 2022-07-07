@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{-- @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif --}}
     <div id="user_index" class="row justify-content-center mb-5">
         <h1 class="col-12 text-center p-3 mb-5 shadow">
             I TUOI PIATTI

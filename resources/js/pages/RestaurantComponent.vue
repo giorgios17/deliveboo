@@ -36,7 +36,11 @@
       <div class="row">
         <div class="row justify-content-center col-8">
           <div v-for="(plate, index) in restaurant.plate" :key="index">
-            <div v-if="plate.visible" class="card mx-4" style="width: 18rem">
+            <div
+              v-if="plate.visible"
+              class="card mx-4 my-2"
+              style="width: 18rem"
+            >
               <div class="wrapper_img p-3">
                 <img
                   :src="'/storage/' + plate.image"
@@ -58,7 +62,7 @@
         <!-- inizio carrello -->
         <div
           class="col-4 bg-primary py-3"
-          style="border-radius: 5px; overflow-y: auto height:500px"
+          style="border-radius: 5px; height: 500px"
         >
           <div
             v-if="cart.length > 0"
@@ -140,13 +144,10 @@ export default {
   methods: {
     getRestaurant() {
       const slug = this.$route.params.slug;
-      // console.log("parametro slug" + slug);
       window.axios
         .get("/api/users/" + slug)
         .then(({ data }) => {
-          // console.log(data);
           this.restaurant = data;
-          // console.log(this.restaurant);
         })
         .catch((e) => console.log(e));
     },
@@ -256,6 +257,8 @@ p {
 }
 .cart_style {
   background-color: $yellow;
+  overflow-y: auto;
+  height: 470px;
 }
 .full-cart {
   border-bottom: 2px solid $blue;

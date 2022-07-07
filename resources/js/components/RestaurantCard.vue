@@ -46,6 +46,7 @@
 
           <p class="card-text mb-3">{{ restaurant.description }}</p>
           <router-link
+            @click.native="scrollTop()"
             tag="button"
             :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
             class="btn btn-primary"
@@ -62,6 +63,11 @@ export default {
   name: "RestaurantCard",
   props: {
     arrayRestaurants: Array,
+  },
+  methods: {
+    scrollTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
