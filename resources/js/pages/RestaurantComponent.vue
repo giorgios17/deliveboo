@@ -140,13 +140,10 @@ export default {
   methods: {
     getRestaurant() {
       const slug = this.$route.params.slug;
-      // console.log("parametro slug" + slug);
       window.axios
         .get("/api/users/" + slug)
         .then(({ data }) => {
-          // console.log(data);
           this.restaurant = data;
-          // console.log(this.restaurant);
         })
         .catch((e) => console.log(e));
     },
