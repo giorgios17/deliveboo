@@ -58,7 +58,7 @@
         <!-- inizio carrello -->
         <div
           class="col-4 bg-primary py-3"
-          style="border-radius: 5px; overflow-y: auto; height: 500px"
+          style="border-radius: 5px; height: 500px"
         >
           <div
             v-if="cart.length > 0"
@@ -226,6 +226,8 @@ p {
 }
 .cart_style {
   background-color: $yellow;
+  overflow-y: auto;
+  height: 470px;
 }
 .full-cart {
   border-bottom: 2px solid $blue;
