@@ -12,6 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- Script per gli alert --}}
+    <script src="{{ asset('js/alerts.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +68,7 @@
                         @else
                             <li class="nav-item">
 
-                                <a class="text-danger nav-link text-center" href="{{ route('logout') }}"
+                                <a class="logout_anchor nav-link text-center" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();"><i
                                         class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -116,6 +118,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    @include('sweetalert::alert')
 </body>
 
 </html>
