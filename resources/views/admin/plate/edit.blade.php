@@ -107,7 +107,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <div class="mt-3">
+                            <div class="mt-3 text-center">
                                 <img class="w-50 " src="{{ asset('storage/' . $plate->image) }}">
                             </div>
                         </div>
