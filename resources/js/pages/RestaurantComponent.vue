@@ -152,10 +152,16 @@ export default {
     },
     addToCart(plate) {
       if (this.cart.length > 0 && plate.user_id != this.cart[0].user_id) {
-        alert("Puoi comprare i piatti solo da un singolo ristorante");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Puoi comprare da un solo ristoratore per volta!",
+          showCloseButton: true,
+        });
       } else {
         if (this.cart.find((item) => item.id === plate.id)) {
           this.cart.find((item) => item.id === plate.id).quantity++;
+          this.toastAlertSuccess("Incrementata quantità!!");
         } else {
           this.cart.push({
             id: plate.id,
@@ -165,6 +171,7 @@ export default {
             user_id: plate.user_id,
             quantity: 1,
           });
+          this.toastAlertSuccess("Aggiunto al carrello!!");
         }
       }
       localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -179,6 +186,7 @@ export default {
         this.cart.forEach((plate) => {
           if (plate.id === id) {
             plate.quantity--;
+            this.toastAlertSuccess("Ridotta quantità :(");
           }
         });
         localStorage.setItem("cart", JSON.stringify(this.cart));
@@ -188,13 +196,32 @@ export default {
       this.cart.forEach((plate) => {
         if (plate.id === id) {
           plate.quantity++;
+          this.toastAlertSuccess("Incrementata quantità!!");
         }
       });
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
     deletePlate(id) {
       this.cart = this.cart.filter((plate) => plate.id !== id);
+      this.toastAlertSuccess("Rimosso dal carrello :(");
       localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+    toastAlertSuccess(message) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: message,
+      });
     },
   },
 };
