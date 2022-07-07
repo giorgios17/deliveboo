@@ -16,7 +16,21 @@ class BraintreeController extends Controller
             'publicKey' => env("BRAINTREE_PUBLIC_KEY"),
             'privateKey' => env("BRAINTREE_PRIVATE_KEY")
         ]);
+
+        if($request->input('nonce') != null){
+            $nonceFromTheClient = $request->input('nonce');
+
+            $gateway->transaction()->sale([
+                'amount' => '10.00',
+                'paymentMethodNonce' => $nonceFromTheClient,
+                'options' => [
+                    'submitForSettlement' => True
+                ]
+            ]);
+            return view ('dashboard');
+        }else{
             $clientToken = $gateway->clientToken()->generate();
-            return view ('guest.braintree',['token' => $clientToken]);
+            return view ('braintree',['token' => $clientToken]);
         }
+    }
 }

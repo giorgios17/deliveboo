@@ -12,7 +12,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/deliveboo.js') }}" defer></script>
-    <script src="https://js.braintreegateway.com/web/dropin/1.24.0/js/dropin.min.js"></script>
+
+    <!-- includes the Braintree JS client SDK -->
+    <script src="https://js.braintreegateway.com/web/dropin/1.33.2/js/dropin.min.js"></script>
+
+    <!-- includes jQuery -->
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,14 +49,35 @@
     <script>
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
-            authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-            selector: '#dropin-container'
-        }, function(err, instance) {
-            button.addEventListener('click', function() {
-                instance.requestPaymentMethod(function(err, payload) {
-                    // Submit payload.nonce to your server
-                });
-            })
-        });
+                    authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
+                    selector: '#dropin-container'
+                }, function(err, instance) {
+                    button.addEventListener('click', function() {
+                        instance.requestPaymentMethod(function(err, payload) {
+                            (function($) {
+                                $(function() {
+                                    $.ajaxSetup({
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                                .attr('content')
+                                        }
+                                    });
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "{{ route('token') }}",
+                                        data: {
+                                            nonce: payload.nonce
+                                        },
+                                        success: function(data) {
+                                            console.log('success', payload.nonce)
+                                        },
+                                        error: function(data) {
+                                            console.log('error', payload.nonce)
+                                        }
+                                    });
+                                });
+                            })(jQuery);
+                        });
+                    });
     </script>
 </div>
