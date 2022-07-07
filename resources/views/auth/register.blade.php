@@ -8,8 +8,8 @@
                     <div class="card-header"><i class="fa-solid fa-pen-to-square"></i> {{ __('Registrazione') }}</div>
 
                     <div class="card-body">
-                        <form action="{{ route('register') }}" onsubmit="return valthisform() && verifyPassword()"
-                            method="POST" enctype="multipart/form-data">
+                        <form id="register-form" action="{{ route('register') }}" method="POST"
+                            enctype="multipart/form-data">
                             {{-- token --}}
                             @csrf
 
@@ -63,7 +63,7 @@
                                     <input id="new-password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password" minlength="8"
-                                        placeholder="Conferma la password">
+                                        placeholder="Inserisci la password">
                                     <small>Minimo 8 caratteri</small>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -83,205 +83,211 @@
                                         name="password_confirmation" required autocomplete="password-confirm"
                                         placeholder="Reinserisci la password">
                                     <small>Assicurati che le password coincidano</small>
+                                    <small id="alert-password" class="alert alert-danger m-auto" style="display:none">Le
+                                        password non coincidono!!</small>
+                                    <small id="success-password" class="alert alert-success m-auto" style="display:none">Le
+                                        password coincidono!!</small>
                                 </div>
                             </div>
-                            <div id="alert-password" class="alert alert-danger m-auto" style="display:none">
-                                Le password non coincidono
-                            </div>
+                            <div>
 
-                            {{-- input indirizzo --}}
-                            <div class="form-group row mt-3">
-                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <input id="address" type="text"
-                                        class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address"
-                                        placeholder="Inserisci l'indirizzo">
-                                    @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
 
-                            {{-- input partita iva --}}
-                            <div class="form-group row">
-                                <label for="vat_number"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <input id="vat_number" type="text"
-                                        class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
-                                        value="{{ old('vat_number') }}" required minlength="11" maxlength="11"
-                                        pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
-                                        autocomplete="vat_number" placeholder="Inserisci la Partita IVA">
-                                    <small>La partita IVA deve essere di 11 cifre</small>
-                                    @error('vat_number')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            {{-- input descrizione --}}
-                            <div class="form-group row">
-                                <label for="description"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
-                                        rows="3" name="description" required autocomplete="description" minlength="10"
-                                        placeholder="Inserisci la descrizione">{{ old('description') }}</textarea>
-                                    <small>Minimo 10 caratteri</small>
-                                    @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            {{-- input telefono --}}
-                            <div class="form-group row">
-                                <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Numero di telefono') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <input id="phone" type="tel"
-                                        class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                        value="{{ old('phone') }}" required autocomplete="phone" pattern="[0-9]{10}"
-                                        placeholder="Inserisci il numero di telefono">
-                                    <small>Formato 0817384022</small>
-                                    @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            {{-- input orario di apertura --}}
-                            <div class="form-group row">
-                                <label for="opening_time"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Orario di apertura') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <input id="opening_time" type="time"
-                                        class="form-control @error('opening_time') is-invalid @enderror"
-                                        name="opening_time" value="{{ old('opening_time') }}" required
-                                        autocomplete="opening_time">
-                                    <small>Formato HH:MM</small>
-                                    @error('opening_time')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            {{-- input orario di chiusura --}}
-                            <div class="form-group row">
-                                <label for="closing_time"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Orario di chiusura') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <input id="closing_time" type="time"
-                                        class="form-control @error('closing_time') is-invalid @enderror"
-                                        name="closing_time" value="{{ old('closing_time') }}" required
-                                        autocomplete="closing_time">
-                                    <small>Formato HH:MM</small>
-                                    @error('closing_time')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            {{-- select giorno di chiusura --}}
-                            <div class="form-group row">
-                                <label for="closing_day"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Giorno di chiusura') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <select class="form-control @error('closing_day') is-invalid @enderror"
-                                        name="closing_day" required autocomplete="closing_day">
-                                        @foreach ($days as $day)
-                                            <option value="{{ $day }}"
-                                                {{ $day == old('closing_day') ? 'selected' : '' }}>{{ $day }}
-                                            </option>
-                                        @endforeach
-                                        @error('closing_day')
+                                {{-- input indirizzo --}}
+                                <div class="form-group row mt-3">
+                                    <label for="address"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="address" type="text"
+                                            class="form-control @error('address') is-invalid @enderror" name="address"
+                                            value="{{ old('address') }}" required autocomplete="address"
+                                            placeholder="Inserisci l'indirizzo">
+                                        @error('address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            {{-- input costo di spedizione --}}
-                            <div class="form-group row">
-                                <label for="shipping_price"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Costo di spedizione') }}
-                                    <span class="text-warning">*</span></label>
-                                <div class="col-md-6">
-                                    <input id="shipping_price"
-                                        class="form-control @error('shipping_price') is-invalid @enderror" type="number"
-                                        min="0" max="99.99" step=".01" name="shipping_price"
-                                        value="{{ old('shipping_price') }}" required autocomplete="shipping_price"
-                                        placeholder="10.00">
-                                    @error('shipping_price')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                {{-- input partita iva --}}
+                                <div class="form-group row">
+                                    <label for="vat_number"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="vat_number" type="text"
+                                            class="form-control @error('vat_number') is-invalid @enderror" name="vat_number"
+                                            value="{{ old('vat_number') }}" required minlength="11" maxlength="11"
+                                            pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+                                            autocomplete="vat_number" placeholder="Inserisci la Partita IVA">
+                                        <small>La partita IVA deve essere di 11 cifre</small>
+                                        @error('vat_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- input descrizione --}}
+                                <div class="form-group row">
+                                    <label for="description"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <textarea class="form-control @error('description') is-invalid @enderror" id="exampleFormControlTextarea1"
+                                            rows="3" name="description" required autocomplete="description" minlength="10"
+                                            placeholder="Inserisci la descrizione">{{ old('description') }}</textarea>
+                                        <small>Minimo 10 caratteri</small>
+                                        @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- input telefono --}}
+                                <div class="form-group row">
+                                    <label for="phone"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Numero di telefono') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="phone" type="tel"
+                                            class="form-control @error('phone') is-invalid @enderror" name="phone"
+                                            value="{{ old('phone') }}" required autocomplete="phone"
+                                            pattern="[0-9]{10}" placeholder="Inserisci il numero di telefono">
+                                        <small>Formato 0817384022</small>
+                                        @error('phone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- input orario di apertura --}}
+                                <div class="form-group row">
+                                    <label for="opening_time"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Orario di apertura') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="opening_time" type="time"
+                                            class="form-control @error('opening_time') is-invalid @enderror"
+                                            name="opening_time" value="{{ old('opening_time') }}" required
+                                            autocomplete="opening_time">
+                                        <small>Formato HH:MM</small>
+                                        @error('opening_time')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- input orario di chiusura --}}
+                                <div class="form-group row">
+                                    <label for="closing_time"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Orario di chiusura') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="closing_time" type="time"
+                                            class="form-control @error('closing_time') is-invalid @enderror"
+                                            name="closing_time" value="{{ old('closing_time') }}" required
+                                            autocomplete="closing_time">
+                                        <small>Formato HH:MM</small>
+                                        @error('closing_time')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- select giorno di chiusura --}}
+                                <div class="form-group row">
+                                    <label for="closing_day"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Giorno di chiusura') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <select class="form-control @error('closing_day') is-invalid @enderror"
+                                            name="closing_day" required autocomplete="closing_day">
+                                            @foreach ($days as $day)
+                                                <option value="{{ $day }}"
+                                                    {{ $day == old('closing_day') ? 'selected' : '' }}>
+                                                    {{ $day }}
+                                                </option>
+                                            @endforeach
+                                            @error('closing_day')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {{-- input costo di spedizione --}}
+                                <div class="form-group row">
+                                    <label for="shipping_price"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Costo di spedizione') }}
+                                        <span class="text-warning">*</span></label>
+                                    <div class="col-md-6">
+                                        <input id="shipping_price"
+                                            class="form-control @error('shipping_price') is-invalid @enderror"
+                                            type="number" min="0" max="99.99" step=".01"
+                                            name="shipping_price" value="{{ old('shipping_price') }}" required
+                                            autocomplete="shipping_price" placeholder="10.00">
+                                        @error('shipping_price')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- input immagine --}}
+                                <div class="form-group row">
+                                    <label for="image"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Immagine ristorante') }}
+                                        <span class="text-warning">*</span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control-file" name="image" required>
+                                    </div>
+                                </div>
+
+                                {{-- checkbox tipologie --}}
+                                <div class="form-group row">
+                                    <p class="col-md-4 col-form-label text-md-right">Tipologia ristorante <span
+                                            class="text-warning">*</span></p>
+                                    <div class="offset-md-8"></div>
+                                    @foreach ($typologies as $typology)
+                                        <div class="offset-md-4 col-md-8">
+                                            <input
+                                                class="categoryInput form-check-input @error('typologies') is-invalid @enderror"
+                                                type="checkbox" name="typologies[]" value="{{ $typology->id }}"
+                                                {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
+                                            <label> {{ $typology->name }}</label>
+
+                                        </div>
+                                    @endforeach
+                                    <small id="alert-checkbox" class="alert alert-danger m-auto"
+                                        style="display: none">Seleziona almeno una
+                                        tipologia!!</small>
+                                    @error('typologies')
+                                        <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
-
-                            {{-- input immagine --}}
-                            <div class="form-group row">
-                                <label for="image"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Immagine ristorante') }}
-                                    <span class="text-warning">*</span>
-                                </label>
-                                <div class="col-md-6">
-                                    <input type="file" class="form-control-file" name="image" required>
-                                </div>
-                            </div>
-
-                            {{-- checkbox tipologie --}}
-                            <div class="form-group row">
-                                <p class="col-md-4 col-form-label text-md-right">Tipologia ristorante <span
-                                        class="text-warning">*</span></p>
-                                <div class="offset-md-8"></div>
-                                @foreach ($typologies as $typology)
-                                    <div class="offset-md-4 col-md-8">
-                                        <input
-                                            class="categoryInput form-check-input @error('typologies') is-invalid @enderror"
-                                            type="checkbox" name="typologies[]" value="{{ $typology->id }}"
-                                            {{ in_array($typology->id, old('typologies', [])) ? 'checked' : '' }} />
-                                        <label> {{ $typology->name }}</label>
+                                {{-- bottone di submit dati --}}
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-warning">
+                                            {{ __('Registrati') }}
+                                        </button>
                                     </div>
-                                @endforeach
-                                <div id="alert" class="alert alert-danger m-auto" style="display:none">
-                                    Seleziona almeno una categoria
                                 </div>
-                                @error('typologies')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            {{-- bottone di submit dati --}}
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-warning">
-                                        {{ __('Registrati') }}
-                                    </button>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
