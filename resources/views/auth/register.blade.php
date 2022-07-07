@@ -274,7 +274,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-
                             {{-- bottone di submit dati --}}
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">

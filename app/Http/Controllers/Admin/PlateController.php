@@ -125,7 +125,7 @@ class PlateController extends Controller
                 'description' => 'required',
                 'price' => 'required|numeric|min:0.1',
                 'visible' => 'required',
-                'image' => 'required|image|mimes:jpg,bmp,png,jpeg|max:4096',
+                'image' => 'image|mimes:jpg,bmp,png,jpeg|max:4096',
             ],
             [
                 'name.required' => 'Il campo nome è obbligatorio.',
@@ -133,7 +133,6 @@ class PlateController extends Controller
                 'price.required' => 'Il prezzo è obbligatorio.',
                 'price.numeric' => 'Formato prezzo non valido.',
                 'price.min' => 'Il prezzo deve essere uguale o maggiore a 0.10',
-                'image.required' => 'Carica un immagine.',
                 'image.mimes' => 'Formato immagine non valido.',
                 'image.max' => 'Dimensioni massime consentite 4096kb.'
             ]

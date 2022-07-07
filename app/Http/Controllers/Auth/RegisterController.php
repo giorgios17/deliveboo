@@ -59,7 +59,7 @@ class RegisterController extends Controller
                 'address' => ['required', 'string'],
                 'vat_number' => ['required', 'digits:11', 'numeric'],
                 'description' => ['required', 'string', 'min:10'],
-                'image' => ['required', 'mimes:jpg,bmp,png,jpeg', 'max:2048'],
+                'image' => ['required', 'mimes:jpg,bmp,png,jpeg', 'max:10048'],
                 'phone' => ['required', 'numeric'],
                 'opening_time' => ['required', 'date_format:H:i'],
                 'closing_time' => ['required', 'date_format:H:i'],
