@@ -18,6 +18,8 @@ Auth::routes();
 
 // Rotta landing page guest.home
 Route::resource('/', 'GuestController');
+//rotta pagamento
+Route::any('/payment', 'BraintreeController@token')->name('token');
 
 Route::middleware('auth')
     ->namespace('Admin')
@@ -31,6 +33,8 @@ Route::middleware('auth')
     });
 
 Route::get('/register', 'TypologyController@index')->name('register');
+
+
 
 Route::get('{any?}', function () {
     return view('guest.home');
