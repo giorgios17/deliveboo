@@ -36,7 +36,11 @@
       <div class="row">
         <div class="row justify-content-center col-8">
           <div v-for="(plate, index) in restaurant.plate" :key="index">
-            <div v-if="plate.visible" class="card mx-4" style="width: 18rem">
+            <div
+              v-if="plate.visible"
+              class="card mx-4 my-2"
+              style="width: 18rem"
+            >
               <div class="wrapper_img p-3">
                 <img
                   :src="'/storage/' + plate.image"
