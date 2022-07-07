@@ -119,7 +119,7 @@
                   </div>
                 </div>
               </div>
-              <p v-else class="col-12 py-3">Compra qualcosa Taccagno</p>
+              <p v-else class="col-12 py-3">Compra qualcosa</p>
               <a class="go_checkout" href="/cart">Vai al Checkout</a>
             </div>
           </li>
