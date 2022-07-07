@@ -1,6 +1,6 @@
 <template>
-  <header class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light pt-2">
+  <header>
+    <nav class="container navbar navbar-expand-lg navbar-light pt-2">
       <div class="container_img">
         <img class="w-100" src="../img/deliveboo-logo-blue.png" alt="" />
       </div>
@@ -19,26 +19,26 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="/"
+            <a class="nav-link text-center" href="/"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chi siamo</a>
+            <a class="nav-link text-center" href="#">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Lavora con noi</a>
+            <a class="nav-link text-center" href="#">Lavora con noi</a>
           </li>
           <li class="nav-item d-lg-none">
-            <router-link class="nav-link" :to="{ name: 'cart' }"
+            <router-link class="nav-link text-center" :to="{ name: 'cart' }"
               >Carrello</router-link
             >
           </li>
           <li class="nav-item d-lg-none">
-            <a class="nav-link" href="/login">Accedi</a>
+            <a class="nav-link text-center" href="/login">Accedi</a>
           </li>
           <li class="nav-item d-lg-none">
-            <a class="nav-link" href="/register">Registrati</a>
+            <a class="nav-link text-center" href="/register">Registrati</a>
           </li>
         </ul>
       </div>
@@ -47,15 +47,23 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center">
-            <router-link class="nav-link" :to="{ name: 'cart' }">
-              <i class="fa-solid fa-lg fa-cart-shopping"></i>
-            </router-link>
+            <a href="/cart"> <i class="fa-solid fa-lg fa-cart-shopping"></i></a>
           </li>
-          <li class="nav-item position-relative">
-            <p class="login_register">Sei un ristoratore?</p>
-            <a href="/login" class="nav-link d-inline-block">Accedi</a>
-            /
-            <a href="/register" class="nav-link d-inline-block">Registrati</a>
+          <li
+            class="
+              ml-4
+              nav-item
+              d-flex
+              flex-wrap flex-column
+              align-items-center
+            "
+          >
+            <p>Sei un ristoratore?</p>
+            <p>
+              <a href="/login" class="nav-link d-inline-block">Accedi</a>
+              /
+              <a href="/register" class="nav-link d-inline-block">Registrati</a>
+            </p>
           </li>
         </ul>
       </div>
@@ -124,45 +132,19 @@ header {
     font-size: 0.75rem;
   }
 
-  #collapse_cart {
-    position: absolute;
-    top: 120%;
-    right: 1%;
-    z-index: 2;
-    background-color: $yellow;
-    width: 400px;
-    max-height: 500px;
-    overflow-y: auto;
-    border-radius: 10px;
-    border: 10px solid $blue;
-    &::-webkit-scrollbar {
-      width: 0px;
-    }
-  }
-
-  .plate_row {
-    border-bottom: 1px solid $blue;
-    padding: 1rem;
-  }
-
-  .fa-circle-minus,
-  .fa-circle-plus,
-  .fa-circle-xmark {
-    cursor: pointer;
-    color: $blue;
-    transition: transform 0.25s ease-in-out;
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
   .col-3 > .btn-danger {
     padding: 2.5px 8px;
   }
+
   a {
     font-weight: 700;
     font-size: 17.5px;
     color: $blue !important;
+  }
+
+  a.d-inline-block {
+    @include p($blue);
+    padding: 0px !important;
   }
 
   a.go_checkout {
@@ -177,11 +159,6 @@ header {
   }
   .container_img {
     width: 100px;
-  }
-  .login_register {
-    position: absolute;
-    top: -5px;
-    left: 32px;
   }
   @media screen and (max-width: 250px) {
     // Sfondo dashboard lato ristoratore
