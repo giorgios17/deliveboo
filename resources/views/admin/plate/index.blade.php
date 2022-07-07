@@ -23,12 +23,11 @@
                             @endif
                         </p>
                         <a href="{{ route('admin.plate.edit', $plate->id) }}" class="btn btn-primary">Modifica</a>
-                        <form action="{{ route('admin.plate.destroy', $plate->id) }}" method="post"
+                        <form id="delete_form" action="{{ route('admin.plate.destroy', $plate->id) }}" method="post"
                             class=" d-inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type='submit' onclick="return confirm('Sicuro di voler cancellare questo piatto?')"
-                                type="submit" value="" class="btn btn-danger">
+                            <button type='submit' type="submit" value="" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form>
