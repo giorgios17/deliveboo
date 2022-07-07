@@ -51,7 +51,8 @@
               <i class="fa-solid fa-lg fa-cart-shopping"></i>
             </router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item position-relative">
+            <p class="login_register">Sei un ristoratore?</p>
             <a href="/login" class="nav-link d-inline-block">Accedi</a>
             /
             <a href="/register" class="nav-link d-inline-block">Registrati</a>
@@ -176,6 +177,11 @@ header {
   }
   .container_img {
     width: 100px;
+  }
+  .login_register {
+    position: absolute;
+    top: -5px;
+    left: 32px;
   }
   @media screen and (max-width: 250px) {
     // Sfondo dashboard lato ristoratore
