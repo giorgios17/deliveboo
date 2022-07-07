@@ -2,7 +2,7 @@
   <div>
     <div id="payment" class="">
       <div class="left-payment">
-        <h1>Stai ordinando da: {{ restaurantSelected }}</h1>
+        <h1>Stai ordinando da: {{ userSelected }}</h1>
 
         <!-- {{cart[0]}} -->
         <!-- {{userEmail}} -->
@@ -123,7 +123,7 @@
                 Conferma i Dati
               </button>
               <!-- <input id="createDish" type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2"> -->
-              <!-- <a href="{{ route('user.restaurant.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a> -->
+              <!-- <a href="{{ route('user.user.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a> -->
             </div>
           </div>
         </div>
@@ -175,8 +175,8 @@ export default {
   data() {
     return {
       cart: [],
-      restaurantSelected: "",
-      restaurantId: "",
+      userSelected: "",
+      userId: "",
       userEmail: "",
       formComplete: false,
       // payed: false,
@@ -196,8 +196,8 @@ export default {
         total: null,
         special_request: null,
         plates: null,
-        restaurant_id: null,
-        restaurant_email: null,
+        user_id: null,
+        user_email: null,
       },
       validation: {
         name: {
@@ -315,8 +315,8 @@ export default {
       this.formData.plates = this.cart;
       this.formData.special_request = this.special_request;
 
-      this.formData.restaurant_id = this.restaurantId;
-      this.formData.restaurant_email = this.userEmail;
+      this.formData.user_id = this.userId;
+      this.formData.user_email = this.userEmail;
       this.formComplete = true;
     },
     // beforeBuy(){
@@ -326,8 +326,8 @@ export default {
     //   let total = 0;
     //   this.cart.forEach((plate) => {
     //     total += plate.price * plate.quantity;
-    //     this.restaurantSelected = plate.restaurant.name;
-    //     this.restaurantId = plate.restaurant.id;
+    //     this.userSelected = plate.user.name;
+    //     this.userId = plate.user.id;
     //   });
     //   return total.toFixed(2);
     // },
@@ -337,7 +337,7 @@ export default {
     if (localStorage.cart) {
       this.cart = JSON.parse(localStorage.cart);
       window.axios
-        .get("http://127.0.0.1:8000/api/user/" + this.cart[0].restaurant_id)
+        .get("http://127.0.0.1:8000/api/user/" + this.cart[0].user_id)
         .then(({ data, status }) => {
           if (status === 200 && data.success) {
             // console.log('result', data.results.email)

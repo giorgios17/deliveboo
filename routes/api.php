@@ -31,4 +31,4 @@ Route::post("orders/make-payment", "Api\Orders\OrderController@makePayment");
 
 
 // per popolare la tabella ordini
-Route::post("/payment","Api\OrderController@payment");
+Route::post("/payment","Api\Orders\OrderController@payment");

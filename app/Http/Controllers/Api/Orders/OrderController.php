@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Orders;
 
 use App\Plate;
 use App\Order;
@@ -76,20 +76,15 @@ class OrderController extends Controller
 
     }
 
-    public function generate(Request $request, Gateway $gateway){
-
+    public function generate(Request $request, Gateway $gateway)
+    {
         $token = $gateway->clientToken()->generate();
-
         $data = [
-
-            'success' => true,
-
-            'token' => $token
-
+            "success" => true,
+            "token" => $token
         ];
-
         return response()->json($data, 200);
-	}
+    }
 
 	public function makePayment(OrderRequest $request, Gateway $gateway){
 

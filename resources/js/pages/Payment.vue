@@ -54,8 +54,8 @@ export default {
     formData: Object,
     cart: Array,
   },
-  created() {
-    axios
+  mounted() {
+    window.axios
       .get("http://127.0.0.1:8000/api/orders/generate")
       .then((response) => {
         this.Token = response.data.token;
@@ -115,9 +115,9 @@ export default {
           customer_phone: this.formData.phone,
           special_request: this.formData.special_request,
           payment_approval: this.formData.status,
-          restaurant_id: this.formData.restaurant_id,
+          user_id: this.formData.user_id,
           customer_email: this.formData.email,
-          restaurant_email: this.formData.restaurant_email,
+          user_email: this.formData.user_email,
           plates: this.formData.plates,
         })
         .then((response) => {
