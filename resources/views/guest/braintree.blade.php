@@ -10,9 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/deliveboo.js') }}" defer></script>
-
     <!-- includes the Braintree JS client SDK -->
     <script src="https://js.braintreegateway.com/web/dropin/1.33.2/js/dropin.min.js"></script>
 
@@ -40,6 +37,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
+</html>
 <div class="py-12">
     @csrf
     <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
