@@ -27,7 +27,7 @@ class BraintreeController extends Controller
                     'submitForSettlement' => True
                 ]
             ]);
-            return view ('dashboard');
+            return view ('guest.home');
         }else{
             $clientToken = $gateway->clientToken()->generate();
             return view ('guest.braintree',['token' => $clientToken]);

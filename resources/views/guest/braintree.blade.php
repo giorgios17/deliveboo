@@ -18,7 +18,7 @@
 
     <!-- includes jQuery -->
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,8 +44,9 @@
     @csrf
     <div id="dropin-container" style="display: flex;justify-content: center;align-items: center;"></div>
     <div style="display: flex;justify-content: center;align-items: center; color: white">
-        <a href="{{ route('token') }}" id="submit-button" class="btn btn-sm btn-success">Effettua pagamento</a>
+        <a id="submit-button" class="btn btn-sm btn-success">Effettua pagamento</a>
     </div>
+    <a href="{{ route('token') }}">Pagaaaa!!</a>
     <script>
         var button = document.querySelector('#submit-button');
         braintree.dropin.create({
