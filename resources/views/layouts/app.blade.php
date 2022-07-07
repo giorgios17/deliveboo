@@ -14,6 +14,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     {{-- Script per gli alert --}}
     <script src="{{ asset('js/alerts.js') }}" defer></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
