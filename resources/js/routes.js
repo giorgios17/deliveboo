@@ -5,6 +5,8 @@ import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
 import NotFound from './pages/NotFound';
+import PaymentPage from './pages/PaymentPage';
+// import SuccessPayment from './pages/checkout/SuccessPayment';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -25,6 +27,16 @@ const router = new VueRouter({
             name: 'cart',
             component: CartComponent
         },
+        {
+            path: '/payment',
+            name: 'payment',
+            component: PaymentPage
+        },
+        // {
+        //     path: "/payment/success",
+        //     name: "success",
+        //     component: SuccessPayment
+        // },
         {
             path: '/*',
             name: 'not_found',
