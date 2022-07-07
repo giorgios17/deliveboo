@@ -163,7 +163,7 @@
 </template>
 
 <script>
-import Payment from "./Payment.vue";
+import Payment from "../checkout/Payment.vue";
 export default {
   name: "PaymentPage",
   // props: {
@@ -354,7 +354,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import "../../sass/_variables.scss";
+@import "../../../sass/_variables.scss";
 
 #payment {
   color: $blue;

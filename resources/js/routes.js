@@ -5,7 +5,7 @@ import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
 import NotFound from './pages/NotFound';
-import PaymentPage from './pages/PaymentPage';
+import PaymentPage from './pages/checkout/PaymentPage';
 // import SuccessPayment from './pages/checkout/SuccessPayment';
 Vue.use(VueRouter);
 

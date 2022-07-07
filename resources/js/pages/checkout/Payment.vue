@@ -139,7 +139,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../sass/_variables.scss";
+@import "../../../sass/_variables.scss";
 #paybox {
   .brain {
     width: 50%;
