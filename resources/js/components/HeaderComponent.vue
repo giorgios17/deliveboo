@@ -1,9 +1,9 @@
 <template>
   <header>
     <nav class="container navbar navbar-expand-lg navbar-light pt-2">
-      <div class="container_img">
+      <a class="container_img d-block" href="/">
         <img class="w-100" src="../img/deliveboo-logo-blue.png" alt="" />
-      </div>
+      </a>
       <!-- inizio hamburger menu -->
       <button
         class="navbar-toggler box_hamburgher"
@@ -24,10 +24,12 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="#">Chi siamo</a>
+            <a class="nav-link text-center" href="/about-us">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="#">Lavora con noi</a>
+            <a class="nav-link text-center" href="/work-with-us"
+              >Lavora con noi</a
+            >
           </li>
           <li class="nav-item d-lg-none">
             <router-link class="nav-link text-center" :to="{ name: 'cart' }"
