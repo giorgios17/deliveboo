@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class PlateController extends Controller
@@ -28,7 +29,9 @@ class PlateController extends Controller
      */
     public function index()
     {
-        //
+        if (session('success_message')) {
+            Alert::success('Congratulazioni!', session('success_message'));
+        }
         $plates = Plate::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
         return view('admin.plate.index', compact('plates'));
     }
@@ -79,7 +82,7 @@ class PlateController extends Controller
         $newPlate->image = $img_path;
         $newPlate->user_id = Auth::user()->id;
         $newPlate->save();
-        return redirect()->route('admin.plate.index');
+        return redirect()->route('admin.plate.index')->withSuccessMessage('Piatto creato con successo!!');
     }
 
     /**
@@ -140,8 +143,8 @@ class PlateController extends Controller
 
         $plate = Plate::findOrFail($id);
         $plateUpdated = $request->all();
-        if(array_key_exists('image',$plateUpdated)){
-            if($plate->image){
+        if (array_key_exists('image', $plateUpdated)) {
+            if ($plate->image) {
                 Storage::delete('$plate->image');
             }
             $img_path = Storage::put('uploads', $plateUpdated['image']);
@@ -150,7 +153,7 @@ class PlateController extends Controller
 
         $plate->fill($plateUpdated);
         $plate->save();
-        return redirect()->route('admin.plate.index');
+        return redirect()->route('admin.plate.index')->withSuccessMessage('Piatto modificato con successo!!');
     }
 
     /**
@@ -166,6 +169,7 @@ class PlateController extends Controller
         if ($plate->image) {
             Storage::delete($plate->image);
         }
+
         $plate->delete();
         return redirect()->route('admin.plate.index');
     }
