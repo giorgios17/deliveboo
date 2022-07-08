@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Order;
 use App\Plate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,12 @@ class UserController extends Controller
     public function index()
     {
         $plates = Plate::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
-        return view('user.index', compact('plates'));
+
+        //recupero user
+        $orders = Order::where('user_id', Auth::user()->id)->with('plate')->orderBy('created_at', 'desc')->get();
+        return view('user.index', compact('plates', 'orders'));
+
+
     }
 
     /**
