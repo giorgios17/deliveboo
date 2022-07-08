@@ -4,9 +4,8 @@ import VueRouter from "vue-router";
 import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
+import PaymentSuccessfull from './pages/PaymentSuccessfull';
 import NotFound from './pages/NotFound';
-import PaymentPage from './pages/checkout/PaymentPage';
-// import SuccessPayment from './pages/checkout/SuccessPayment';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -28,15 +27,10 @@ const router = new VueRouter({
             component: CartComponent
         },
         {
-            path: '/payment',
-            name: 'payment',
-            component: PaymentPage
+            path: '/success',
+            name: 'success',
+            component: PaymentSuccessfull
         },
-        // {
-        //     path: "/payment/success",
-        //     name: "success",
-        //     component: SuccessPayment
-        // },
         {
             path: '/*',
             name: 'not_found',
