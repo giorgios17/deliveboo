@@ -14,11 +14,33 @@ use App\Http\Requests\Orders\OrderTableRequest;
 
 class OrderController extends Controller
 {
-    //
     public function payment(Request $request)
     {
         $data = $request->all();
-        // return($data);
+
+        $validator = Validator::make(
+            $data,
+            [
+                'customer_name' => 'required|string|max:50',
+                'customer_surname' => 'required|string|max:50',
+                'customer_address' => 'required|string|max:255',
+                'customer_phone' => 'required|numeric',
+                'customer_email' => 'required|string|max:255',
+            ],
+            [
+                'customer_name.required' => 'Il nome è obbligatorio',
+                'customer_name.max' => 'Il nome non può essere più lungo di 50 caratteri',
+                'customer_surname.required' => 'Il cognome è obbligatorio',
+                'customer_surname.max' => 'Il cognome non può essere più lungo di 50 caratteri',
+                'customer_address.required' => 'L\'indirizzo è obbligatorio',
+                'customer_address.max' => 'L\'indirizzo non può essere più lungo di 255 caratteri',
+                'customer_phone.required' => 'Il numero di telefono è obbligatorio',
+                'customer_phone.numeric' => 'Il numero di telefono deve essere numerico',
+                'customer_email.required' => 'L\'email è obbligatoria',
+                'customer_email.max' => 'L\'email non può essere più lunga di 255 caratteri',
+            ]
+        );
+
         $newOrder = new Order();
         $newOrder->fill($data);
         $newOrder->save();
@@ -32,46 +54,15 @@ class OrderController extends Controller
 
         $sync_data = [];
         for ($i = 0; $i < count($plates_id); $i++)
-            $sync_data[$i] = ['quantity' => $plates_quantity[$i], 'plate_id' => $plates_id[$i]];
+            $sync_data[$plates_id[$i]] = ['quantity' => $plates_quantity[$i]];
 
-        // riempio la tabella pivot con l'id del piatto e la quantità del piatto
         $newOrder->plate()->sync($sync_data);
-
-
-
 
         if ($newOrder) {
             return 'data saved succesfully';
         } else {
             return 'data not sent';
         }
-
-        // $validator = Validator::make($data , [
-        //         'name' => 'required|string|max:30',
-        //         'surname' => 'required|string|max:30',
-        //         'email' => 'required|string|max:255',
-        //         'phone' => 'required|numeric',
-        //         'address' => 'required|string|max:255',
-        //         'restaurant_id' => 'required',
-        //         'status' => 'required',
-        //         'total' => 'required',
-        //     ]);
-
-        //     $control = $validator->fails();
-        //     if($control){
-        //             return response()->json([
-        //                     "mess" => 'ERRORE MADORNALE',
-        //                     "old" => $validator->errors(),
-        //                     "status" => false,
-        //                 ]);
-        //     }
-
-
-        //     if(isset($data['email']) && isset($data['user_email'])){
-        //         $order->plates;
-        //         Mail::to($data['email'])->send(new SendNewMail($order));
-        //         Mail::to($data['user_email'])->send(new SendNewMail($order));
-        // }
 
         return response()->json([
             "mess" => 'creato',
@@ -92,9 +83,6 @@ class OrderController extends Controller
 
     public function makePayment(OrderRequest $request, Gateway $gateway)
     {
-
-        // $dish = Dish::find($request->dish);
-        // return 'make payment';
         $result = $gateway->transaction()->sale([
             'amount' => $request->amount,
             'paymentMethodNonce' => $request->token,
@@ -104,26 +92,16 @@ class OrderController extends Controller
         ]);
 
         if ($result->success) {
-
             $data = [
-
                 'success' => true,
-
                 'message' => ' Transazione eseguita'
-
             ];
-
             return response()->json($data, 200);
         } else {
-
             $data = [
-
                 'success' => false,
-
                 'message' => 'Transazione fallita'
-
             ];
-
             return response()->json($data, 401);
         }
     }
