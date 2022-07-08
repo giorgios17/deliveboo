@@ -18,7 +18,7 @@ class Order extends Model
    *
    * @var array
    */
-  protected $guarded = [];
+  protected $guarded = [""];
 
   // funzione che collega la tabella order con la tabella user (one to many)
   public function user()
