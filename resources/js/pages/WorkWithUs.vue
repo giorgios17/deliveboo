@@ -22,7 +22,7 @@
               Diventa un rider: flessibità, ottimi guadagni e un mondo di
               vantaggi per te.
             </p>
-            <button>Unisciti a noi</button>
+            <button @click="comingSoon()">Unisciti a noi</button>
           </div>
         </div>
       </li>
@@ -48,7 +48,7 @@
               mangiano. E' un obbiettivo molto ambizioso, come noi, e ci servono
               persone che ci aiutino a raggiungerlo.
             </p>
-            <button>Scopri di più</button>
+            <button @click="comingSoon()">Scopri di più</button>
           </div>
         </div>
       </li>
@@ -75,6 +75,16 @@ export default {
       },
       lavoraConDelivebooTitle: "Lavora con Deliveboo",
     };
+  },
+  methods: {
+    comingSoon() {
+      Swal.fire({
+        icon: "info",
+        title: "Coming soon",
+        text: "Presto disponibile!",
+        showCloseButton: true,
+      });
+    },
   },
 };
 </script>
