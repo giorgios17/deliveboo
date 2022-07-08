@@ -8,7 +8,9 @@
               <div class="row">
                 <div class="col-lg-7">
                   <h5 class="mb-3">
-                    <a onclick="history.back()" class="text-body"
+                    <a
+                      onclick="history.back()"
+                      class="text-body continue_shopping"
                       ><i class="fas fa-long-arrow-alt-left mr-2"></i>Continua
                       lo shopping</a
                     >
@@ -19,69 +21,93 @@
                     <p class="mb-1">Il tuo Carrello</p>
                   </div>
 
-                  <div
-                    v-for="plate in cart"
-                    :key="plate.id"
-                    class="card mb-3 mb-lg-0"
-                  >
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                          <div class="wrapper_image">
-                            <img
-                              :src="'/storage/' + plate.image"
-                              class="h-100 w-100 rounded-3"
-                              :alt="plate.name"
-                              style="width: 65px"
-                            />
+                  <div v-if="cart.length > 0">
+                    <div
+                      v-for="plate in cart"
+                      :key="plate.id"
+                      class="card mb-3"
+                    >
+                      <div class="card-body">
+                        <div
+                          class="
+                            d-flex
+                            justify-content-between
+                            align-items-center
+                          "
+                        >
+                          <div class="col-5 d-flex align-items-center">
+                            <div class="wrapper_image">
+                              <img
+                                :src="'/storage/' + plate.image"
+                                class="h-100 w-100 rounded-3"
+                                :alt="plate.name"
+                              />
+                            </div>
+                            <div class="ml-3">
+                              <p>{{ plate.name }}</p>
+                            </div>
                           </div>
-                          <div class="ml-3">
-                            <h5>{{ plate.name }}</h5>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <div>
-                            <i
-                              @click="reduceQuantity(plate.quantity, plate.id)"
-                              class="fa-solid fa-lg fa-circle-minus"
-                            ></i>
-                          </div>
-                          <h5 class="fw-normal mx-2 mb-0">
-                            {{ plate.quantity }}
-                          </h5>
-                          <div>
-                            <i
-                              @click="addQuantity(plate.id)"
-                              class="fa-solid fa-lg fa-circle-plus"
-                            ></i>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <div style="width: 80px">
-                            <h5 class="mb-0">
-                              {{ totalPrice(plate.price, plate.quantity) }}€
-                            </h5>
-                          </div>
-                          <button
-                            class="btn btn-danger"
-                            @click="deletePlate(plate.id)"
-                            href="#!"
-                            style="color: #ffffff"
+                          <div
+                            class="
+                              col-5
+                              d-flex
+                              align-items-center
+                              justify-content-center
+                            "
                           >
-                            <i class="fas fa-trash-alt"></i>
-                          </button>
+                            <div>
+                              <i
+                                @click="
+                                  reduceQuantity(plate.quantity, plate.id)
+                                "
+                                class="fa-solid fa-circle-minus"
+                              ></i>
+                            </div>
+                            <p class="fw-normal mx-2 mb-0">
+                              {{ plate.quantity }}
+                            </p>
+                            <div>
+                              <i
+                                @click="addQuantity(plate.id)"
+                                class="fa-solid fa-circle-plus"
+                              ></i>
+                            </div>
+                            <p class="ml-3">
+                              {{ totalPrice(plate.price, plate.quantity) }}€
+                            </p>
+                          </div>
+                          <div
+                            class="
+                              col-2
+                              d-flex
+                              align-items-center
+                              justify-content-end
+                            "
+                          >
+                            <button
+                              class="btn btn-danger"
+                              @click="deletePlate(plate.id)"
+                              href="#!"
+                              style="color: #ffffff"
+                            >
+                              <i class="fas fa-trash-alt"></i>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div v-else>
+                    <p class="text-center mb-4">Il tuo carrello è vuoto.</p>
                   </div>
                 </div>
                 <div class="col-lg-5">
                   <div class="card card_right rounded-3">
                     <div class="card-body">
                       <!-- -------------------------------------------------- -->
-
+                      <h6 class="text-center mb-3">CHECKOUT</h6>
                       <!-- box alert campi obbligatori -->
-                      <div class="alert alert-danger" role="alert">
+                      <div class="alert alert-danger mb-1" role="alert">
                         I campi contrassegnati dall'asterisco (*) sono
                         obbligatori.
                       </div>
@@ -147,7 +173,7 @@
                             value=""
                             class="form-control"
                             required
-                            maxlength="100"
+                            maxlength="255"
                           />
                           <div
                             v-if="!validation.customer_address.success"
@@ -217,7 +243,7 @@
                         <div class="d-flex justify-content-center">
                           <button
                             @click="validateForm()"
-                            class="btn btn_form_customer mt-2 mb-5"
+                            class="btn btn_form_customer mt-2 mb-4"
                           >
                             Conferma i dati
                           </button>
@@ -317,7 +343,9 @@ export default {
     };
   },
   mounted() {
-    this.cart = JSON.parse(localStorage.getItem("cart"));
+    if (localStorage.getItem("cart")) {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+    }
     this.axiosCallShippingPrice();
     this.axiosCallToken();
   },
@@ -384,7 +412,10 @@ export default {
         });
     },
     continueToPayment() {
-      this.$refs.paymentBtnRef.click();
+      if (this.getTotal() > 0) {
+        this.$refs.paymentBtnRef.click();
+      }
+      alert("Non ci sono più prodotti nel carrello");
     },
     onSuccess(payload) {
       let nonce = payload.nonce;
@@ -415,38 +446,38 @@ export default {
       console.log(message, "errore di mess in paybox");
     },
     validateForm() {
+      // validazione input nome
       if (!this.customer_name) {
         this.validation.customer_name.success = false;
-        this.validation.customer_name.message = "Il nome non può essere vuoto";
-      } else if (this.customer_name.length > 30) {
+        this.validation.customer_name.message = "Il nome è obbligatorio";
+      } else if (this.customer_name.length > 50) {
         this.validation.customer_name.success = false;
         this.validation.customer_name.message =
-          "Il nome non può superare i 30 caratteri";
+          "Il nome non può essere più lungo di 50 caratteri";
       } else {
         this.validation.customer_name.success = true;
         this.validation.customer_name.message = "";
       }
-      // validazione cognome
+      // validazione input cognome
       if (!this.customer_surname) {
         this.validation.customer_surname.success = false;
-        this.validation.customer_surname.message =
-          "Il cognome non può essere vuoto";
-      } else if (this.customer_surname.length > 30) {
+        this.validation.customer_surname.message = "Il cognome è obbligatorio";
+      } else if (this.customer_surname.length > 50) {
         this.validation.customer_surname.success = false;
         this.validation.customer_surname.message =
-          "Il cognome non può superare i 30 caratteri";
+          "Il cognome non può essere più lungo di 50 caratteri";
       } else {
         this.validation.customer_surname.success = true;
         this.validation.customer_surname.message = "";
       }
-      // validazione email
+      // validazione input email
       if (!this.customer_email) {
         this.validation.customer_email.success = false;
-        this.validation.customer_email.message = "La mail non può essere vuota";
+        this.validation.customer_email.message = "L'email è obbligatoria";
       } else if (this.customer_email.length > 255) {
         this.validation.customer_email.success = false;
         this.validation.customer_email.message =
-          "La mail non può superare i 255 caratteri";
+          "L'email non può essere più lunga di 255 caratteri";
       } else if (
         !this.customer_email.match(
           /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
@@ -454,40 +485,39 @@ export default {
       ) {
         this.validation.customer_email.success = false;
         this.validation.customer_email.message =
-          "Formato della mail non valido";
+          "Il formato della mail non valido";
       } else {
         this.validation.customer_email.success = true;
         this.validation.customer_email.message = "";
       }
-      //validazione indirizzo
+      // validazione input indirizzo
       if (!this.customer_address) {
         this.validation.customer_address.success = false;
-        this.validation.customer_address.message =
-          "L'indirizzo non può essere vuoto";
+        this.validation.customer_address.message = "L'indirizzo è obbligatorio";
       } else if (this.customer_address.length > 255) {
         this.validation.customer_address.success = false;
         this.validation.customer_address.message =
-          "L'indirizzo non può superare i 255 caratteri";
+          "L'indirizzo non può essere più lungo di 255 caratteri";
       } else {
         this.validation.customer_address.success = true;
         this.validation.customer_address.message = "";
       }
-      // validazione telefono
+      // validazione input telefono
       if (!this.customer_phone) {
         this.validation.customer_phone.success = false;
         this.validation.customer_phone.message =
-          "Inserire il numero di telefono";
+          "Il numero di telefono è obbligatorio";
       } else if (isNaN(this.customer_phone)) {
         this.validation.customer_phone.success = false;
         this.validation.customer_phone.message =
-          "Il telefono deve essere composto da numeri";
+          "Il numero di telefono deve essere composto da numeri";
       } else if (
         this.customer_phone.length < 8 ||
         this.customer_phone.length > 11
       ) {
         this.validation.customer_phone.success = false;
         this.validation.customer_phone.message =
-          "Il telefono deve essere compreso tra gli 8 e gli 11 caratteri";
+          "Il numero di telefono deve essere compreso tra gli 8 e gli 11 caratteri";
       } else {
         this.validation.customer_phone.success = true;
         this.validation.customer_phone.message = "";
@@ -498,7 +528,8 @@ export default {
         this.validation.customer_surname.success &&
         this.validation.customer_email.success &&
         this.validation.customer_address.success &&
-        this.validation.customer_phone.success
+        this.validation.customer_phone.success &&
+        this.cart.length > 0
       ) {
         this.continuePayment = true;
       }
@@ -547,30 +578,77 @@ export default {
 @import "/resources/sass/_variables";
 @import "/resources/sass/_mixin";
 
+h5 {
+  @include h5($blue);
+}
+h6 {
+  @include h6($blue);
+}
+p {
+  @include p($blue);
+}
+
+.continue_shopping {
+  padding: 0.5rem 1rem;
+  color: $blue !important;
+  border-radius: 5px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: $blue;
+    color: white !important;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
+
 .card_right {
   background-color: $tortora;
   max-height: 750px;
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     width: 0.25rem;
+  }
+
+  label {
+    margin-top: 0.75rem;
+    @include label($blue);
+  }
+
+  .btn_buy {
+    background-color: $blue;
+    @include button(
+      $tortora,
+      $tortora,
+      1rem,
+      600,
+      0.4rem 1.5rem,
+      $yellow,
+      $blue
+    );
+  }
+
+  .btn_form_customer {
+    background-color: $blue;
+    @include button(
+      $tortora,
+      $tortora,
+      1rem,
+      600,
+      0.4rem 1.5rem,
+      $yellow,
+      $blue
+    );
   }
 }
 
 .wrapper_image {
-  height: 30px;
+  width: 50px;
 }
 .fa-circle-minus,
 .fa-circle-plus {
   cursor: pointer;
-}
-
-.btn_buy {
-  background-color: $blue;
-  @include button($tortora, $tortora, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
-}
-
-.btn_form_customer {
-  background-color: $blue;
-  @include button($tortora, $tortora, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
 }
 </style>
