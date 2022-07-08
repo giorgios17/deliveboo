@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Api\Orders;
 
-use App\Plate;
+use App\User;
 use App\Order;
+use App\Plate;
 use Braintree\Gateway;
+use App\Mail\NewOrderUser;
 use Illuminate\Http\Request;
+use App\Mail\NewOrderCustomer;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Orders\OrderRequest;
 use App\Http\Requests\Orders\OrderTableRequest;
@@ -58,6 +62,13 @@ class OrderController extends Controller
 
         $newOrder->plate()->sync($sync_data);
 
+        $userMail = User::where('id', $data['user_id'])->get();
+        if(isset($data['customer_email']) && isset($userMail)){
+        $newOrder->plates;
+        Mail::to($data['customer_email'])->send(new NewOrderCustomer($newOrder));
+        Mail::to($userMail)->send(new NewOrderUser($newOrder));
+        }
+
         if ($newOrder) {
             return 'data saved succesfully';
         } else {
@@ -105,4 +116,6 @@ class OrderController extends Controller
             return response()->json($data, 401);
         }
     }
+
+
 }
