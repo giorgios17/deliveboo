@@ -15,7 +15,8 @@ use App\Http\Requests\Orders\OrderTableRequest;
 class OrderController extends Controller
 {
     //
-    public function payment(Request $request){
+    public function payment(Request $request)
+    {
         $data = $request->all();
         // return($data);
         $newOrder = new Order();
@@ -24,56 +25,59 @@ class OrderController extends Controller
 
         $plates_id = [];
         $plates_quantity = [];
-        foreach($data['plates'] as $plate){
+        foreach ($data['plates'] as $plate) {
             $plates_id[] = $plate['id'];
             $plates_quantity[] = $plate['quantity'];
         }
 
         $sync_data = [];
-        for($i = 0; $i < count($plates_id); $i++)
-            $sync_data[$plates_id[$i]] = ['quantity' => $plates_quantity[$i]];
+        for ($i = 0; $i < count($plates_id); $i++)
+            $sync_data[$i] = ['quantity' => $plates_quantity[$i], 'plate_id' => $plates_id[$i]];
 
-        $newOrder->dishes()->sync($sync_data);
+        // riempio la tabella pivot con l'id del piatto e la quantità del piatto
+        $newOrder->plate()->sync($sync_data);
 
-        if($newOrder){
+
+
+
+        if ($newOrder) {
             return 'data saved succesfully';
         } else {
             return 'data not sent';
         }
 
-            // $validator = Validator::make($data , [
-            //         'name' => 'required|string|max:30',
-            //         'surname' => 'required|string|max:30',
-            //         'email' => 'required|string|max:255',
-            //         'phone' => 'required|numeric',
-            //         'address' => 'required|string|max:255',
-            //         'restaurant_id' => 'required',
-            //         'status' => 'required',
-            //         'total' => 'required',
-            //     ]);
+        // $validator = Validator::make($data , [
+        //         'name' => 'required|string|max:30',
+        //         'surname' => 'required|string|max:30',
+        //         'email' => 'required|string|max:255',
+        //         'phone' => 'required|numeric',
+        //         'address' => 'required|string|max:255',
+        //         'restaurant_id' => 'required',
+        //         'status' => 'required',
+        //         'total' => 'required',
+        //     ]);
 
-            //     $control = $validator->fails();
-            //     if($control){
-            //             return response()->json([
-            //                     "mess" => 'ERRORE MADORNALE',
-            //                     "old" => $validator->errors(),
-            //                     "status" => false,
-            //                 ]);
-            //     }
+        //     $control = $validator->fails();
+        //     if($control){
+        //             return response()->json([
+        //                     "mess" => 'ERRORE MADORNALE',
+        //                     "old" => $validator->errors(),
+        //                     "status" => false,
+        //                 ]);
+        //     }
 
 
-                    //     if(isset($data['email']) && isset($data['user_email'])){
-                        //         $order->plates;
-                        //         Mail::to($data['email'])->send(new SendNewMail($order));
-                        //         Mail::to($data['user_email'])->send(new SendNewMail($order));
-                        // }
+        //     if(isset($data['email']) && isset($data['user_email'])){
+        //         $order->plates;
+        //         Mail::to($data['email'])->send(new SendNewMail($order));
+        //         Mail::to($data['user_email'])->send(new SendNewMail($order));
+        // }
 
-                            // return response()->json([
-                            //         "mess" => 'creato',
-                            //         "status" => true,
-                            //     ]);
-                            // return response()->json($data);
-
+        return response()->json([
+            "mess" => 'creato',
+            "status" => true,
+        ]);
+        return response()->json($data);
     }
 
     public function generate(Request $request, Gateway $gateway)
@@ -86,7 +90,8 @@ class OrderController extends Controller
         return response()->json($data, 200);
     }
 
-	public function makePayment(OrderRequest $request, Gateway $gateway){
+    public function makePayment(OrderRequest $request, Gateway $gateway)
+    {
 
         // $dish = Dish::find($request->dish);
         // return 'make payment';
@@ -98,32 +103,28 @@ class OrderController extends Controller
             ]
         ]);
 
-            if($result->success){
+        if ($result->success) {
 
-                $data = [
+            $data = [
 
-                    'success' => true,
+                'success' => true,
 
-                    'message' => ' Transazione eseguita'
+                'message' => ' Transazione eseguita'
 
-                ];
+            ];
 
-                return response()->json($data, 200);
+            return response()->json($data, 200);
+        } else {
 
-            }else{
+            $data = [
 
-                $data = [
+                'success' => false,
 
-                    'success' => false,
+                'message' => 'Transazione fallita'
 
-                    'message' => 'Transazione fallita'
+            ];
 
-                ];
-
-                return response()->json($data, 401);
-
-            }
-
-	}
-
+            return response()->json($data, 401);
+        }
+    }
 }
