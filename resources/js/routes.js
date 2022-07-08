@@ -5,6 +5,7 @@ import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
 import NotFound from './pages/NotFound';
+import WorkWithUs from './pages/WorkWithUs';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -24,6 +25,11 @@ const router = new VueRouter({
             path: '/cart',
             name: 'cart',
             component: CartComponent
+        },
+        {
+            path: '/work-with-us',
+            name: 'workwithus',
+            component: WorkWithUs
         },
         {
             path: '/*',
