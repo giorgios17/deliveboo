@@ -15,8 +15,14 @@ import router from "./routes"
 // importato il componente AppComponent
 import AppComponent from "./app/AppComponent"
 
+//importa vue braintree
+import vueBraintree from 'vue-braintree'
+Vue.use(vueBraintree);
+
 const app = new Vue({
     el: '#app',
     render: h => h(AppComponent),
     router
 });
+
+

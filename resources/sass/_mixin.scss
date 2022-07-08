@@ -124,3 +124,14 @@
     }
 
 }
+
+@mixin label ($color) {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $color;
+
+    @media screen and (max-width: 350px) {
+        font-size: 0.75rem;
+    }
+
+}

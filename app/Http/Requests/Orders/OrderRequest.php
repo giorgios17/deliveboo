@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Orders;
 
-use App\Rules\ValidPlate;
 use Illuminate\Foundation\Http\FormRequest;
+
 
 class OrderRequest extends FormRequest
 {
@@ -25,11 +25,14 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required',
-            'plate' => [
-                'required',
-                new ValidPlate()
-            ]
-        ];
+
+			'token' => 'required',
+            'amount' => 'required',
+			// 'dish' => [
+            //     'required',
+
+            //     new ValidPlate
+            // ],
+		];
     }
 }

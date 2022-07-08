@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
+import PaymentSuccessfull from './pages/PaymentSuccessfull';
 import NotFound from './pages/NotFound';
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ const router = new VueRouter({
             path: '/cart',
             name: 'cart',
             component: CartComponent
+        },
+        {
+            path: '/success',
+            name: 'success',
+            component: PaymentSuccessfull
         },
         {
             path: '/*',

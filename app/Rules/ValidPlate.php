@@ -41,6 +41,6 @@ class ValidPlate implements Rule
      */
     public function message()
     {
-        return 'Il prodotto non esiste';
+        return 'Non puoi aggiungere questo piatto';
     }
 }
