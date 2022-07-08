@@ -1,6 +1,6 @@
 <template>
   <div class="container p-0">
-    <h1 class="py-3 work-title font-weight-bold">
+    <h1 class="py-3 work-title font-weight-bold text-center">
       {{ lavoraConDelivebooTitle }}
     </h1>
     <ul
