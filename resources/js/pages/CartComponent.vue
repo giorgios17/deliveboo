@@ -389,6 +389,9 @@ export default {
       return this.shippingPrice;
     },
     getTotal() {
+      if (this.subTotal === 0) {
+        return 0;
+      }
       return (this.getSubtotal() + this.getShippingPrice()).toFixed(2);
     },
     axiosCallShippingPrice() {
@@ -432,10 +435,15 @@ export default {
       });
     },
     continueToPayment() {
-      if (this.getTotal() > 0) {
+      if (this.getSubtotal() > 0) {
         this.$refs.paymentBtnRef.click();
       }
-      alert("Non ci sono più prodotti nel carrello");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Il tuo carrello è vuoto!",
+        showCloseButton: true,
+      });
     },
     onSuccess(payload) {
       let nonce = payload.nonce;
@@ -552,6 +560,21 @@ export default {
         this.cart.length > 0
       ) {
         this.continuePayment = true;
+        this.toastAlertSuccess("Dati inseriti correttamente");
+      } else if (
+        this.validation.customer_name.success &&
+        this.validation.customer_surname.success &&
+        this.validation.customer_email.success &&
+        this.validation.customer_address.success &&
+        this.validation.customer_phone.success &&
+        this.cart.length === 0
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "I dati inseriti sono corretti, ma il tuo carrello è vuoto!",
+          showCloseButton: true,
+        });
       }
     },
     sendOrder() {
