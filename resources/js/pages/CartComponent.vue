@@ -437,13 +437,14 @@ export default {
     continueToPayment() {
       if (this.getSubtotal() > 0) {
         this.$refs.paymentBtnRef.click();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Il tuo carrello è vuoto!",
+          showCloseButton: true,
+        });
       }
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Il tuo carrello è vuoto!",
-        showCloseButton: true,
-      });
     },
     onSuccess(payload) {
       let nonce = payload.nonce;
