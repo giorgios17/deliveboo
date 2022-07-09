@@ -23,6 +23,10 @@
 @import 'admin_index';
 @import 'admin_indexRegister';
 
+// smooth scroll
+* {
+    scroll-behavior: smooth;
+}
 
 // personalizzazione scrollbar
 *::-webkit-scrollbar {
