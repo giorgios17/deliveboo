@@ -597,7 +597,7 @@ export default {
           customer_note: this.customer_note,
           total_price: this.getTotal(),
           user_id: this.cart[0].user_id,
-          // 'restaurant_email': this.formData.restaurant_email,
+          //restaurant_email: this.formData.restaurant_email,
           plates: this.cart,
         })
         .then((response) => {
