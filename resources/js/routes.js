@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
+import AboutUsComponent from './pages/AboutUsComponent';
 import NotFound from './pages/NotFound';
 Vue.use(VueRouter);
 
@@ -26,10 +27,16 @@ const router = new VueRouter({
             component: CartComponent
         },
         {
+            path: '/about-us',
+            name: 'about_us',
+            component: AboutUsComponent
+        },
+        {
             path: '/*',
             name: 'not_found',
             component: NotFound
         }
+
     ]
 })
 
