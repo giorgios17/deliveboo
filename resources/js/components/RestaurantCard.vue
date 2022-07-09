@@ -23,9 +23,9 @@
             :alt="restaurant.business_name"
           />
         </div>
-        <div class="card-body">
-          <h4 class="card-title mb-2">{{ restaurant.business_name }}</h4>
-          <h6>Categorie:</h6>
+        <div class="card-body d-flex flex-wrap">
+          <h4 class="card-title mb-2 col-12">{{ restaurant.business_name }}</h4>
+          <h6 class="col-12">Categorie:</h6>
           <div
             class="d-inline-block mb-2"
             v-for="(typology, index) in restaurant.typology"
@@ -45,12 +45,12 @@
             </p>
           </div>
 
-          <p class="card-text mb-3">{{ restaurant.description }}</p>
+          <p class="card-text mb-3 col-12">{{ restaurant.description }}</p>
           <router-link
             @click.native="scrollTop()"
             tag="button"
             :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-            class="btn btn-primary"
+            class="btn btn-primary col-12 align-self-end"
             >Vai al ristorante
           </router-link>
         </div>
