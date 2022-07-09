@@ -2,7 +2,7 @@
   <!--Sezione tipologie ristoranti-->
   <div id="suggestion_typologies" class="container my-5">
     <div class="row">
-      <div class="col-12 text-center">
+      <div v-scrollAnimation class="col-12 text-center">
         <h3>Le cucine più amate</h3>
         <p>
           Trova le cucine più amate dei nostri ristoranti e ordina online a
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="container mt-5">
-      <div class="row justify-content-around flex-wrap">
+      <div v-scrollAnimation class="row justify-content-around flex-wrap">
         <div
           class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg shadow"
         >
@@ -55,6 +55,15 @@ export default {
     p.box_paragraph {
       @include p($tortora);
     }
+  }
+  .before-enter {
+    opacity: 0;
+    transform: translateY(100%) scale(0.5);
+    transition: all 1.5s ease-in-out;
+  }
+  .enter {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 </style>

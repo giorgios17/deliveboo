@@ -19,6 +19,10 @@ import AppComponent from "./app/AppComponent"
 import vueBraintree from 'vue-braintree'
 Vue.use(vueBraintree);
 
+import scrollAnimation from "./scrollAnimation";
+
+Vue.directive('scrollAnimation', scrollAnimation);
+
 const app = new Vue({
     el: '#app',
     render: h => h(AppComponent),

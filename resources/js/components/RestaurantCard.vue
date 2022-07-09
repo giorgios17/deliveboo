@@ -1,7 +1,7 @@
 <template>
   <!-- Card Ristoranti -->
   <div class="container" v-if="arrayRestaurants.length > 0">
-    <div class="row justify-content-center">
+    <div v-scrollAnimation class="row justify-content-center">
       <div class="col-md-6 text-center">
         <h3 class="p-4 mb-3 shadow">RISTORANTI</h3>
         <p>Seleziona il ritorante più adatto alle tue esigenze!</p>
@@ -10,6 +10,7 @@
 
     <div class="row justify-content-center my-5">
       <div
+        v-scrollAnimation
         v-for="restaurant in arrayRestaurants"
         :key="restaurant.id"
         class="card m-3"
@@ -22,9 +23,9 @@
             :alt="restaurant.business_name"
           />
         </div>
-        <div class="card-body">
-          <h4 class="card-title mb-2">{{ restaurant.business_name }}</h4>
-          <h6>Categorie:</h6>
+        <div class="card-body d-flex flex-wrap">
+          <h4 class="card-title mb-2 col-12">{{ restaurant.business_name }}</h4>
+          <h6 class="col-12">Categorie:</h6>
           <div
             class="d-inline-block mb-2"
             v-for="(typology, index) in restaurant.typology"
@@ -44,12 +45,12 @@
             </p>
           </div>
 
-          <p class="card-text mb-3">{{ restaurant.description }}</p>
+          <p class="card-text mb-3 col-12">{{ restaurant.description }}</p>
           <router-link
             @click.native="scrollTop()"
             tag="button"
             :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-            class="btn btn-primary"
+            class="btn btn-primary col-12 align-self-end"
             >Vai al ristorante
           </router-link>
         </div>
@@ -130,5 +131,15 @@ export default {
   h3 {
     font-size: 0.6rem !important;
   }
+}
+
+.before-enter {
+  opacity: 0;
+  transform: translateY(50%) scale(0.5);
+  transition: all 1.5s ease-in-out;
+}
+.enter {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 </style>
