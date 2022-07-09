@@ -7,9 +7,9 @@
         class="col-md-2 col-sm-2 text-center prev"
         @click="toggleImg('prev')"
       >
-        <i class="fa-solid fa-2x fa-circle-chevron-left"> </i>
+        <i class="fa-solid fa-3x fa-circle-chevron-left"> </i>
       </div>
-      <div class="wrapper_img">
+      <div class="col-8 wrapper_img">
         <img class="w-100" :src="'/storage' + review" />
       </div>
       <!-- Controllo dx -->
@@ -17,7 +17,7 @@
         class="col-md-2 col-sm-2 text-center next"
         @click="toggleImg('next')"
       >
-        <i class="fa-solid fa-2x fa-circle-chevron-right"> </i>
+        <i class="fa-solid fa-3x fa-circle-chevron-right"> </i>
       </div>
     </div>
     <div class="row justify-content-center"></div>
