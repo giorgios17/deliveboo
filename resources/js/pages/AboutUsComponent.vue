@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="bg">
     <div class="p-5 bg-primary">
       <h1 class="title font-weight-bold">Chi siamo</h1>
     </div>
     <div class="container-fluid px-5 py-5">
       <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4 mb-5">
           <ul class="list-group shadow">
             <li class="list-group-item">
               <a class="font-weight-bold" href="#story"
@@ -51,7 +51,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-8 card px-5 shadow">
+        <div class="col-12 col-md-8 card px-5 shadow">
           <!-- Storia -->
           <h1 id="story" class="py-3 font-weight-bold">
             La storia di Deliveboo
@@ -211,11 +211,22 @@ export default {
 <style lang="scss" scoped>
 @import "/resources/sass/_variables";
 
+.bg {
+  background-image: url("../img/chi-siamo-bg.png");
+}
 .title {
   color: $yellow;
+  text-shadow: none;
+}
+
+h1 {
+  text-shadow: 2px 2px 5px $yellow;
 }
 a {
   text-decoration: none;
+}
+a:hover {
+  color: $yellow;
 }
 img {
   width: 100%;
@@ -223,6 +234,7 @@ img {
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 30px;
 }
 </style>
