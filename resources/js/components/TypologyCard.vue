@@ -3,7 +3,8 @@
     <div class="container my-5">
       <div class="row justify-content-center">
         <div
-          class="my-3"
+          v-scrollAnimation
+          class="my-3 rotate-scale-up"
           v-for="(typology, index) in arrayTypologies"
           :key="index"
         >
@@ -167,5 +168,15 @@ button {
     width: 100px;
     height: 100px;
   }
+}
+
+.before-enter {
+  opacity: 0;
+  transform: translateY(50%) scale(0.5);
+  transition: all 1.5s ease-in-out;
+}
+.enter {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 </style>

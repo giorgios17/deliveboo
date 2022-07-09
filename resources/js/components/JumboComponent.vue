@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 d-flex justify-content-center align-items-center jb">
-        <h1 class="h1_jumbo">DELIVEBOO</h1>
+        <h1 v-scrollAnimation class="h1_jumbo">DELIVEBOO</h1>
       </div>
     </div>
   </div>
@@ -48,6 +48,15 @@ export default {
       font-size: 15px;
       padding: 200px 0;
     }
+  }
+  .before-enter {
+    opacity: 0;
+    transform: translateX(25%) rotate(270deg);
+    transition: all 1.5s ease-in-out;
+  }
+  .enter {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
   }
 }
 </style>

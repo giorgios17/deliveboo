@@ -1,7 +1,7 @@
 <template>
   <!-- Card Ristoranti -->
   <div class="container" v-if="arrayRestaurants.length > 0">
-    <div class="row justify-content-center">
+    <div v-scrollAnimation class="row justify-content-center">
       <div class="col-md-6 text-center">
         <h3 class="p-4 mb-3 shadow">RISTORANTI</h3>
         <p>Seleziona il ritorante più adatto alle tue esigenze!</p>
@@ -10,6 +10,7 @@
 
     <div class="row justify-content-center my-5">
       <div
+        v-scrollAnimation
         v-for="restaurant in arrayRestaurants"
         :key="restaurant.id"
         class="card m-3"
@@ -130,5 +131,15 @@ export default {
   h3 {
     font-size: 0.6rem !important;
   }
+}
+
+.before-enter {
+  opacity: 0;
+  transform: translateY(50%) scale(0.5);
+  transition: all 1.5s ease-in-out;
+}
+.enter {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 </style>
