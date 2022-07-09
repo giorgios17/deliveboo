@@ -28,6 +28,6 @@ class Order extends Model
   // funzione che collega la tabella plate con la tabella order (many to many)
   public function plate()
   {
-    return $this->belongsToMany("App\Plate");
+    return $this->belongsToMany("App\Plate")->withPivot("quantity");
   }
 }

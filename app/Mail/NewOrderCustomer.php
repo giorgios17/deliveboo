@@ -30,6 +30,6 @@ class NewOrderCustomer extends Mailable
      */
     public function build()
     {
-        return $this->subject('Riepilogo ordine')->view('mail.new-order-customer')->with(['data'  =>  $this->newOrder ]);
+        return $this->subject('Riepilogo ordine')->view('mail.new-order-customer')->with(['order'  =>  $this->newOrder ]);
     }
 }
