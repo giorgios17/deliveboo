@@ -692,8 +692,8 @@ p {
 .wrapper_image {
   width: 50px;
 }
-.fa-circle-minus,
-.fa-circle-plus {
+
+.fa-circle-notch {
   cursor: pointer;
   animation: fa-spin 1s infinite linear;
 }
