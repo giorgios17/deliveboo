@@ -695,9 +695,6 @@ p {
 .fa-circle-minus,
 .fa-circle-plus {
   cursor: pointer;
-}
-
-.fa-circle-notch {
   animation: fa-spin 1s infinite linear;
 }
 
