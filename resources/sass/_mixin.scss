@@ -1,18 +1,21 @@
 //mixin per i button
-@mixin button($borderColor, $color, $size, $weight, $padding, $bgColorHover, $colorHover) {
+@mixin button($bgColor, $borderColor, $color, $size, $weight, $padding, $bgColorHover, $colorHover) {
+    background-color: $bgColor;
     border: 1px solid $borderColor;
     color: $color;
     font-size: $size;
     font-weight: $weight;
     padding: $padding;
 
-    &:hover,
-    &:focus {
+    &:hover {
         animation: pulse 1s;
         box-shadow: 0 0 0 0.75em rgba(#fff, 0);
         background-color: $bgColorHover;
         color: $colorHover;
+    }
 
+    &:focus {
+        box-shadow: none;
     }
 
     @keyframes pulse {

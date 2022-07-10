@@ -82,8 +82,16 @@ h6 {
 }
 
 button {
-  background-color: $blue;
-  @include button($tortora, $tortora, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
+  @include button(
+    $blue,
+    $tortora,
+    $tortora,
+    1rem,
+    600,
+    0.4rem 1.5rem,
+    $yellow,
+    $blue
+  );
 }
 
 .container .option_item {

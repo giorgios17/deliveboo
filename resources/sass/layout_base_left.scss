@@ -29,7 +29,7 @@
 
     //button dashboard
     .btn_dashboard {
-        @include button($yellow, $yellow, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
+        @include button(none, $yellow, $yellow, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
     }
 
     @media screen and (max-width: 768px) {

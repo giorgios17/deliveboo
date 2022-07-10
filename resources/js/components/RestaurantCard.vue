@@ -111,6 +111,7 @@ export default {
   }
   button {
     @include button(
+      none,
       $tortora,
       $tortora,
       1rem,
@@ -136,7 +137,7 @@ export default {
 .before-enter {
   opacity: 0;
   transform: translateY(50%) scale(0.5);
-  transition: all 1.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .enter {
   opacity: 1;

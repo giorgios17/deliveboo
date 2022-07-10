@@ -26,7 +26,7 @@ export default {
           toast: true,
           position: "top-end",
           showConfirmButton: false,
-          timer: 1000,
+          timer: 1500,
           timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -69,6 +69,14 @@ export default {
   & i {
     font-size: 1.5rem;
     color: $blue;
+  }
+
+  @media screen and (max-width: 250px) {
+    width: 2rem;
+    height: 2rem;
+    & i {
+      font-size: 1rem;
+    }
   }
 }
 </style>

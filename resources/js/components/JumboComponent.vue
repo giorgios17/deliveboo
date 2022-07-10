@@ -51,12 +51,12 @@ export default {
   }
   .before-enter {
     opacity: 0;
-    transform: translateX(25%) rotate(270deg);
+    transform: translateX(50%);
     transition: all 1.5s ease-in-out;
   }
   .enter {
     opacity: 1;
-    transform: translateX(0) rotate(0deg);
+    transform: translateX(0);
   }
 }
 </style>
