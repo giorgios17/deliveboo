@@ -104,7 +104,6 @@
                 <div class="col-lg-5">
                   <div class="card card_right rounded-3">
                     <div class="card-body">
-                      <!-- -------------------------------------------------- -->
                       <h6 class="text-center mb-3">CHECKOUT</h6>
                       <!-- box alert campi obbligatori -->
                       <div class="alert alert-danger mb-1" role="alert">
@@ -242,13 +241,12 @@
                         <!-- bottone conferma dati -->
                         <div class="d-flex justify-content-center">
                           <button
+                            :disabled="formValidated"
                             @click="validateForm()"
                             class="btn btn_form_customer mt-2 mb-4"
                           >
                             Conferma i dati
                           </button>
-                          <!-- <input id="createDish" type="submit" value="Salva" class="btn btn-outline-info text-decoration-none mr-2"> -->
-                          <!-- <a href="{{ route('user.user.index') }}" class="btn btn-outline-danger text-decoration-none">Annulla</a> -->
                         </div>
                       </div>
 
@@ -282,10 +280,18 @@
                               style="display: none"
                             ></button>
                             <button
+                              v-if="!loading"
                               class="btn btn_buy mt-2 mb-3"
                               @click="continueToPayment()"
                             >
                               Procedi con l'acquisto € {{ getTotal() }}
+                            </button>
+                            <button
+                              v-else
+                              disabled
+                              class="btn btn-primary px-4 mt-2 mb-4"
+                            >
+                              <i class="fa-solid fa-circle-notch"></i>
                             </button>
                           </template>
                         </v-braintree>
@@ -308,6 +314,8 @@ export default {
   data() {
     return {
       cart: [],
+      loading: false,
+      formValidated: false,
       shippingPrice: 0,
       token: "",
       continuePayment: false,
@@ -447,8 +455,8 @@ export default {
       }
     },
     onSuccess(payload) {
+      this.loading = true;
       let nonce = payload.nonce;
-      console.log(nonce);
       window.axios
         .post(
           "http://127.0.0.1:8000/api/orders/make-payment",
@@ -461,10 +469,8 @@ export default {
           }
         )
         .then((response) => {
-          // console.log('nonce', nonce)
           console.log(response, "response dopo pagamento");
           if (response.data) {
-            // console.log(this.formData)
             this.sendOrder();
           }
         })
@@ -472,121 +478,111 @@ export default {
     },
     onError(error) {
       let message = error.message;
-      console.log(message, "errore di mess in paybox");
+      console.log(message, "messaggio d'errore nella paybox");
     },
     validateForm() {
-      // validazione input nome
-      if (!this.customer_name) {
-        this.validation.customer_name.success = false;
-        this.validation.customer_name.message = "Il nome è obbligatorio";
-      } else if (this.customer_name.length > 50) {
-        this.validation.customer_name.success = false;
-        this.validation.customer_name.message =
-          "Il nome non può essere più lungo di 50 caratteri";
-      } else {
-        this.validation.customer_name.success = true;
-        this.validation.customer_name.message = "";
-      }
-      // validazione input cognome
-      if (!this.customer_surname) {
-        this.validation.customer_surname.success = false;
-        this.validation.customer_surname.message = "Il cognome è obbligatorio";
-      } else if (this.customer_surname.length > 50) {
-        this.validation.customer_surname.success = false;
-        this.validation.customer_surname.message =
-          "Il cognome non può essere più lungo di 50 caratteri";
-      } else {
-        this.validation.customer_surname.success = true;
-        this.validation.customer_surname.message = "";
-      }
-      // validazione input email
-      if (!this.customer_email) {
-        this.validation.customer_email.success = false;
-        this.validation.customer_email.message = "L'email è obbligatoria";
-      } else if (this.customer_email.length > 255) {
-        this.validation.customer_email.success = false;
-        this.validation.customer_email.message =
-          "L'email non può essere più lunga di 255 caratteri";
-      } else if (
-        !this.customer_email.match(
-          /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        )
-      ) {
-        this.validation.customer_email.success = false;
-        this.validation.customer_email.message =
-          "Il formato della mail non valido";
-      } else {
-        this.validation.customer_email.success = true;
-        this.validation.customer_email.message = "";
-      }
-      // validazione input indirizzo
-      if (!this.customer_address) {
-        this.validation.customer_address.success = false;
-        this.validation.customer_address.message = "L'indirizzo è obbligatorio";
-      } else if (this.customer_address.length > 255) {
-        this.validation.customer_address.success = false;
-        this.validation.customer_address.message =
-          "L'indirizzo non può essere più lungo di 255 caratteri";
-      } else {
-        this.validation.customer_address.success = true;
-        this.validation.customer_address.message = "";
-      }
-      // validazione input telefono
-      if (!this.customer_phone) {
-        this.validation.customer_phone.success = false;
-        this.validation.customer_phone.message =
-          "Il numero di telefono è obbligatorio";
-      } else if (isNaN(this.customer_phone)) {
-        this.validation.customer_phone.success = false;
-        this.validation.customer_phone.message =
-          "Il numero di telefono deve essere composto da numeri";
-      } else if (
-        this.customer_phone.length < 8 ||
-        this.customer_phone.length > 11
-      ) {
-        this.validation.customer_phone.success = false;
-        this.validation.customer_phone.message =
-          "Il numero di telefono deve essere compreso tra gli 8 e gli 11 caratteri";
-      } else {
-        this.validation.customer_phone.success = true;
-        this.validation.customer_phone.message = "";
-      }
-
-      if (
-        this.validation.customer_name.success &&
-        this.validation.customer_surname.success &&
-        this.validation.customer_email.success &&
-        this.validation.customer_address.success &&
-        this.validation.customer_phone.success &&
-        this.cart.length > 0
-      ) {
-        this.continuePayment = true;
-        this.toastAlertSuccess("Dati inseriti correttamente");
-      } else if (
-        this.validation.customer_name.success &&
-        this.validation.customer_surname.success &&
-        this.validation.customer_email.success &&
-        this.validation.customer_address.success &&
-        this.validation.customer_phone.success &&
-        this.cart.length === 0
-      ) {
+      if (this.cart.length === 0) {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "I dati inseriti sono corretti, ma il tuo carrello è vuoto!",
+          text: "Il tuo carrello è vuoto!",
           showCloseButton: true,
         });
+      } else {
+        // validazione input nome
+        if (!this.customer_name) {
+          this.validation.customer_name.success = false;
+          this.validation.customer_name.message = "Il nome è obbligatorio";
+        } else if (this.customer_name.length > 50) {
+          this.validation.customer_name.success = false;
+          this.validation.customer_name.message =
+            "Il nome non può essere più lungo di 50 caratteri";
+        } else {
+          this.validation.customer_name.success = true;
+          this.validation.customer_name.message = "";
+        }
+        // validazione input cognome
+        if (!this.customer_surname) {
+          this.validation.customer_surname.success = false;
+          this.validation.customer_surname.message =
+            "Il cognome è obbligatorio";
+        } else if (this.customer_surname.length > 50) {
+          this.validation.customer_surname.success = false;
+          this.validation.customer_surname.message =
+            "Il cognome non può essere più lungo di 50 caratteri";
+        } else {
+          this.validation.customer_surname.success = true;
+          this.validation.customer_surname.message = "";
+        }
+        // validazione input email
+        if (!this.customer_email) {
+          this.validation.customer_email.success = false;
+          this.validation.customer_email.message = "L'email è obbligatoria";
+        } else if (this.customer_email.length > 255) {
+          this.validation.customer_email.success = false;
+          this.validation.customer_email.message =
+            "L'email non può essere più lunga di 255 caratteri";
+        } else if (
+          !this.customer_email.match(
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+          )
+        ) {
+          this.validation.customer_email.success = false;
+          this.validation.customer_email.message =
+            "Il formato della mail non valido";
+        } else {
+          this.validation.customer_email.success = true;
+          this.validation.customer_email.message = "";
+        }
+        // validazione input indirizzo
+        if (!this.customer_address) {
+          this.validation.customer_address.success = false;
+          this.validation.customer_address.message =
+            "L'indirizzo è obbligatorio";
+        } else if (this.customer_address.length > 255) {
+          this.validation.customer_address.success = false;
+          this.validation.customer_address.message =
+            "L'indirizzo non può essere più lungo di 255 caratteri";
+        } else {
+          this.validation.customer_address.success = true;
+          this.validation.customer_address.message = "";
+        }
+        // validazione input telefono
+        if (!this.customer_phone) {
+          this.validation.customer_phone.success = false;
+          this.validation.customer_phone.message =
+            "Il numero di telefono è obbligatorio";
+        } else if (isNaN(this.customer_phone)) {
+          this.validation.customer_phone.success = false;
+          this.validation.customer_phone.message =
+            "Il numero di telefono deve essere composto da numeri";
+        } else if (
+          this.customer_phone.length < 8 ||
+          this.customer_phone.length > 11
+        ) {
+          this.validation.customer_phone.success = false;
+          this.validation.customer_phone.message =
+            "Il numero di telefono deve essere compreso tra gli 8 e gli 11 caratteri";
+        } else {
+          this.validation.customer_phone.success = true;
+          this.validation.customer_phone.message = "";
+        }
+
+        if (
+          this.validation.customer_name.success &&
+          this.validation.customer_surname.success &&
+          this.validation.customer_email.success &&
+          this.validation.customer_address.success &&
+          this.validation.customer_phone.success &&
+          this.cart.length > 0
+        ) {
+          this.continuePayment = true;
+          this.formValidated = true;
+          this.toastAlertSuccess("Dati inseriti correttamente");
+        }
       }
     },
     sendOrder() {
-      console.log(this.customer_name);
-      console.log(this.customer_surname);
-      console.log(this.customer_address);
-      console.log(this.customer_email);
-      console.log(this.customer_phone);
-      console.log(this.cart[0].user_id);
-      console.log(this.getTotal());
-      console.log(this.cart);
       window.axios
         .post("http://127.0.0.1:8000/api/payment", {
           customer_name: this.customer_name,
@@ -597,16 +593,12 @@ export default {
           customer_note: this.customer_note,
           total_price: this.getTotal(),
           user_id: this.cart[0].user_id,
-          // 'restaurant_email': this.formData.restaurant_email,
           plates: this.cart,
         })
         .then((response) => {
-          // handle success
-          console.log("chiamata axios post per payment");
-          console.log(response, "response axios");
-          // alert(response)
           if (response.status === 200) {
             localStorage.clear();
+            this.loading = false;
             this.$router.push({
               name: "success",
             });
@@ -647,6 +639,15 @@ p {
   }
 }
 
+.fa-circle-plus,
+.fa-circle-minus {
+  transition: transform 0.25s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+  }
+}
+
 .card_right {
   background-color: $tortora;
   max-height: 750px;
@@ -662,8 +663,8 @@ p {
   }
 
   .btn_buy {
-    background-color: $blue;
     @include button(
+      $blue,
       $tortora,
       $tortora,
       1rem,
@@ -675,8 +676,8 @@ p {
   }
 
   .btn_form_customer {
-    background-color: $blue;
     @include button(
+      $blue,
       $tortora,
       $tortora,
       1rem,
@@ -694,5 +695,18 @@ p {
 .fa-circle-minus,
 .fa-circle-plus {
   cursor: pointer;
+}
+
+.fa-circle-notch {
+  animation: fa-spin 1s infinite linear;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
