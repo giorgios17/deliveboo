@@ -23,8 +23,8 @@
                             @endif
                         </p>
                         <a href="{{ route('admin.plate.edit', $plate->id) }}" class="btn btn-primary">Modifica</a>
-                        <form id="delete_form" action="{{ route('admin.plate.destroy', $plate->id) }}" method="post"
-                            class=" d-inline-block">
+                        <form action="{{ route('admin.plate.destroy', $plate->id) }}" method="post"
+                            class=" d-inline-block delete_form">
                             @csrf
                             @method('DELETE')
                             <button type='submit' type="submit" value="" class="btn btn-danger">
