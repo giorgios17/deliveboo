@@ -5,8 +5,9 @@
         <div class="alert alert-success" role="alert">
           <h4 class="alert-heading mb-2">Ordine Effettuato!!</h4>
           <p>
-            Grazie per aver acquistato con noi. Il riepilogo del tuo è stato
-            inviato all'indirizzo email che hai indicato.
+            Grazie per aver acquistato con noi. Il riepilogo del tuo ordine è
+            stato inviato all'indirizzo email che hai indicato. Ti invitiamo a
+            contattarci per qualsiasi informazione.
           </p>
           <hr />
           <a href="/" class="btn btn-success">Torna alla Home</a>
