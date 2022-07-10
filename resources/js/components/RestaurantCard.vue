@@ -111,6 +111,7 @@ export default {
   }
   button {
     @include button(
+      none,
       $tortora,
       $tortora,
       1rem,
