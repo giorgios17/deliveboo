@@ -49,7 +49,7 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center">
-            <a href="/cart"> <i class="fa-solid fa-lg fa-cart-shopping"></i></a>
+            <a href="/cart"><i class="fa-solid fa-lg fa-cart-shopping"></i></a>
           </li>
           <li
             class="
@@ -76,41 +76,6 @@
 <script>
 export default {
   name: "HeaderComponent",
-  data() {
-    return {
-      cart: [],
-    };
-  },
-  mounted() {
-    this.getCart();
-  },
-  methods: {
-    getCart() {
-      this.cart = JSON.parse(localStorage.getItem("cart"));
-    },
-    reduceQuantity(quantity, id) {
-      if (quantity > 1) {
-        this.cart.forEach((plate) => {
-          if (plate.id === id) {
-            plate.quantity--;
-          }
-        });
-        localStorage.setItem("cart", JSON.stringify(this.cart));
-      }
-    },
-    addQuantity(id) {
-      this.cart.forEach((plate) => {
-        if (plate.id === id) {
-          plate.quantity++;
-        }
-      });
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    },
-    deletePlate(id) {
-      this.cart = this.cart.filter((plate) => plate.id !== id);
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    },
-  },
 };
 </script>
 
@@ -124,6 +89,7 @@ header {
   h5 {
     @include h5($blue);
   }
+
   h6 {
     @include h6($blue);
     font-size: 1rem;
@@ -134,14 +100,18 @@ header {
     font-size: 0.75rem;
   }
 
-  .col-3 > .btn-danger {
-    padding: 2.5px 8px;
-  }
-
   a {
     font-weight: 700;
     font-size: 17.5px;
     color: $blue !important;
+  }
+
+  .fa-cart-shopping {
+    transition: all 0.25s ease-in-out;
+    &:hover {
+      transform: scale(1.3);
+      text-shadow: 0 0 0.5rem $tortora;
+    }
   }
 
   a.d-inline-block {
@@ -149,19 +119,10 @@ header {
     padding: 0px !important;
   }
 
-  a.go_checkout {
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      background-color: $blue;
-      color: $yellow !important;
-    }
-  }
   .container_img {
     width: 100px;
   }
+
   @media screen and (max-width: 250px) {
     // Sfondo dashboard lato ristoratore
     .container_img {
