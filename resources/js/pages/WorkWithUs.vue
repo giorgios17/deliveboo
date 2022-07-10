@@ -1,6 +1,6 @@
 <template>
   <div class="container p-0">
-    <h1 class="py-3 work-title font-weight-bold text-center">
+    <h1 class="work-title font-weight-bold text-center mb-5">
       {{ lavoraConDelivebooTitle }}
     </h1>
     <ul
@@ -22,7 +22,7 @@
               Diventa un rider: flessibità, ottimi guadagni e un mondo di
               vantaggi per te.
             </p>
-            <button @click="comingSoon()">Unisciti a noi</button>
+            <button class="mt-3" @click="comingSoon()">Unisciti a noi</button>
           </div>
         </div>
       </li>
@@ -35,7 +35,9 @@
               occupiamo noi della consegna, così che la tua unica preoccupazione
               sia continuare a preparare il miglior cibo.
             </p>
-            <a href="/register"> <button>Diventa nostro partner</button></a>
+            <a class="mt-3" href="/register"
+              ><button>Diventa nostro partner</button></a
+            >
           </div>
         </div>
       </li>
@@ -48,7 +50,7 @@
               mangiano. E' un obbiettivo molto ambizioso, come noi, e ci servono
               persone che ci aiutino a raggiungerlo.
             </p>
-            <button @click="comingSoon()">Scopri di più</button>
+            <button class="mt-3" @click="comingSoon()">Scopri di più</button>
           </div>
         </div>
       </li>
@@ -80,8 +82,8 @@ export default {
     comingSoon() {
       Swal.fire({
         icon: "info",
-        title: "Coming soon",
-        text: "Presto disponibile!",
+        title: "Presto disponibile!",
+        text: "Questa funzionalità è in fase di sviluppo.",
         showCloseButton: true,
       });
     },
@@ -91,11 +93,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "/resources/sass/_variables.scss";
+@import "/resources/sass/_mixin.scss";
+
+.container {
+  margin: 6rem auto;
+}
 
 h1 {
-  @media screen and (max-width: 991px) {
-    text-align: center;
-  }
+  @include h1($blue);
 }
 .card-container {
   .cardBox {
