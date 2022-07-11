@@ -23,7 +23,7 @@
 
     </div>
 
-    <div id="user_index" class="row justify-content-center mb-5">
+    <div id="user_index" class="row flex-column justify-content-center mb-5">
         <h1 class="col-12 text-center p-3 mb-5 shadow">
             I TUOI ORDINI
         </h1>
@@ -59,10 +59,6 @@
                                     <p class="card-title">{{ $plate->pivot->quantity }}x {{ $plate->name }} -
                                         €{{ $plate->pivot->quantity * $plate->price }}</p>
                                     <div class="md-0">
-                                        {{-- <div class="wrapper_img">
-                                        <img src="{{ asset('storage/' . $plate->image) }}"
-                                            class="card-img-top h-100 w-100" alt="{{ $plate->name }}">
-                                    </div> --}}
                                     </div>
                                 @endforeach
                             </div>
@@ -75,8 +71,21 @@
         @else
             <h4>Non hai ancora nessun ordine.</h4>
         @endif
-
-
-
     </div>
+    <div id="user_index" class="row justify-content-center mb-5">
+        <h1 class="col-12 text-center p-3 mb-5 shadow">
+            STATISTICHE ORDINI
+        </h1>
+        <div>
+            <canvas id="monthsOrder" width="400" height="400"></canvas>
+        </div>
+        <div>
+            <canvas id="monthsProfit" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let _ydata = JSON.parse('{!! json_encode($months) !!}');
+        let _xdata = JSON.parse('{!! json_encode($monthsTotal) !!}');
+        let _xxdata = JSON.parse('{!! json_encode($monthsProfit) !!}');
+    </script>
 @endsection

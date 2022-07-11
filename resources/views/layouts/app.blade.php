@@ -15,6 +15,10 @@
     {{-- Script per gli alert --}}
     <script src="{{ asset('js/alerts.js') }}" defer></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- chart js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ asset('js/chart.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,7 +108,7 @@
                                     class="fa-solid fa-plus"></i> Aggiungi un
                                 piatto</a>
                             <a class="btn btn_dashboard mb-4" href="{{ route('admin.plate.index') }}"><i
-                                    class="fa-solid fa-magnifying-glass"></i> Visualizza i
+                                    class="fa-solid fa-magnifying-glass"></i> Gestisci i
                                 tuoi piatti</a>
                         </div>
                     </div>
