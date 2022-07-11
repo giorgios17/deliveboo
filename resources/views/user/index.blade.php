@@ -23,7 +23,7 @@
 
     </div>
 
-    <div id="user_index" class="row flex-column justify-content-center mb-5">
+    <div id="user_index" class="row justify-content-center mb-5">
         <h1 class="col-12 text-center p-3 mb-5 shadow">
             I TUOI ORDINI
         </h1>
