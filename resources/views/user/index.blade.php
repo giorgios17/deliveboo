@@ -76,10 +76,12 @@
         <h1 class="col-12 text-center p-3 mb-5 shadow">
             STATISTICHE ORDINI
         </h1>
-        <div>
+        <div class="col-lg-6 p-5 text-center">
+            <h4 class="mb-3">Totale vendite per mese</h4>
             <canvas id="monthsOrder" width="400" height="400"></canvas>
         </div>
-        <div>
+        <div class="col-lg-6 p-5 text-center">
+            <h4 class="mb-3">Guadagno per mese</h4>
             <canvas id="monthsProfit" width="400" height="400"></canvas>
         </div>
     </div>

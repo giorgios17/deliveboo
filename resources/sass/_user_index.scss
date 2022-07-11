@@ -9,6 +9,10 @@
         @include h1($blue);
     }
 
+    h4 {
+        @include h4($blue);
+    }
+
     .card {
 
         .wrapper_img {
