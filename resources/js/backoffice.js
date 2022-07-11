@@ -29,16 +29,18 @@ if (form) { // <-- se il form esiste e quindi non è nullo
     });
 }
 
-pwConfirm.addEventListener('keyup', function () { // <-- aggiungo un evento keyup alla conferma password
-    if (pw.value != pwConfirm.value) { // <-- se i campi password e conferma password non coincidono
-        document.querySelector("#alert-password").style.display = "block"; // <-- mostro l'alert
-        document.querySelector("#success-password").style.display = "none"; // <-- nascondo il successo
-    }
-    else { // <-- se i campi password e conferma password coincidono
-        document.querySelector("#alert-password").style.display = "none"; // <-- nascondo l'alert
-        document.querySelector("#success-password").style.display = "block"; // <-- mostro il successo
-    }
-});
+if (pwConfirm) {
+    pwConfirm.addEventListener('keyup', function () { // <-- aggiungo un evento keyup alla conferma password
+        if (pw.value != pwConfirm.value) { // <-- se i campi password e conferma password non coincidono
+            document.querySelector("#alert-password").style.display = "block"; // <-- mostro l'alert
+            document.querySelector("#success-password").style.display = "none"; // <-- nascondo il successo
+        }
+        else { // <-- se i campi password e conferma password coincidono
+            document.querySelector("#alert-password").style.display = "none"; // <-- nascondo l'alert
+            document.querySelector("#success-password").style.display = "block"; // <-- mostro il successo
+        }
+    });
+}
 
 
 
