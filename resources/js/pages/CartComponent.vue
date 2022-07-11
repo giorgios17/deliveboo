@@ -27,7 +27,7 @@
                       :key="plate.id"
                       class="card mb-3"
                     >
-                      <div class="card-body p-1">
+                      <div class="card-body">
                         <div
                           class="
                             d-flex
@@ -35,14 +35,14 @@
                             align-items-center
                           "
                         >
-                          <div
-                            class="
-                              col-3
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                            "
-                          >
+                          <div class="col-5 d-flex align-items-center">
+                            <div class="wrapper_image">
+                              <img
+                                :src="'/storage/' + plate.image"
+                                class="h-100 w-100 rounded-3"
+                                :alt="plate.name"
+                              />
+                            </div>
                             <div class="ml-3">
                               <p>{{ plate.name }}</p>
                             </div>
@@ -81,7 +81,7 @@
                               col-2
                               d-flex
                               align-items-center
-                              justify-content-center
+                              justify-content-end
                             "
                           >
                             <button
@@ -710,6 +710,18 @@ p {
 @media screen and (max-width: 991px) {
   .card_right {
     max-height: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  h5 {
+    font-size: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 315px) {
+  h5 {
+    font-size: 0.75rem !important;
   }
 }
 </style>
