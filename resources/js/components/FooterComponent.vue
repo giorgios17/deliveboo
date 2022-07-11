@@ -30,7 +30,8 @@
           <h5>ABOUT US</h5>
           <ul>
             <li>
-              <i class="fa-solid fa-people-roof"></i><a href="">Chi siamo</a>
+              <i class="fa-solid fa-people-roof"></i
+              ><a href="/about-us">Chi siamo</a>
             </li>
           </ul>
         </div>
