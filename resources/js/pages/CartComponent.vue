@@ -94,14 +94,18 @@
                 <div class="col-lg-5">
                   <div v-scrollAnimation class="card card_right rounded-3">
                     <div class="card-body">
-                      <h6 class="text-center mb-3">CHECKOUT</h6>
+                      <h6 class="text-center mb-3 bg-primary py-2">CHECKOUT</h6>
                       <!-- box alert campi obbligatori -->
-                      <div class="alert alert-danger mb-1" role="alert">
+                      <div
+                        v-if="!formValidated"
+                        class="alert alert-danger mb-1"
+                        role="alert"
+                      >
                         I campi contrassegnati dall'asterisco (*) sono
                         obbligatori.
                       </div>
 
-                      <div class="action">
+                      <div v-if="!formValidated" class="action">
                         <!-- input nome -->
                         <div class="input-box mb-2">
                           <label for="customer_name"
@@ -231,7 +235,6 @@
                         <!-- bottone conferma dati -->
                         <div class="d-flex justify-content-center">
                           <button
-                            :disabled="formValidated"
                             @click="validateForm()"
                             class="btn btn_form_customer mt-2 mb-4"
                           >
@@ -642,6 +645,11 @@ p {
   background-color: $tortora;
   max-height: 750px;
   overflow-y: auto;
+
+  h6 {
+    color: $tortora;
+    border-radius: 5px;
+  }
 
   &::-webkit-scrollbar {
     width: 0.25rem;
