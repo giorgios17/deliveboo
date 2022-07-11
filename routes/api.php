@@ -27,3 +27,6 @@ Route::get('/restaurants/filter/{typologies}', 'Api\RestaurantsController@filter
 // rotte per la gestione dei pagamenti
 Route::get("orders/generate", "Api\Orders\OrderController@generate");
 Route::post("orders/make-payment", "Api\Orders\OrderController@makePayment");
+
+// per popolare la tabella ordini
+Route::post("payment", "Api\Orders\OrderController@payment");

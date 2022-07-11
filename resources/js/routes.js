@@ -5,7 +5,9 @@ import HomepageComponent from './pages/HomepageComponent';
 import RestaurantComponent from './pages/RestaurantComponent';
 import CartComponent from './pages/CartComponent';
 import AboutUsComponent from './pages/AboutUsComponent';
+import PaymentSuccessfull from './pages/PaymentSuccessfull';
 import NotFound from './pages/NotFound';
+import WorkWithUs from './pages/WorkWithUs';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -30,6 +32,16 @@ const router = new VueRouter({
             path: '/about-us',
             name: 'about_us',
             component: AboutUsComponent
+        },
+        {
+            path: '/work-with-us',
+            name: 'workwithus',
+            component: WorkWithUs
+        },
+        {
+            path: '/success',
+            name: 'success',
+            component: PaymentSuccessfull
         },
         {
             path: '/*',

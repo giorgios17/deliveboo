@@ -32,14 +32,5 @@ class UsersTableSeeder extends Seeder
             $newUser->save();
             $newUser->typology()->sync($user['typology']);
         }
-
-        // foreach ($users as $user) {
-        //     $newUser = new User();
-        //     $newUser->fill($user);
-        //     $newUser->password = Hash::make($user['password']);
-        //     $newUser->slug = User::generateSlug($user['business_name']);
-        //     $newUser->save();
-        //     $newUser->typology()->sync($user['typology']);
-        // }
     }
 }

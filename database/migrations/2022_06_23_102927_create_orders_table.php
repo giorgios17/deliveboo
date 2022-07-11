@@ -19,7 +19,8 @@ class CreateOrdersTable extends Migration
             $table->string('customer_surname')->nullable(false);
             $table->string('customer_address')->nullable(false);
             $table->string('customer_phone')->nullable(false);
-            $table->text('customer_note')->nullable(false);
+            $table->string('customer_email')->nullable(false);
+            $table->text('customer_note')->nullable();
             $table->float('total_price', 10, 2)->nullable(false);
             $table->timestamps();
             $table->unsignedBigInteger("user_id");

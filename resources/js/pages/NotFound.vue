@@ -3,8 +3,8 @@
     <JumboComponent />
     <div id="not_found" class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
+            <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4">
+                <div v-scrollAnimation class="card">
                     <div class="card-header">
                         <h5 class="card-title">404 Not Found</h5>
                     </div>
@@ -47,10 +47,51 @@ export default {
 
     h5 {
       @include h5($tortora);
+
       margin: 0 !important;
     }
   }
 
   margin: 100px 0;
+
+  .enter {
+    animation: trill 1s ease-in-out;
+  }
+
+  @keyframes trill {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(10deg);
+    }
+    20% {
+      transform: rotate(-10deg);
+    }
+    30% {
+      transform: rotate(10deg);
+    }
+    40% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(-10deg);
+    }
+    70% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-10deg);
+    }
+    90% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 }
 </style>
