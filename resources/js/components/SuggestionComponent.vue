@@ -15,7 +15,7 @@
         <div
           class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg shadow"
         >
-          <p class="box_paragraph">Scegli i tui piatti dal menù!</p>
+          <p class="box_paragraph">Scegli i tuoi piatti dal menù!</p>
         </div>
         <div
           class="col-md-3 col-sm-3 col-12 text-center card p-2 mt-2 bg shadow"
