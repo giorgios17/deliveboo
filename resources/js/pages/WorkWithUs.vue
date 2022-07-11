@@ -12,6 +12,7 @@
         justify-content-between
         mb-5
         mt-4
+        p-0
       "
     >
       <li class="cardBox">
@@ -71,7 +72,7 @@ export default {
       },
       lavoraConNoi: {
         backgroundImage:
-          "url(https://cwa.roocdn.com/_next/static/team.d18fbb67.jpg)",
+          "url(https://www.ijobs.it/wp-content/uploads/2021/08/Barilla-Lavora-con-noi-1280x720.jpg)",
       },
       lavoraConDelivebooTitle: "Lavora con Deliveboo",
     };
@@ -135,7 +136,7 @@ h1 {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 3rem;
+        font-size: 2rem;
         font-weight: 800;
         pointer-events: none;
         opacity: 0.9;
