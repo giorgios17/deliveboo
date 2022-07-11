@@ -9,6 +9,14 @@
         @include h1($blue);
     }
 
+    h4 {
+        @include h4($blue);
+    }
+
+    p {
+        @include p($blue);
+    }
+
     .card {
 
         .wrapper_img {
@@ -19,14 +27,6 @@
                 object-fit: cover;
                 object-position: top;
             }
-        }
-
-        h4 {
-            @include h4($blue);
-        }
-
-        p {
-            @include p($blue);
         }
 
         .btn_modify {

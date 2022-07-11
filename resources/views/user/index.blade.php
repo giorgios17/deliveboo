@@ -69,7 +69,7 @@
                 </div>
             @endforeach
         @else
-            <h4>Non hai ancora nessun ordine.</h4>
+            <h4 class="text-center">Non hai ancora nessun ordine.</h4>
         @endif
     </div>
     <div id="user_index" class="row justify-content-center mb-5">
