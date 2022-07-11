@@ -70,7 +70,7 @@
         <div class="col-12 col-lg-6 mt-3">
           <div class="row">
             <div class="col-12 col-sm-6 px-4 pb-4">
-              <h3 class="font-weight-bold mb-3">Origini</h3>
+              <h3 class="font-weight-bold mb-3 blue">Origini</h3>
               <p>
                 Quando il fondatore e CEO di Deliveboo Giorgio Surace si è
                 trasferito a Londra nel 2013, ha trovato una città piena di
@@ -78,16 +78,16 @@
                 di questi consegnassero a domicilio.
               </p>
             </div>
-            <div class="col-12 col-sm-6 px-4 pb-4">
-              <h3 class="font-weight-bold mb-3">Obbiettivo</h3>
+            <div class="col-12 col-sm-6 px-4 pb-4 blue">
+              <h3 class="font-weight-bold mb-3">Obiettivo</h3>
               <p>
                 L’obiettivo principale di questa connessione è facilitare
                 un’esperienza di acquisto indimenticabile, in circa 30 minuti.
                 Offrendo una consegna veloce e affidabile.
               </p>
             </div>
-            <div class="col-12 col-sm-6 px-4 pb-4">
-              <h3 class="font-weight-bold mb-3">rider</h3>
+            <div class="col-12 col-sm-6 px-4 pb-4 blue">
+              <h3 class="font-weight-bold mb-3">Rider</h3>
               <p>
                 La nostra proposta ai rider si basa su ciò che conta di più per
                 loro. Come facciamo a sapere di cosa si tratta? Chiediamo e
@@ -96,7 +96,7 @@
                 hanno bisogno
               </p>
             </div>
-            <div class="col-12 col-sm-6 px-4 pb-4">
+            <div class="col-12 col-sm-6 px-4 pb-4 blue">
               <h3 class="font-weight-bold mb-3">Primo rider</h3>
               <p>
                 Giorgio, fondatore e CEO di Deliveboo, è stato il nostro primo
@@ -109,7 +109,7 @@
           </div>
         </div>
         <div class="col-12">
-          <h3 class="font-weight-bold mb-3">Innovazione a domicilio</h3>
+          <h3 class="font-weight-bold mb-3 blue">Innovazione a domicilio</h3>
           <p class="mb-5">
             La passione di Deliveboo è il cibo, con l’obiettivo di fornire alle
             persone una scelta sempre più ampia. Ma la missione di Deliveboo non
@@ -132,7 +132,7 @@
             negozi dedicati esclusivamente al delivery, che si chiama Deliveboo
             HOP.
           </p>
-          <h3 class="font-weight-bold mb-3">I nostri valori</h3>
+          <h3 class="font-weight-bold mb-3 blue">I nostri valori</h3>
           <p class="mb-5">
             La passione di Deliveboo è il cibo, con l’obiettivo di fornire alle
             persone una scelta sempre più ampia. Ma la missione di Deliveboo non
@@ -164,32 +164,32 @@
         <div class="col-12 text-center">
           <h2 class="font-weight-bold pb-4">Il team di Deliveboo</h2>
         </div>
-        <div class="col-12 col-sm-2 text-center">
-          <a href="https://github.com/giorgios17"
+        <div class="col-12 col-sm-2 mt-3 text-center">
+          <a href="https://www.linkedin.com/in/giorgiosurace/"
             ><img class="rounded-circle zoom" src="../img/giorgio.jpg" alt=""
           /></a>
           <p class="mt-3 font-weight-bold">Giorgio surace</p>
         </div>
         <div class="col-12 col-sm-2 mt-3 text-center">
-          <a href="https://github.com/DavideVenturelli12"
+          <a href="https://www.linkedin.com/in/davideventurelli12/"
             ><img class="rounded-circle zoom" src="../img/davide.jpg" alt=""
           /></a>
           <p class="mt-3 font-weight-bold">Davide Venturelli</p>
         </div>
         <div class="col-12 col-sm-2 mt-3 text-center">
-          <a href="https://github.com/emicif"
+          <a href="https://www.linkedin.com/in/emanuela-cifolelli/"
             ><img class="rounded-circle zoom" src="../img/emanuela.jpg" alt=""
           /></a>
           <p class="mt-3 font-weight-bold">Emanuela Cifolelli</p>
         </div>
         <div class="col-12 col-sm-2 mt-3 text-center">
-          <a href="https://github.com/Ciro97cu"
+          <a href="https://www.linkedin.com/in/ciro-cusati-6b9521242/"
             ><img class="rounded-circle zoom" src="../img/ciro.jpg" alt=""
           /></a>
           <p class="mt-3 font-weight-bold">Ciro Cusati</p>
         </div>
         <div class="col-12 col-sm-2 mt-3 text-center">
-          <a href="https://github.com/Lucavit9"
+          <a href="https://www.linkedin.com/in/luca-vitullo-ba729a242/"
             ><img class="rounded-circle zoom" src="../img/luca.jpg" alt=""
           /></a>
           <p class="mt-3 font-weight-bold">Luca Vitullo</p>
@@ -250,8 +250,12 @@ img {
   transition-delay: 0s;
 }
 
+.blue {
+  color: $blue;
+}
+
 .credits {
-  border-top: 2px solid $blue;
+  border-top: 4px solid $blue;
 }
 
 p {
