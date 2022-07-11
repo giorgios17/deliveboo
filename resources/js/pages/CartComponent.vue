@@ -16,93 +16,83 @@
                     >
                   </h5>
                   <hr />
-
-                  <div class="mb-4">
-                    <p class="mb-1">Il tuo Carrello</p>
-                  </div>
-
                   <div v-if="cart.length > 0">
+                    <div class="mb-4">
+                      <p class="mb-1">Il tuo Carrello</p>
+                    </div>
                     <div
+                      v-scrollAnimation
                       v-for="plate in cart"
                       :key="plate.id"
                       class="card mb-3"
                     >
-                      <div class="card-body">
-                        <div
-                          class="
-                            d-flex
-                            justify-content-between
-                            align-items-center
-                          "
-                        >
-                          <div class="col-5 d-flex align-items-center">
-                            <div class="wrapper_image">
-                              <img
-                                :src="'/storage/' + plate.image"
-                                class="h-100 w-100 rounded-3"
-                                :alt="plate.name"
-                              />
-                            </div>
-                            <div class="ml-3">
-                              <p>{{ plate.name }}</p>
-                            </div>
-                          </div>
-                          <div
-                            class="
-                              col-5
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                            "
-                          >
+                      <div class="row align-items-center p-3 added_plate">
+                        <div class="col-0 col-sm-4 d-none d-sm-block">
+                          <img
+                            :src="`/storage/${plate.image}`"
+                            :alt="plate.name"
+                            width="100px"
+                            class="d-inline-block"
+                          />
+                        </div>
+                        <div class="col-8 col-sm-6">
+                          <div class="d-flex flex-column">
+                            <h6 class="mb-2">
+                              {{ plate.name }}
+                            </h6>
                             <div>
-                              <i
-                                @click="
-                                  reduceQuantity(plate.quantity, plate.id)
+                              <p class="d-inline-block mr-2">Qty:</p>
+                              <div class="d-inline-block">
+                                <i
+                                  @click="
+                                    reduceQuantity(plate.quantity, plate.id)
+                                  "
+                                  class="fa-solid fa-circle-minus"
+                                ></i>
+                              </div>
+                              <p class="d-inline-block mx-2">
+                                {{ plate.quantity }}
+                              </p>
+                              <div class="d-inline-block">
+                                <i
+                                  @click="addQuantity(plate.id)"
+                                  class="fa-solid fa-circle-plus"
+                                ></i>
+                              </div>
+                              <p
+                                class="
+                                  my-2
+                                  ml-0 ml-sm-2
+                                  d-sm-inline-block d-block
                                 "
-                                class="fa-solid fa-circle-minus"
-                              ></i>
+                              >
+                                Prezzo:
+                                {{ totalPrice(plate.price, plate.quantity) }}€
+                              </p>
                             </div>
-                            <p class="fw-normal mx-2 mb-0">
-                              {{ plate.quantity }}
-                            </p>
-                            <div>
-                              <i
-                                @click="addQuantity(plate.id)"
-                                class="fa-solid fa-circle-plus"
-                              ></i>
-                            </div>
-                            <p class="ml-3">
-                              {{ totalPrice(plate.price, plate.quantity) }}€
-                            </p>
                           </div>
-                          <div
-                            class="
-                              col-2
-                              d-flex
-                              align-items-center
-                              justify-content-end
-                            "
+                        </div>
+                        <div class="col-4 col-sm-2 text-right">
+                          <button
+                            class="btn btn-danger"
+                            @click="deletePlate(plate.id)"
+                            style="color: #ffffff"
                           >
-                            <button
-                              class="btn btn-danger"
-                              @click="deletePlate(plate.id)"
-                              href="#!"
-                              style="color: #ffffff"
-                            >
-                              <i class="fas fa-trash-alt"></i>
-                            </button>
-                          </div>
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div v-else>
-                    <p class="text-center mb-4">Il tuo carrello è vuoto.</p>
+                  <div v-else class="text-center mt-5">
+                    <div class="d-flex flex-column mb-3">
+                      <i class="fa-solid fa-2x fa-cart-shopping mb-3"></i>
+                      <p>Il carrello è vuoto</p>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-5">
-                  <div class="card card_right rounded-3">
+                  <div v-scrollAnimation class="card card_right rounded-3">
                     <div class="card-body">
                       <h6 class="text-center mb-3">CHECKOUT</h6>
                       <!-- box alert campi obbligatori -->
@@ -687,15 +677,33 @@ p {
       $blue
     );
   }
-}
 
-.wrapper_image {
-  width: 50px;
+  &.before-enter {
+    opacity: 0;
+    transform: translateX(75%);
+    transition: all 1s ease-in-out;
+  }
+  &.enter {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .fa-circle-notch {
   cursor: pointer;
   animation: fa-spin 1s infinite linear;
+}
+
+.card.mb-3 {
+  &.before-enter {
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: all 0.5s ease-in-out;
+  }
+  &.enter {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fa-spin {
@@ -713,13 +721,20 @@ p {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   h5 {
     font-size: 1rem !important;
   }
 }
 
-@media screen and (max-width: 315px) {
+@media screen and (max-width: 350px) {
+  button.btn-danger {
+    padding: 0.15rem 0.5rem;
+    & .fa-trash-alt {
+      font-size: 0.75rem;
+    }
+  }
+
   h5 {
     font-size: 0.75rem !important;
   }
