@@ -47,6 +47,7 @@ export default {
 @import "/resources/sass/_variables.scss";
 
 #to_top {
+  opacity: 0.5;
   z-index: 10;
   bottom: 2.5%;
   right: 2.5%;
