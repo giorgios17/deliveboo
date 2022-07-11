@@ -77,10 +77,10 @@
             STATISTICHE ORDINI
         </h1>
         <div>
-            <canvas id="monthsOrder" width="400" height="400"></canvas>
+            <canvas id="monthsOrder" width="350" height="400"></canvas>
         </div>
         <div>
-            <canvas id="monthsProfit" width="400" height="400"></canvas>
+            <canvas id="monthsProfit" width="350" height="400"></canvas>
         </div>
     </div>
     <script type="text/javascript">
