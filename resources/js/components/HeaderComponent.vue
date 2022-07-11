@@ -18,17 +18,17 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link text-center" href="/"
-              >Home <span class="sr-only">(current)</span></a
+          <li class="nav-item">
+            <router-link class="nav-link text-center" to="/">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link text-center" to="/about-us"
+              >Chi siamo</router-link
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link text-center" href="/about-us">Chi siamo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-center" href="/work-with-us"
-              >Lavora con noi</a
+            <router-link class="nav-link text-center" to="/work-with-us"
+              >Lavora con noi</router-link
             >
           </li>
           <li class="nav-item d-lg-none">
@@ -45,11 +45,12 @@
         </ul>
       </div>
       <!-- fine hamburger menu -->
-
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center">
-            <a href="/cart"><i class="fa-solid fa-lg fa-cart-shopping"></i></a>
+            <router-link to="/cart"
+              ><i class="fa-solid fa-lg fa-cart-shopping"></i
+            ></router-link>
           </li>
           <li
             class="
@@ -110,13 +111,26 @@ header {
     transition: all 0.25s ease-in-out;
     &:hover {
       transform: scale(1.3);
-      text-shadow: 0 0 0.5rem $tortora;
+      text-shadow: 0 0 0.5rem $orange;
     }
   }
 
   a.d-inline-block {
     @include p($blue);
     padding: 0px !important;
+  }
+
+  a.router-link-exact-active {
+    font-weight: 900;
+    color: $orange !important;
+  }
+
+  .nav-link {
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      transform: translateY(-10%);
+    }
   }
 
   .container_img {
