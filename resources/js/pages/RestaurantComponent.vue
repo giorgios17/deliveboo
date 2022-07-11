@@ -110,7 +110,10 @@
               >
                 <h5 class="full-cart mb-3 py-3">Carrello</h5>
                 <div v-for="plate in cart" :key="plate.id" class="mb-3">
-                  <div class="row align-items-center py-2">
+                  <div
+                    v-scrollAnimation
+                    class="row align-items-center py-2 added_plate"
+                  >
                     <div class="col-8">
                       <div class="d-flex flex-column">
                         <h6 class="mb-2">
@@ -456,6 +459,18 @@ p.p_info:nth-child(6) {
   &.enter {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+.added_plate {
+  &.before-enter {
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: all 0.5s ease-in-out;
+  }
+  &.enter {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
