@@ -11,26 +11,31 @@
                         <img src="{{ asset('storage/' . $plate->image) }}" class="card-img-top h-100 w-100"
                             alt="{{ $plate->name }}">
                     </div>
-                    <div class="card-body">
-                        <h4 class="card-title">{{ $plate->name }}</h4>
-                        <p class="card-text mb-2">{{ $plate->description }}</p>
-                        <p class="card-text mb-2">Prezzo: {{ $plate->price }}€</p>
-                        <p class="card-text mb-2">Visibile:
-                            @if ($plate->visible)
-                                Si
-                            @else
-                                No
-                            @endif
-                        </p>
-                        <a href="{{ route('admin.plate.edit', $plate->id) }}" class="btn btn-primary">Modifica</a>
-                        <form action="{{ route('admin.plate.destroy', $plate->id) }}" method="post"
-                            class=" d-inline-block delete_form">
-                            @csrf
-                            @method('DELETE')
-                            <button type='submit' type="submit" value="" class="btn btn-danger">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
+                    <div class="card-body d-flex flex-wrap">
+                        <h4 class="card-title col-12">{{ $plate->name }}</h4>
+                        <p class="card-text mb-2 col-12">{{ $plate->description }}</p>
+                        <div class="col-12">
+                            <p class="card-text d-inline-block mb-2 mr-2">Prezzo: {{ $plate->price }}€</p>
+                            <p class="card-text d-inline-block">
+                                @if ($plate->visible)
+                                    <p class="badge badge-success text-white mb-3">Visibile</p>
+                                @else
+                                    <p class="badge badge-danger text-white mb-3">Non Visibile</p>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="align-self-end col-12">
+                            <a href="{{ route('admin.plate.edit', $plate->id) }}"
+                                class="btn btn-primary btn_modify mr-2">Modifica</a>
+                            <form action="{{ route('admin.plate.destroy', $plate->id) }}" method="post"
+                                class=" d-inline-block delete_form">
+                                @csrf
+                                @method('DELETE')
+                                <button type='submit' type="submit" value="" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @endforeach

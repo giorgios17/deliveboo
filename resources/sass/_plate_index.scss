@@ -28,5 +28,9 @@
         p {
             @include p($blue);
         }
+
+        .btn_modify {
+            @include button($blue, $yellow, $yellow, 1rem, 600, 0.4rem 1.5rem, $yellow, $blue);
+        }
     }
 }
