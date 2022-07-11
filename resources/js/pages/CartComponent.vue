@@ -281,7 +281,7 @@
                             ></button>
                             <button
                               v-if="!loading"
-                              class="btn btn_buy mt-2 mb-3"
+                              class="btn btn_buy mt-3 mb-3"
                               @click="continueToPayment()"
                             >
                               Procedi con l'acquisto € {{ getTotal() }}
@@ -289,7 +289,7 @@
                             <button
                               v-else
                               disabled
-                              class="btn btn-primary px-4 mt-2 mb-4"
+                              class="btn btn-primary px-4 mt-3 mb-3"
                             >
                               <i class="fa-solid fa-circle-notch"></i>
                             </button>
@@ -704,6 +704,12 @@ p {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .card_right {
+    max-height: none;
   }
 }
 </style>
