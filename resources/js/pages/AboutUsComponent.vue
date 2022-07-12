@@ -2,7 +2,7 @@
   <div>
     <div class="container-fluid pt-5 text-center bg-blue">
       <div class="row">
-        <div class="col-12 mb-5">
+        <div v-scrollAnimation class="col-12 mb-5">
           <h1 class="font-weight-bold mb-3">Chi siamo</h1>
           <p>
             Deliveboo è una compagnia di consegna di cibo in rete fondata nel
@@ -69,7 +69,7 @@
         </div>
         <div class="col-12 col-lg-6 mt-3">
           <div class="row">
-            <div class="col-12 col-sm-6 px-4 pb-4">
+            <div v-scrollAnimation class="col-12 col-sm-6 px-4 pb-4">
               <h3 class="font-weight-bold mb-3 blue">Origini</h3>
               <p>
                 Quando il fondatore e CEO di Deliveboo Giorgio Surace si è
@@ -78,7 +78,7 @@
                 di questi consegnassero a domicilio.
               </p>
             </div>
-            <div class="col-12 col-sm-6 px-4 pb-4 blue">
+            <div v-scrollAnimation class="col-12 col-sm-6 px-4 pb-4 blue">
               <h3 class="font-weight-bold mb-3">Obiettivo</h3>
               <p>
                 L’obiettivo principale di questa connessione è facilitare
@@ -86,7 +86,7 @@
                 Offrendo una consegna veloce e affidabile.
               </p>
             </div>
-            <div class="col-12 col-sm-6 px-4 pb-4 blue">
+            <div v-scrollAnimation class="col-12 col-sm-6 px-4 pb-4 blue">
               <h3 class="font-weight-bold mb-3">Rider</h3>
               <p>
                 La nostra proposta ai rider si basa su ciò che conta di più per
@@ -96,7 +96,7 @@
                 hanno bisogno
               </p>
             </div>
-            <div class="col-12 col-sm-6 px-4 pb-4 blue">
+            <div v-scrollAnimation class="col-12 col-sm-6 px-4 pb-4 blue">
               <h3 class="font-weight-bold mb-3">Primo rider</h3>
               <p>
                 Giorgio, fondatore e CEO di Deliveboo, è stato il nostro primo
@@ -108,7 +108,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12">
+        <div v-scrollAnimation class="col-12">
           <h3 class="font-weight-bold mb-3 blue">Innovazione a domicilio</h3>
           <p class="mb-5">
             La passione di Deliveboo è il cibo, con l’obiettivo di fornire alle
@@ -160,7 +160,7 @@
     </div>
 
     <div class="container py-5 credits">
-      <div class="row justify-content-between">
+      <div v-scrollAnimation class="row justify-content-between">
         <div class="col-12 text-center">
           <h2 class="font-weight-bold pb-4">Il team di Deliveboo</h2>
         </div>
@@ -268,5 +268,15 @@ p {
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.before-enter {
+  opacity: 0;
+  transform: translateY(50%) scale(0.5);
+  transition: all 1s ease-in-out;
+}
+.enter {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 </style>
